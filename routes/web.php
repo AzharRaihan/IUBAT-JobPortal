@@ -27,4 +27,3 @@ Route::group(['as' => 'login.', 'prefix' => 'login', 'namespace' => 'Auth'], fun
 Route::get('/', function () {
     return view('welcome');
 });
-
