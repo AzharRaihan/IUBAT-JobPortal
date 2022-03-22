@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Frontend\FrontendController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +30,8 @@ Route::group(['as' => 'login.', 'prefix' => 'login', 'namespace' => 'Auth'], fun
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('album', [AlbumController::class, 'album']);
+
+Route::get('index', [FrontendController::class, 'index']);
