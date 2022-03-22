@@ -32,15 +32,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('album', [AlbumController::class, 'album']);
-
-Route::get('/index', [FrontendController::class, 'index']);
+Route::get('/index', [FrontendController::class, 'index'])->name('index');
 Route::get('/careers', [FrontendController::class, 'careers'])->name('careers');
 Route::get('/career-details', [FrontendController::class, 'careerDetails'])->name('career.details');
-Route::get('category-page', [FrontendController::class, 'categoryPage'])->name('category.page');
-Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
-Route::get('job-apply', [FrontendController::class, 'jobApply'])->name('job.apply');
-Route::get('main-category', [FrontendController::class, 'mainCategory'])->name('main.category');
+Route::get('/category-page', [FrontendController::class, 'categoryPage'])->name('category.page');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('/job-apply', [FrontendController::class, 'jobApply'])->name('job.apply');
+Route::get('/main-category', [FrontendController::class, 'mainCategory'])->name('main.category');
 Route::get('/news', [FrontendController::class, 'news'])->name('news');
 Route::get('/news-details', [FrontendController::class, 'newsDetails'])->name('news.details');
 Route::get('/product-inspection', [FrontendController::class, 'productInspection'])->name('product.inspection');

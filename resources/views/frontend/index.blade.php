@@ -230,7 +230,7 @@
                 <div class="col-md-4">
                     <div class="supply-chain-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/img/supply.png') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/supply.png') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <h4> Basil BAROMETER </h4>
@@ -244,7 +244,7 @@
                 <div class="col-md-4">
                     <div class="supply-chain-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/img/supply.png') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/supply.png') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <h4> Basil BAROMETER </h4>
@@ -258,7 +258,7 @@
                 <div class="col-md-4">
                     <div class="supply-chain-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/img/supply.png') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/supply.png') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <h4> Basil BAROMETER </h4>

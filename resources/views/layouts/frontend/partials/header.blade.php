@@ -1,16 +1,16 @@
 <header class="header">
-  <a href="/index.html" class="header__logo"><img src="assets/img/logo.png" alt=""></a>
+  <a href="{{ route('index') }}" class="header__logo"><img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo"></a>
   <i class='bx bx-menu header__toggle' id="header-toggle"></i>
   <nav class="nav" id="nav-menu">
       <div class="nav__content container">
-          <a href="index.html" class="nav__perfil">
+          <a href="{{ route('index') }}" class="nav__perfil">
               <div class="nav__img">
-                  <img src="assets/img/logo.png" alt="">
+                  <img src="{{ asset('assets/frontend/img/logo.png') }}" alt="logo">
               </div>
           </a>
           <div class="nav__menu">
               <ul class="nav__list">
-                  <li class="nav__item main-menu-items "><a href="index.html" class="nav__link active">Home</a></li>
+                  <li class="nav__item main-menu-items "><a href="{{ route('index') }}" class="nav__link active">Home</a></li>
                   <li class="nav__item dropdown main-menu-items ">
                       <a href="main-category.html" class="nav__link dropdown__link"> Our Solutions <i class='bx bx-chevron-down dropdown__icon'></i></a>
                       <ul class="dropdown__menu ">
@@ -109,7 +109,7 @@
                       </ul>
                   </li>
                   <li class="nav__item"><a href="{{ route('careers') }}" class="nav__link"> Careers </a></li>
-                  <li class="nav__item"><a href="contact.html" class="nav__link"> Contact Us </a></li>
+                  <li class="nav__item"><a href="{{ route('contact') }}" class="nav__link"> Contact Us </a></li>
               </ul>
           </div>
       </div>
