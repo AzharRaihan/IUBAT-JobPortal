@@ -103,12 +103,12 @@
                   <li class="nav__item dropdown">
                       <a href="main-category.html" class="nav__link dropdown__link"> About Us <i class='bx bx-chevron-down dropdown__icon'></i></a>
                       <ul class="dropdown__menu">
-                          <li class="dropdown__item"><a href="news.html" class="nav__link"> News </a></li>
-                          <li class="dropdown__item"><a href="team.html" class="nav__link"> Our Team </a></li>
-                          <li class="dropdown__item"><a href="testimonial.html" class="nav__link"> Testimonials </a></li>
+                          <li class="dropdown__item"><a href="{{ route('news') }}" class="nav__link"> News </a></li>
+                          <li class="dropdown__item"><a href="{{ route('team') }}" class="nav__link"> Our Team </a></li>
+                          <li class="dropdown__item"><a href="{{ route('testimonial') }}" class="nav__link"> Testimonials </a></li>
                       </ul>
                   </li>
-                  <li class="nav__item"><a href="career.html" class="nav__link"> Careers </a></li>
+                  <li class="nav__item"><a href="{{ route('careers') }}" class="nav__link"> Careers </a></li>
                   <li class="nav__item"><a href="contact.html" class="nav__link"> Contact Us </a></li>
               </ul>
           </div>
