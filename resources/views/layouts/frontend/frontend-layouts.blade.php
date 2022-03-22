@@ -4,11 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="x-ua-compatible" content="IE=edge">
-        <title> Basil Quality Testing Lab Private Limited </title>
+        <title> @yield('page-css') </title>
         <!--- all css file include -->
         @include('layouts.frontend.partials.css')
-        <!-- Page Style -->
-        @stack('page-style')
+        <!-- Page Css -->
+        @stack('page-css')
     </head>
     <body>
         <!-- Header -->

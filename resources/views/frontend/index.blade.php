@@ -1,4 +1,9 @@
-@extends('layouts.frontend.app-layouts')
+@extends('layouts.frontend.frontend-layouts')
+@section('page-title', 'Index Page')
+@push('page-css')
+    <style>
+    </style>
+@endpush
 @section('page-content')
 <main class="main-container">
     <section class="slider-section">
@@ -11,13 +16,13 @@
             <div class="slider-items">
                 <div class="slider-items-active">
                     <div>
-                        <img src="{{ asset('assets/users/img/slider-1.png') }}" alt="">
+                        <img src="{{ asset('assets/frontend/img/slider-1.png') }}" alt="">
                     </div>
                     <div>
-                        <img src="{{ asset('assets/users/img/slider-2.png') }}" alt="">
+                        <img src="{{ asset('assets/frontend/img/slider-2.png') }}" alt="">
                     </div>
                     <div>
-                        <img src="{{ asset('assets/users/img/slider-3.png') }}" alt="">
+                        <img src="{{ asset('assets/frontend/img/slider-3.png') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -30,7 +35,7 @@
                     <div class="single-about">
                         <div class="about-header">
                             <div class="about-image">
-                                <img src="{{ asset('assets/users/img/about-1.png') }}" alt="">
+                                <img src="{{ asset('assets/frontend/img/about-1.png') }}" alt="">
                             </div>
                             <div class="about-title">
                                 <h4> Improve Your Supply Chain Globally </h4>
@@ -46,7 +51,7 @@
                     <div class="single-about">
                         <div class="about-header">
                             <div class="about-image">
-                                <img src="{{ asset('assets/users/img/about-3.png') }}" alt="">
+                                <img src="{{ asset('assets/frontend/img/about-3.png') }}" alt="">
                             </div>
                             <div class="about-title">
                                 <h4> Intelligent Platform for Quality </h4>
@@ -62,7 +67,7 @@
                     <div class="single-about">
                         <div class="about-header">
                             <div class="about-image">
-                                <img src="{{ asset('assets/img/about-2.png') }}" alt="">
+                                <img src="{{ asset('assets/frontend/img/about-2.png') }}" alt="">
                             </div>
                             <div class="about-title">
                                 <h4> The Basil Difference </h4>
@@ -77,7 +82,7 @@
             </div>
         </div>
     </section>
-    <section class="online-advantage" style="background-image: url({{ asset('assets/img/advantage.png') }});">
+    <section class="online-advantage" style="background-image: url({{ asset('assets/frontend/img/advantage.png') }});">
         <div class="advantage-bg-image">
             <div class="container">
                 <div class="row">
@@ -119,7 +124,7 @@
                 <div class="col-md-4">
                     <div class="service-box">
                         <div class="service-img">
-                            <img src="{{ asset('assets/img/service-2.png') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/service-2.png') }}" alt="">
                         </div>
                         <div class="service-contant">
                             <div class="service-title">
@@ -136,7 +141,7 @@
                 <div class="col-md-4">
                     <div class="service-box">
                         <div class="service-img">
-                            <img src="{{ asset('assets/img/service-1.png') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/service-1.png') }}" alt="">
                         </div>
                         <div class="service-contant">
                             <div class="service-title">
@@ -156,7 +161,7 @@
                 <div class="col-md-4">
                     <div class="service-box">
                         <div class="service-img">
-                            <img src="{{ asset('assets/img/service.png') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/service.png') }}" alt="">
                         </div>
                         <div class="service-contant">
                             <div class="service-title">
@@ -176,7 +181,7 @@
             </div>
         </div>
     </section>
-    <section class="compliance-management-section" style="background-image: url(./assets/img/compliance-management.jpg);">
+    <section class="compliance-management-section" style="background-image: url({{ asset('assets/frontend/img/compliance-management.jpg') }});">
         <div class="compliance-bg-overlay">
             <div class="container">
                 <div class="row">
@@ -352,7 +357,7 @@
             </div>
         </div>
     </section>
-    <section class="webinars-section" style="background-image: url({{ asset('assets/users/img/webinars.png') }});">
+    <section class="webinars-section" style="background-image: url({{ asset('assets/frontend/img/webinars.png') }});">
         <div class="webinars-bg-color">
             <div class="container">
                 <div class="row">
@@ -382,7 +387,7 @@
                 <div class="col-md-4">
                     <div class="webinars-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/users/img/webiners-items.jpg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/webiners-items.jpg') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <div class="date-title">
@@ -398,7 +403,7 @@
                 <div class="col-md-4">
                     <div class="webinars-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/users/img/webiners-items.jpg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/webiners-items.jpg') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <div class="date-title">
@@ -414,7 +419,7 @@
                 <div class="col-md-4">
                     <div class="webinars-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/users/img/webiners-items.jpg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/webiners-items.jpg') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <div class="date-title">
@@ -452,7 +457,7 @@
                                         </ul>
     
                                         <div class="team-img">
-                                            <img src="{{ asset('assets/users/img/team.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/img/team.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     
@@ -479,7 +484,7 @@
                                         </ul>
     
                                         <div class="team-img">
-                                            <img src="{{ asset('assets/users/img/team.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/img/team.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     
@@ -506,7 +511,7 @@
                                         </ul>
     
                                         <div class="team-img">
-                                            <img src="{{ asset('assets/users/img/team.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/img/team.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     
@@ -533,7 +538,7 @@
                                         </ul>
     
                                         <div class="team-img">
-                                            <img src="{{ asset('assets/users/img/team.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/img/team.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     
@@ -560,7 +565,7 @@
                                         </ul>
     
                                         <div class="team-img">
-                                            <img src="{{ asset('assets/users/img/team.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/img/team.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     
@@ -587,7 +592,7 @@
                                         </ul>
     
                                         <div class="team-img">
-                                            <img src="{{ asset('assets/users/img/team.jpg') }}" alt="">
+                                            <img src="{{ asset('assets/frontend/img/team.jpg') }}" alt="">
                                         </div>
                                     </div>
                                     
@@ -622,7 +627,7 @@
                 <div class="col-md-4">
                     <div class="case-studies-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/users/img/case_study.jpg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/case_study.jpg') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <p> Improving Bulk Production Quality by Establishing a Supplier Improvement Program </p>
@@ -635,7 +640,7 @@
                 <div class="col-md-4">
                     <div class="case-studies-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/users/img/case_study.jpg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/case_study.jpg') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <p> Improving Bulk Production Quality by Establishing a Supplier Improvement Program </p>
@@ -648,7 +653,7 @@
                 <div class="col-md-4">
                     <div class="case-studies-box">
                         <div class="section-img">
-                            <img src="{{ asset('assets/users/img/case_study.jpg') }}" alt="">
+                            <img src="{{ asset('assets/frontend/img/case_study.jpg') }}" alt="">
                         </div>
                         <div class="section-contant">
                             <p> Improving Bulk Production Quality by Establishing a Supplier Improvement Program </p>
@@ -663,3 +668,5 @@
     </section>
 </main>
 @endsection
+@push('page-script')
+@endpush
