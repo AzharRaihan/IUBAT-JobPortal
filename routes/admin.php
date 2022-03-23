@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\ProfileSettingController;
 
 
 //Admin Routes
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('profile', [ProfileSettingController::class, 'profile'])->name('profile');
     Route::put('profile-update', [ProfileSettingController::class, 'profileUpdate'])->name('profile.update');
     Route::get('change-password', [ProfileSettingController::class, 'changePassword'])->name('change.password');
@@ -17,6 +17,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     Route::get('create-user',[AdminDashboardController::class, 'createUser'])->name('create.user');
     Route::get('create-role',[AdminDashboardController::class, 'roleCreate'])->name('create.role');
     Route::get('role',[AdminDashboardController::class, 'role'])->name('role');
+    Route::get('data-table',[AdminDashboardController::class, 'dataTable'])->name('data.table');
 });
 
 // Setting Routes

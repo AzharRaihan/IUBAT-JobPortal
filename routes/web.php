@@ -20,19 +20,17 @@ use App\Http\Controllers\Frontend\FrontendController;
 Auth::routes();
 // Include Admin Route
 @include('admin.php');
-// Include Students Route
-@include('students.php');
+// Include User Route
+@include('user.php');
 // Login Socialite
 Route::group(['as' => 'login.', 'prefix' => 'login', 'namespace' => 'Auth'], function () {
     Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('provider');
     Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('callback');
 });
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
-Route::get('/index', [FrontendController::class, 'index'])->name('index');
+// Frontend
+Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/careers', [FrontendController::class, 'careers'])->name('careers');
 Route::get('/career-details', [FrontendController::class, 'careerDetails'])->name('career.details');
 Route::get('/category-page', [FrontendController::class, 'categoryPage'])->name('category.page');
