@@ -1,4 +1,4 @@
-@extends('layouts.backend.backend-layouts')
+@extends('layouts.admin.admin-layouts')
 @section('title', 'Dashboard')
 @push('css')
 @endpush

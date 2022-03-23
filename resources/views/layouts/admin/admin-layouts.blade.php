@@ -23,10 +23,10 @@
         <div id="wrapper">
             @include('errors.message')
             <!-- Top Bar Start -->
-            @include('layouts.backend.partials.header')
+            @include('layouts.admin.partials.header')
             <!-- Top Bar End -->
             <!-- Left Sidebar Start -->
-            @include('layouts.backend.partials.sidebar')
+            @include('layouts.admin.partials.sidebar')
             <!-- Left Sidebar End -->
             <!-- Start right Content here -->
             <div class="content-page">
