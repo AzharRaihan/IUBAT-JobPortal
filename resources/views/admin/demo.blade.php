@@ -1,5 +1,5 @@
-@extends('layouts.admin.lte-layout')
-@section('title', 'lte-dashboard')
+@extends('layouts.admin.admin-layout')
+@section('title', 'Dashboard')
 @push('page-style')
   
 @endpush

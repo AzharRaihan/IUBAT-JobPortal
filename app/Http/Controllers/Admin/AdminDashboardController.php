@@ -35,4 +35,9 @@ class AdminDashboardController extends Controller
     {
         return view('admin.datatable');
     }
+
+    public function setting()
+    {
+        return view('admin.setting.add-edit');
+    }
 }

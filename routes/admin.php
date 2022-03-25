@@ -18,6 +18,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('create-role',[AdminDashboardController::class, 'roleCreate'])->name('create.role');
     Route::get('role',[AdminDashboardController::class, 'role'])->name('role');
     Route::get('data-table',[AdminDashboardController::class, 'dataTable'])->name('data.table');
+    Route::get('setting', [AdminDashboardController::class, 'setting'])->name('setting');
 });
 
 // Setting Routes
