@@ -1,4 +1,5 @@
-Company  Dashboard
+<h1>User Dashboard</h1>
+
 <a href="javascript:void(0);" class="dropdown-item" onclick="event.preventDefault();
 document.getElementById('logout-form').submit();">
   <i class="fas fa-power-off mr-2"></i> Log Out
