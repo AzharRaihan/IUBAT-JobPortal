@@ -11,7 +11,6 @@ use App\Http\Controllers\Auth\CompanyRegisterController;
 
 //After login company can access the  below Routes
 Route::group(['as' => 'company.', 'prefix' => 'company', 'middleware' => ['auth', 'company']], function () {
-    Route::post('logout', [LogoutController::class, 'companyLogout'])->name('logout');
     Route::get('dashboard', [CompanyController::class, 'dashboard'])->name('dashboard');
 });
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ProfileSettingController;
 
@@ -28,3 +29,8 @@ Route::group(['as' => 'admin.setting.', 'prefix' => 'admin/setting'], function()
     Route::put('appearance-update', [SettingController::class, 'appearanceUpdate'])->name('appearance.update');
     Route::put('mail-update', [SettingController::class, 'mailUpdate'])->name('mail.update');
 });
+
+
+// Admin Login
+Route::get('admin/login', [AdminLoginController::class, 'adminLogin'])->name('admin.login');
+Route::post('admin/login/check', [AdminLoginController::class, 'adminLoginCheck'])->name('admin.login.check');
