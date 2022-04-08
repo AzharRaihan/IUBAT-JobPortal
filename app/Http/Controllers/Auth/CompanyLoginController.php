@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Role;
-use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Providers\RouteServiceProvider;
-use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller
+class CompanyLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -22,16 +20,13 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
     protected $redirectTo;
-
     /**
      * Create a new controller instance.
      *
@@ -49,34 +44,35 @@ class LoginController extends Controller
         }
         $this->middleware('guest')->except('logout');
     }
+    // Company Login View
+    public function companyLogin()
+    {
+        return view('auth.company-login');
+    }
+    // Company Login Check
+    function companyLoginCheck(Request $request){
+        $this->validate($request, [
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('company.dashboard');
+        }
+        return back()->with('error', 'Oppes! You have entered invalid credentials');
+    }
+    // Company Logout
+    public function companyLogout()
+    {
+        dd('tset');
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('company.login');
+    }
 
-    // Socialite Redirect
-    // public function redirectToProvider($provider)
-    // {
-    //     return Socialite::driver($provider)->redirect();
-    // }
-    // Handle Provider Callback
-    // public function handleProviderCallback($provider)
-    // {
-    //     $user = Socialite::driver($provider)->user();
-    //     // Find existing user.
-    //     $existingUser = User::whereEmail($user->getEmail())->first();
-    //     if ($existingUser)
-    //     {
-    //         Auth::login($existingUser);
-    //     } else {
-    //         // Create new user.
-    //         $newUser = User::create([
-    //             'role_id' => 2,
-    //             'name' => $user->getName(),
-    //             'email' => $user->getEmail(),
-    //             'status' => false,
-    //             'delatable' => true,
-    //         ]);
-    //         Auth::login($newUser);
-    //     }
-    //     notify()->success('You have successfully logged in with '.ucfirst($provider).'!','Success');
-    //     return redirect($this->redirectPath());
 
-    // }
+    public function logout2()
+    {
+        dd('test');
+    }
 }

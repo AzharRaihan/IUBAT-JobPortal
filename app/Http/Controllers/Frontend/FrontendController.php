@@ -60,7 +60,8 @@ class FrontendController extends Controller
     // Team
     public function team()
     {
-        return view('frontend.team');
+        // return view('frontend.team');
+        return view('auth.company-register');
     }
     // Testimonial
     public function testimonial()

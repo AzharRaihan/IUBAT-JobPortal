@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\Auth\CompanyRegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\FrontendController;
 
@@ -20,6 +21,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 Auth::routes();
 // Include Admin Route
 @include('admin.php');
+// Include Company Route
+@include('company.php');
 // Include User Route
 @include('user.php');
 // Login Socialite
@@ -41,7 +44,10 @@ Route::get('/news', [FrontendController::class, 'news'])->name('news');
 Route::get('/news-details', [FrontendController::class, 'newsDetails'])->name('news.details');
 Route::get('/product-inspection', [FrontendController::class, 'productInspection'])->name('product.inspection');
 Route::get('/team', [FrontendController::class, 'team'])->name('team');
+Route::post('ddd', [CompanyRegisterController::class, 'create'])->name('ddd');
 Route::get('/testimonial', [FrontendController::class, 'testimonial'])->name('testimonial');
+
+
 
 
 

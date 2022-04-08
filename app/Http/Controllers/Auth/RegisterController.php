@@ -42,7 +42,9 @@ class RegisterController extends Controller
         if (Auth::check() && Auth::user()->role->id == 1)
         {
             $this->redirectTo = route('admin.dashboard');
-        } else {
+        }elseif(Auth::check() && Auth::user()->role->id == 2){
+            $this->redirectTo = route('company.dashboard');
+        }else {
             $this->redirectTo = route('user.dashboard');
         }
         $this->middleware('guest');
@@ -59,7 +61,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
         ]);
     }
 

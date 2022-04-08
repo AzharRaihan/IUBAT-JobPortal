@@ -23,10 +23,16 @@ class RedirectIfAuthenticated
         if (Auth::guard($guards)->check() && Auth::user()->role->id == 1) 
         {
             return redirect()->route('admin.dashboard');
-        } elseif (Auth::guard($guards)->check() && Auth::user()->role->id == 2)
+        }
+        elseif (Auth::guard($guards)->check() && Auth::user()->role->id == 2) 
+        {
+            return redirect()->route('company.dashboard');
+        }
+        elseif (Auth::guard($guards)->check() && Auth::user()->role->id == 3)
         {
             return redirect()->route('user.dashboard');
-        }else {
+        }
+        else {
             return $next($request);
         }
     }
