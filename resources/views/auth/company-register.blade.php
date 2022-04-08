@@ -16,9 +16,8 @@
                 <img src="{{ asset('assets/application-default/img/login-logo.png') }}" alt="" class="img-fluid">
             </div>
             <div class="login-child  p-4">
-                <form action="{{ route('ddd') }}" method="post">
+                <form action="{{ route('company.register.create') }}" method="post">
                     @csrf
-                    <input type="text" name="role_id">
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="name" name="name" id="name @error('name') is-invalid @enderror" class="form-control">
