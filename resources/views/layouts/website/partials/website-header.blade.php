@@ -17,7 +17,7 @@
         </div>
         <div class="account">
           <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ asset('assets/website/img/default.png') }}" alt="" width="30" height="30">
+            <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="30" height="30">
           </button>
           <div class="account-card dropdown-menu dropdown-menu-end">
             @if(!Auth::user())
@@ -54,7 +54,7 @@
             @else
             <div class="acc-mng-1">
               <div class="auth-img">
-                <img src="{{ asset('assets/website/img/default.png') }}" alt="" width="50px" height="50px">
+                <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="50px" height="50px">
               </div>
             </div>
             <div class="acc-mng-2">
@@ -62,7 +62,7 @@
               <small class="text-center">{{ Auth::user()->email }}</small>
               <hr>
               <div class="credentials">
-                <a href=""><i class="bi bi-columns-gap"></i>Dashboard</a>
+                <a href="{{ Route::currentRouteName() == 'company.dashboard' ? route('company.dashboard') : route('user.dashboard')  }}"><i class="bi bi-columns-gap"></i>Dashboard</a>
                 <a href="" class="notification"><i class="bi bi-bell"></i><div class="blob">12</div>Notification</a>
                 <a href="" class="notification"><i class="bi bi-gear"></i>Settings</a>
                 <a href="javascript:void(0);" onclick="event.preventDefault();
@@ -83,7 +83,7 @@
   <header id="header">
     <div class="container d-flex align-items-center">
       <!-- logo -->
-      <a href="{{ route('index') }}" class="logo me-auto"><img src="{{ asset('assets/website/img/m-logo.png') }}" alt="" class="img-fluid"></a>
+      <a href="{{ route('index') }}" class="logo me-auto"><img src="{{ asset('assets/website/img/logo/m-logo.png') }}" alt="" class="img-fluid"></a>
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="active" href="index.html">Home</a></li>
