@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class CompanyLoginController extends Controller
+class AdminLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -43,20 +43,20 @@ class CompanyLoginController extends Controller
         }
         $this->middleware('guest')->except('logout');
     }
-    // Company Login View
-    public function companyLogin()
+    // Admin Login View
+    public function adminLogin()
     {
-        return view('auth.company-login');
+        return view('auth.admin-login');
     }
-    // Company Login Check
-    function companyLoginCheck(Request $request){
+    // Admin Login Check
+    function adminLoginCheck(Request $request){
         $this->validate($request, [
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->route('company.dashboard');
+            return redirect()->route('admin.dashboard');
         }
         return back()->with('error', 'Oppes! You have entered invalid credentials');
     }
