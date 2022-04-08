@@ -7,9 +7,17 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/application-default/css/custom-log-reg.css') }}">
-    <title>REGISTER|SIGNUP</title>
+    <title>USER | REGISTER</title>
+    <style>
+        .login-page{
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
   </head>
-  <body>
+  <body class="login-page" style="background-image: url({{ asset('assets/application-default/img/admin-login-bg.jpg') }})">
     <div class="form-wrap">
         <div class="login-card">
             <div class="logo text-center">
@@ -18,6 +26,7 @@
             <div class="login-child  p-4">
                 <form action="{{ route('register') }}" method="post">
                     @csrf
+                    <h5 class="text-center">User Register</h5>
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="name" name="name" id="name @error('name') is-invalid @enderror" class="form-control">
