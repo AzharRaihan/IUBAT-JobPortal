@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserMiddleware
+class CompanyMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role->id == 3)
+        if (Auth::check() && Auth::user()->role->id == 2)
         {
             return $next($request);
         } else {

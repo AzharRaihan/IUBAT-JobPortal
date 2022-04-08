@@ -120,7 +120,6 @@
           <a href="#" class="dropdown-item">
             <i class="fas fa-key mr-2"></i> Change Password
           </a>
-          <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
             <i class="fas fa-wrench mr-2"></i> Setting
           </a>
