@@ -10,7 +10,7 @@ class FrontendController extends Controller
     // Index/Home Page
     public function index()
     {
-        return view('frontend.index');
+        return view('website.index');
     }
     // Career
     public function careers()

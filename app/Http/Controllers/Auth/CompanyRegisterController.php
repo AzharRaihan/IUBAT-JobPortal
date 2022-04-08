@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\RegistersCompany;
+
 
 class CompanyRegisterController extends Controller
 {
@@ -20,6 +22,8 @@ class CompanyRegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+    use RegistersCompany;
+
     public function __construct()
     {
         if (Auth::check() && Auth::user()->role->id == 1)
