@@ -19,6 +19,7 @@
 .account img{
     border: 1px solid white;
     border-radius: 50%;
+    object-fit: cover;
 }
 .sticky {
     position: fixed;
