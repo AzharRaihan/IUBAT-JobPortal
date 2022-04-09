@@ -17,7 +17,15 @@
         </div>
         <div class="account">
           <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="30" height="30">
+            @if(Auth::user())
+              @if(Auth::user()->role_id == 2)
+                <img src="{{ asset('company/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="40" height="40">
+              @else
+                <img src="{{ asset('users/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="40" height="40">
+              @endif
+            @else
+            <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="40" height="40">
+            @endif
           </button>
           <div class="account-card dropdown-menu dropdown-menu-end">
             @if(!Auth::user())
@@ -54,7 +62,15 @@
             @else
             <div class="acc-mng-1">
               <div class="auth-img">
-                <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="50px" height="50px">
+                @if(Auth::user())
+                  @if(Auth::user()->role_id == 2)
+                    <img src="{{ asset('company/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="50px" height="50px">
+                  @else
+                    <img src="{{ asset('users/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="50px" height="50px">
+                  @endif
+                @else 
+                  <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="50px" height="50px">
+                @endif
               </div>
             </div>
             <div class="acc-mng-2">
