@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JobPost extends Model
+class Resume extends Model
 {
     use HasFactory;
 
-    public function company()
+    public function user()
     {
-        $this->belongsTo(Company::class);
+        $this->belongsTo(User::class);
     }
 }

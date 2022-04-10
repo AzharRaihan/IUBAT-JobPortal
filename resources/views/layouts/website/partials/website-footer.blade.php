@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Mashtor</h3>
+            <h5>Career Line BD</h5>
             <p>
               3rd Floor, Y-13/A, <br> Noor Jahan Road, <br> Mohammadpur, Dhaka 1207 <br><br>
               <strong>Phone:</strong> +8801635-497868<br>

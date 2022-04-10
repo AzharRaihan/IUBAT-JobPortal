@@ -60,6 +60,9 @@ h1, h2, h3, h4, h5, h6 {
 hr{
   margin: 0.5rem 0rem;
 }
+.col-item{
+  margin-bottom: 24px;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -169,7 +172,7 @@ hr{
 /**
 * Get Startet Button 
 */
-.get-started-btn {
+.contact-us-btn {
   margin-left: 22px;
   background: #C2000C;
   color: #fff;
@@ -180,12 +183,12 @@ hr{
   font-size: 14px;
   display: inline-block;
 }
-.get-started-btn:hover {
+.contact-us-btn:hover {
   background: #77090A;
   color: #fff;
 }
 @media (max-width: 768px) {
-  .get-started-btn {
+  .contact-us-btn {
     margin: 0 15px 0 0;
     padding: 6px 6px;
   }
@@ -560,7 +563,7 @@ section {
   padding: 30px 0;
 }
 .counts .counters span {
-  font-size: 48px;
+  font-size: 30px;
   display: block;
   color: #C2000C;
   font-weight: 700;
@@ -572,106 +575,6 @@ section {
   font-size: 15px;
   font-weight: 600;
   color: #37423b;
-}
-/*--------------------------------------------------------------
-# Courses
---------------------------------------------------------------*/
-.courses .course-item {
-  border-radius: 5px;
-}
-.courses .course-content {
-  padding: 15px;
-  border: 1px solid #dddddd;
-}
-.courses .course-content h3 {
-  font-weight: 700;
-  font-size: 16px;
-}
-.courses .course-content h3 a {
-  color: #37423b;
-  transition: 0.3s;
-}
-.courses .course-content h3 a:hover {
-  color: #C2000C;
-}
-.courses .course-content p {
-  font-size: 14px;
-  color: #777777;
-  padding-bottom: 10px;
-}
-.courses .course-content .enroll {
-  font-size: 14px;
-  background: #C2000C;
-  padding: 4px 10px;
-  border-radius: 3px;
-  color: #fff;
-  margin: 0;
-}
-.courses .course-content .enroll:hover {
-  background: #77090A;
-}
-
-.courses .course-content .price {
-  margin: 0;
-  font-weight: 700;
-  font-size: 18px;
-  color: #37423b;
-}
-.courses .course-rank{
-  padding-top: 10px;
-  border-top: 1px solid #dddddd;
-}
-.courses .course-item img{
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-}
-/*--------------------------------------------------------------
-# Our Mashtors
---------------------------------------------------------------*/
-.our-mashtor .mashtor-item {
-  border-radius: 5px;
-}
-.our-mashtor .mashtor-content{
-  border: 1px solid #dddddd;
-  padding: 15px;
-}
-.our-mashtor .mashtor-content h3 {
-  font-weight: 700;
-  font-size: 16px;
-}
-.our-mashtor .mashtor-content p {
-  font-size: 14px;
-  color: #777777;
-  padding-bottom: 10px;
-}
-.our-mashtor .mashtor-content .price {
-  margin: 0;
-  font-weight: 700;
-  font-size: 18px;
-  color: #37423b;
-}
-.our-mashtor .trainer {
-  padding-top: 10px;
-  border-top: 1px solid #dddddd;
-}
-.our-mashtor .trainer .trainer-rank {
-  font-size: 14px;
-  color: #657a6d;
-}
-.mashtor-item img{
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-}
-.mashtor-content h4{
-  font-size: 18px;
-}
-.mashtor-content h5{
-  font-size: 14px;
-}
-.mashtor-item .active{
-  color: #C2000C;
 }
 /*--------------------------------------------------------------
 # Footer
