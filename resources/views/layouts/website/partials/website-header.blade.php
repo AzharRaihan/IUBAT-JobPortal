@@ -19,12 +19,12 @@
           <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             @if(Auth::user())
               @if(Auth::user()->role_id == 2)
-                <img src="{{ asset('company/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="40" height="40">
+                <img src="{{ asset('company/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="35" height="35">
               @else
-                <img src="{{ asset('users/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="40" height="40">
+                <img src="{{ asset('users/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="35" height="35">
               @endif
             @else
-            <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="40" height="40">
+            <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
             @endif
           </button>
           <div class="account-card dropdown-menu dropdown-menu-end">
@@ -53,8 +53,8 @@
                   <h5>Companies</h5>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, commodi!</p>
                   <div class="d-flex login-signup">
-                    <a href="{{ route('company.register') }}" class="btn btn-sm login">Login</a>
-                    <a href="{{ route('company.login') }}" class="btn btn-sm signup">Sign Up</a>
+                    <a href="{{ route('company.login') }}" class="btn btn-sm login">Login</a>
+                    <a href="{{ route('company.register') }}" class="btn btn-sm signup">Sign Up</a>
                   </div>
                 </div>
               </div>
