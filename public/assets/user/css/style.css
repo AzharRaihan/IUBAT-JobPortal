@@ -115,8 +115,6 @@ input{
   box-shadow: 2px 1px #C2000C;
 }
 
-
-
 .btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
   color: #fff;
   background-color: #C1000C;
@@ -127,16 +125,23 @@ input{
   border-color: #C2000C;
 }
 .btn-check:active+.btn-outline-primary:focus, .btn-check:checked+.btn-outline-primary:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus, .btn-outline-primary:active:focus {
-  box-shadow: none;
+  box-shadow: none !important;
+}
+.btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
+  color: #fff;
+  background-color: #C2000C;
+  border-color: none !important;
+}
+.btn-check:focus+.btn-outline-primary, .btn-outline-primary:focus {
+  box-shadow: none !important;
 }
 .btn-outline-primary:hover {
   color: #fff;
   background-color: #C2000C;
   border-color: #C2000C;
 }
-
-
 /* avater css end */
+
 /* Responsive */
 @media only screen and (min-width: 768px) and (max-width: 991.98px) {  
 }
