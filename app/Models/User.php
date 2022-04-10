@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
+        'address',
         'profile_photo',
         'gender',
         'bio',
@@ -51,6 +52,11 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function resume()
+    {
+        $this->belongsTo(Resume::class);
     }
 
 }

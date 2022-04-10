@@ -11,13 +11,66 @@
   .overlay{
     width: 100%;
     height: 50vh;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .form-control{
     border: 1px solid #c2000c;
+  }
+  .card{
+    height: 100%;
+  }
+  .see-all{
+    text-align: right;
+  }
+  .see-all i{
+    font-size: 13px;
+  }
+  .see-all a{
+    font-size: 15px;
+  }
+  .govt, .public, ul li{
+    list-style-type: none;
+  }
+  .govt i{
+    margin-right: 10px;
+  }
+  .public i{
+    margin-right: 10px;
+  }
+  a{
+    color: rgb(73, 73, 73);
+  }
+  a:hover{
+    color: #C2000C;
+    transition: 0.6s;
+  }
+  .job-item-wrap{
+    display: flex;
+    justify-content: space-around;
+  }
+  .job-item{
+    color: white;
+  }
+  .job-item i{
+    width: 50px;
+    height: 50px;
+    background: rgb(128, 128, 128, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 0px !important;
+  }
+  .job-card{
+    display: flex;
+    padding: 20px 10px;
+  }
+  .hto-job-title i{
+    font-size: 23px;
+    color: #C2000C;
   }
 </style>
 @endpush
@@ -32,7 +85,29 @@
           <div class="col-lg-8">
             <div class="input-group mb-3">
               <input type="text" class="form-control" id="typed4" placeholder="Search key word :">
-              <button class="btn get-started-btn" type="button" id="button-addon2"><i class="bi bi-search"></i> Search</button>
+              <button class="btn contact-us-btn" type="button" id="button-addon2"><i class="bi bi-search"></i> Search</button>
+            </div>
+            <div class="job-item-wrap">
+              <div class="job-item text-center">
+                <i class="fal fa-suitcase m-0"></i>
+                <p>Live Job</p>
+                <span>390</span>
+              </div>
+              <div class="job-item text-center">
+                <i class="fal fa-suitcase m-0"></i>
+                <p>Live Job</p>
+                <span>390</span>
+              </div>
+              <div class="job-item text-center">
+                <i class="fal fa-suitcase m-0"></i>
+                <p>Live Job</p>
+                <span>390</span>
+              </div>
+              <div class="job-item text-center">
+                <i class="fal fa-suitcase m-0"></i>
+                <p>Live Job</p>
+                <span>390</span>
+              </div>
             </div>
           </div>
         </div>
@@ -45,46 +120,228 @@
   <!-- ======= Matrials Section ======= -->
   <section class="matrials section-bg">
     <div class="container">
-      <div class="section-title title text-center">
-        <h1>Matrials</h1>
-        <p>Women In Digital materials are built by our community, which is made up of industry-leading technologists, instructors, and leaders. All curriculum developed by Women In Digital . You are free to share and adapt these materials.</p>
-      </div>
-      <div class="body">
-        <div class="row">
-          <div class="col-md-6 col-lg-6 col-xl-4 my-lg-2 my-sm-1">
-            <div class="materials-body d-flex justify-content-center align-items-center">
-              <img src="{{ asset('assets/website/img/matrials/web.png') }}" alt="" class="me-3" width="90px" height="90px">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+      <div class="row">
+        <div class="col-lg-8 col-md-6 col-12">
+          <div class="card materials-body">
+            <h6 class="border-bottom pb-2">
+              <i class="far fa-list-ul me-2"></i>
+              <span>Brows Category</span>
+            </h6>
+            <div class="row">
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 1</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 2</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 3</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 4</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 5</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 6</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 7</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 8</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 9</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 10</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 11</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
+              <div class="col-md-4 py-1">
+                <a href="#">
+                  <i class="fal fa-arrow-alt-circle-right"></i>
+                  <span>Category 12</span>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-6 col-xl-4 my-lg-2 my-sm-1">
-            <div class="materials-body d-flex justify-content-center align-items-center">
-              <img src="{{ asset('assets/website/img/matrials/htmlcss.png') }}" alt="" class="me-3" width="90px" height="90px">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div class="card materials-body">
+            <div class="govt mb-3">
+              <h6 class="border-bottom pb-2">
+                <img src="{{ asset('assets/website/img/bangladesh.png') }}" alt="" height="20" height="20">
+                <span>Govt Jobs</span>
+              </h6>
+              <ul class="p-0 m-0">
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 1</a></li>
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 2</a></li>
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 3</a></li>
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 4</a></li>
+              </ul>
+              <div class="see-all">
+                <a href="">See All <span><i class="far fa-angle-double-right"></i></span></a>
+              </div>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-4 my-lg-2 my-sm-1">
-            <div class="materials-body d-flex justify-content-center align-items-center">
-              <img src="{{ asset('assets/website/img/matrials/angular.png') }}" alt="" class="me-3" width="90px" height="90px">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-4 my-lg-2 my-sm-1">
-            <div class="materials-body d-flex justify-content-center align-items-center">
-              <img src="{{ asset('assets/website/img/matrials/git.png') }}" alt="" class="me-3" width="90px" height="90px">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-4 my-lg-2 my-sm-1">
-            <div class="materials-body d-flex justify-content-center align-items-center">
-              <img src="{{ asset('assets/website/img/matrials/web-accibility.png') }}" alt="" class="me-3" width="90px" height="90px">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-4 my-lg-2 my-sm-1">
-            <div class="materials-body d-flex justify-content-center align-items-center">
-              <img src="{{ asset('assets/website/img/matrials/php.png') }}" alt="" class="me-3" width="90px" height="90px">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <div class="public">
+              <h6 class="border-bottom pb-2">
+                <i class="fa fa-suitcase"></i>
+                <span>Private Jobs</span>
+              </h6>
+              <ul class="p-0 m-0">
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 1</a></li>
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 2</a></li>
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 3</a></li>
+                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 4</a></li>
+              </ul>
+              <div class="see-all">
+                <a href="">See All <span><i class="far fa-angle-double-right"></i></span></a>
+              </div>
             </div>
           </div>
         </div>
@@ -93,380 +350,155 @@
   </section>
   <!-- End Matrials -->
 
-  <!-- ======= Hero Section ======= -->
-  <!-- <section id="hero" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relative">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-7">
-          <h3 class="text-white">Learning Today,Leading Tomorrow</h3>
-          <div class="input-group">
-            <input type="text" class="form-control" id="searchCourse" placeholder="">
-            <button class="btn btn-warning text-white" type="button" id="button-addon2">Search</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- End Hero -->
+
 
   <!-- ======= Counts Section ======= -->
   <section id="counts" class="counts">
     <div class="container">
       <div class="row counters">
         <div class="col-lg-3 col-6 text-center">
-          <span><i class="fas fa-user-graduate"></i></span>
+          <span><i class="fal fa-suitcase"></i></span>
           <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Students</p>
+          <p>Total Jobs</p>
         </div>
         <div class="col-lg-3 col-6 text-center">
           <span><i class="fas fa-user-tie"></i></span>
           <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Trainers</p>
+          <p>Vacancy</p>
         </div>
         <div class="col-lg-3 col-6 text-center">
-          <span><i class="fas fa-book-reader"></i></span>
+          <span><i class="bi bi-building"></i></span>
           <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Courses</p>
+          <p>Company</p>
         </div>
         <div class="col-lg-3 col-6 text-center">
-          <span><i class="fas fa-bookmark"></i></span>
+          <span><i class="fa fa-spinner"></i></span>
           <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Enroll</p>
+          <p>New Jobs</p>
         </div>
       </div>
     </div>
   </section><!-- End Counts Section -->
 
-  <!-- ======= Popular Courses Section ======= -->
-  <section id="popular-courses" class="courses section-bg OwlCarouselWrap">
-    <div class="container">
-      <div class="section-title">
-        <!--<h2>Courses</h2>
-        <p>Regular Courses</p>-->
-        <h1>Popular Courses</h1>
-      </div>
-      <div class="owl-carousel">
-        <div>
-          <div class="course-item">
-            <img src="{{ asset('assets/website/img/course/laravel.png') }}" class="img-fluid" alt="...">
-            <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="" class="enroll">Enroll</a>
-                <p class="price">$169</p>
-              </div>
-              <h3><a href="course-details.html">Laravel</a></h3>
-              <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="course-footer">
-                <div class="course-rank d-flex align-items-center justify-content-between">
-                  <div>
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                  </div>
-                  <div>
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="course-item">
-            <img src="{{ asset('assets/website/img/course/enterprenure.png') }}" class="img-fluid" alt="...">
-            <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="" class="enroll">Enroll</a>
-                <p class="price">$169</p>
-              </div>
-              <h3><a href="course-details.html">Enterprenureship</a></h3>
-              <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="course-footer">
-                <div class="course-rank d-flex align-items-center justify-content-between">
-                  <div>
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                  </div>
-                  <div>
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="course-item">
-            <img src="{{ asset('assets/website/img/course/java.png') }}" class="img-fluid" alt="...">
-            <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="" class="enroll">Enroll</a>
-                <p class="price">$169</p>
-              </div>
-              <h3><a href="course-details.html">Java</a></h3>
-              <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="course-footer">
-                <div class="course-rank d-flex align-items-center justify-content-between">
-                  <div>
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                  </div>
-                  <div>
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="course-item">
-            <img src="{{ asset('assets/website/img/course/design-dev.png') }}" class="img-fluid" alt="...">
-            <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="" class="enroll">Enroll</a>
-                <p class="price">$169</p>
-              </div>
-              <h3><a href="course-details.html">Web Design</a></h3>
-              <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="course-footer">
-                <div class="course-rank d-flex align-items-center justify-content-between">
-                  <div>
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                  </div>
-                  <div>
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="course-item">
-            <img src="{{ asset('assets/website/img/course-1.jpg') }}" class="img-fluid" alt="...">
-            <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <a href="" class="enroll">Enroll</a>
-                <p class="price">$169</p>
-              </div>
-              <h3><a href="course-details.html">Website Design</a></h3>
-              <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="course-footer">
-                <div class="course-rank d-flex align-items-center justify-content-between">
-                  <div>
-                    <i class="bx bx-user"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                  </div>
-                  <div>
-                    <i class="bx bx-heart"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Popular Courses Section -->
 
-  <!-- ======= Our Mashtors Section ======= -->
-  <section id="our-mashtor" class="our-mashtor OwlCarouselWrap">
-    <div class="container">
-      <div class="section-title">
-        <!-- <h2>Mashtors</h2>
-        <p>Our Mashtors</p> -->
-        <h1>Our Mashtors</h1>
-      </div>
-      <div class="owl-carousel">
-        <div>
-          <div class="mashtor-item">
-            <img src="{{ asset('assets/website/img/mashtors/partha.jpg') }}" alt="">
-            <div class="mashtor-content">
-              <h4><strong>Partha Chandra Sarker</strong></h4>
-              <h5><strong>Graphic Designer</strong></h5>
-              <p class="py-1">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="trainer">
-                <div class="trainer-rank d-flex align-items-center justify-content-between">
-                  <strong>
-                    $20/h
-                  </strong>
-                  <div class="ratting">
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="mashtor-item">
-            <img src="{{ asset('assets/website/img/mashtors/naveed.jpg') }}" class="img-fluid" alt="...">
-            <div class="mashtor-content">
-              <h4><strong>Naveed Khan Chowdhury</strong></h4>
-              <h5><strong>Graphic Designer</strong></h5>
-              <p class="py-1">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="trainer">
-                <div class="trainer-rank d-flex align-items-center justify-content-between">
-                  <strong>
-                    $20/h
-                  </strong>
-                  <div class="ratting">
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="mashtor-item">
-            <img src="{{ asset('assets/website/img/mashtors/moumita.jpg') }}" class="img-fluid" alt="...">
-            <div class="mashtor-content">
-              <h4><strong>Moumita Mahfuz</strong></h4>
-              <h5><strong>Graphic Designer</strong></h5>
-              <p class="py-1">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="trainer">
-                <div class="trainer-rank d-flex align-items-center justify-content-between">
-                  <strong>
-                    $15/h
-                  </strong>
-                  <div class="ratting">
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="mashtor-item">
-            <img src="{{ asset('assets/website/img/mashtors/raihan.jpg') }}" class="img-fluid" alt="...">
-            <div class="mashtor-content">
-              <h4><strong>Azhar Raihan</strong></h4>
-              <h5><strong>Graphic Designer</strong></h5>
-              <p class="py-1">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="trainer">
-                <div class="trainer-rank d-flex align-items-center justify-content-between">
-                  <strong>
-                    $15/h
-                  </strong>
-                  <div class="ratting">
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="mashtor-item">
-            <img src="{{ asset('assets/website/img/mashtors/peter.jpg') }}" class="img-fluid" alt="...">
-            <div class="mashtor-content">
-              <h4><strong>Peter</strong></h4>
-              <h5><strong>Teach Starup Advisor</strong></h5>
-              <p class="py-1">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-              <div class="trainer">
-                <div class="trainer-rank d-flex align-items-center justify-content-between">
-                  <strong>
-                    $15/h
-                  </strong>
-                  <div class="ratting">
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill active"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Our Mashtors Section -->
 
-  <!-- Language Section -->
-  <section class="language">
+  <!-- Hot Job -->
+  <section class="section-bg">
     <div class="container">
-      <div class="ln-bd">
-        <div class="row justify-content-lg-end">
-          <div class="col-lg-6" style="background-color: rgb(255, 255, 255); opacity: 0.7;">
-            <div class="ln-chield" >
-              <h1>For Bangladeshi Learners</h1>
-              <ul>
-                <li>
-                  <span><i class="bi bi-patch-check-fill"></i></span>
-                  Talk in Bangladeshi with people who live in Bangladesh
-                </li>
-                <li>
-                  <span><i class="bi bi-patch-check-fill"></i></span>
-                  Learn seniors' actual experience and knowledge outside textbooks
-                </li>
-                <li>
-                  <span><i class="bi bi-patch-check-fill"></i></span>
-                  Ask questions for your dream to success
-                </li>
-                <li>
-                  <span><i class="bi bi-patch-check-fill"></i></span>
-                  Also available for universities and language schools
-                </li>
-              </ul>
-              <h5>For Bangla Learners</h5>
+      <div class="hto-job-title">
+        <h6>
+          <i class="fab fa-free-code-camp"></i> 
+          Hot Josb</h6>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="ln-japan">
-        <div class="row justify-content-lg-start">
-          <div class="col-lg-6" style="background-color: rgb(255, 255, 255); opacity: 0.7;">
-            <div class="ln-chield">
-              <h1>For Japanese Learners</h1>
-              <ul>
-                <li>
-                  <i class="bi bi-patch-check-fill"></i>
-                  Connect to society by talking in bangladeshi with foreign young people
-                </li>
-                <li>
-                  <i class="bi bi-patch-check-fill"></i>
-                  Contribute on young people education with your experience and knowledge through language learning
-                </li>
-                <li>
-                  <i class="bi bi-patch-check-fill"></i>
-                  Here you can challenge new things
-                </li>
-                <li>
-                  <i class="bi bi-patch-check-fill"></i>
-                  Also available in elderly houses and nursing homesIt would be a big opportunity for foreign labors
-                </li>
-              </ul>
-              <h5>For Bangladeshi Participants</h5>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <div class="job-card">
+              <div>
+                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+              </div>
+              <div>
+                <p>Bd Airlinse</p>
+                <p>Bd Airlinse</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Language Section End -->
+  <!-- Hot Job End -->
 
 @endsection
 

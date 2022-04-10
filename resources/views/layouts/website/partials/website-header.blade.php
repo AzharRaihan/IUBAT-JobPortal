@@ -19,9 +19,9 @@
           <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             @if(Auth::user())
               @if(Auth::user()->role_id == 2)
-                <img src="{{ asset('company/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="35" height="35">
+                <img src="{{ Auth::user()->profile_photo != null ? asset('company/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
               @else
-                <img src="{{ asset('users/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="35" height="35">
+                <img src="{{ Auth::user()->profile_photo != null ? asset('users/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
               @endif
             @else
             <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
@@ -64,12 +64,12 @@
               <div class="auth-img">
                 @if(Auth::user())
                   @if(Auth::user()->role_id == 2)
-                    <img src="{{ asset('company/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="50px" height="50px">
+                    <img src="{{ Auth::user()->profile_photo != null ? asset('company/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="company-avater" width="50px" height="50px">
                   @else
-                    <img src="{{ asset('users/profile-pic/'. Auth::user()->profile_photo) }}" alt="" width="50px" height="50px">
+                    <img src="{{ Auth::user()->profile_photo != null ? asset('users/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="user-avater" width="50px" height="50px">
                   @endif
                 @else 
-                  <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="50px" height="50px">
+                  <img src="{{ asset('assets/application-default/img/user.png') }}" alt="default-avater" width="50px" height="50px">
                 @endif
               </div>
             </div>
@@ -102,23 +102,23 @@
       <a href="{{ route('index') }}" class="logo me-auto"><img src="{{ asset('assets/website/img/logo/m-logo.png') }}" alt="" class="img-fluid"></a>
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index.html">Home</a></li>
+          <li><a class="active" href="{{ route('index') }}">Home</a></li>
+          <li><a class="active" href="#">Govt Jobs</a></li>
+          <li><a class="active" href="#">Public Jobs</a></li>
           <li class="dropdown">
-            <a href="#"><span>Projects</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="#"><span>Career Guides</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">School</a></li>
-              <li><a href="#">Language</a></li>
-              <li><a href="#">Professional</a></li>
-              <li><a href="#">Corporate</a></li>
-              <li><a href="#">Vocational Training</a></li>
+              <li><a href="#">Inter View Tips</a></li>
+              <li><a href="#">Resume Writting</a></li>
+              <li><a href="#">Cover Letter</a></li>
             </ul>
           </li>
-          <li><a href="#">Projects</a></li>
+          {{-- <li><a href="#">Projects</a></li>
           <li><a href="#">Find Mashtor</a></li>
-          <li><a href="#">Alumni</a></li>
+          <li><a href="#">Alumni</a></li> --}}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="courses.html" class="get-started-btn">Become A Mashtor</a>
+      <a href="" class="contact-us-btn"><i class="fal fa-phone-volume"></i> Contact Us</a>
     </div>
   </header><!-- End Header -->

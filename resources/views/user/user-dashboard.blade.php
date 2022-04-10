@@ -2,6 +2,8 @@
 @section('page-title', '')
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+<!-- Summernote Css CDN -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <style>
   .dashboard .card{
     width: 100%;
@@ -55,29 +57,8 @@
                 </button>
               </div>
             </form>
-            <div class="nav flex-column nav-pills mt-4 px-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <!-- Dashboard List -->
-              <li class="element-items mb-2  active" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true"><i class="bi bi-speedometer2"></i> Dashboard</li>
-
-              <!-- Edit Profile List -->
-              <li class="element-items mb-2" id="v-pills-edit-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-edit-profile" role="tab" aria-controls="v-pills-edit-profile" aria-selected="false"><i class="bi bi-pencil-square"></i> Edit Profile</li>
-
-              <!-- Change Password List -->
-              <li class="element-items mb-2" id="v-pills-change-password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-change-password" role="tab" aria-controls="v-pills-change-password" aria-selected="false"><i class="bi bi-key"></i> Change Password</li>
-
-              <!-- Setting List -->
-              <li class="element-items mb-2" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="bi bi-sliders"></i> Setting</li>
-
-              <!-- Logout List -->
-              <li class="element-items mb-2" id="v-pills-signout-tab" data-bs-toggle="pill" data-bs-target="#v-pills-signout" role="tab" aria-controls="v-pills-signout" aria-selected="false">
-                <a href="javascript:void(0);" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right"></i> Sign Out
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-                </form>
-              </a>
-              </li>
-            </div>
+            <!-- User Sidebar -->
+            @include('layouts.user.user-sidebar')
           </div>
         </div>
         <div class="col-md-8">
@@ -87,57 +68,17 @@
               <div class="row">
                 <div class="col-md-4">
                   <div class="card">
-                    <h6>Job Offer</h6>
+                    <h6>Applied Jobs</h6>
                     <i class="fas fa-suitcase"></i>
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card">
-                    <h6>Job Offer</h6>
-                    <i class="fas fa-suitcase"></i>
-                  </div>
+                  <a href="javascript:void(0)">
+                    <div class="card">
+                      <h6>View Resume</h6>
+                      <i class="fal fa-briefcase"></i>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -180,6 +121,10 @@
                   </div>
                 </div>
                 <div class="mb-3">
+                  <label for="address" class="form-label">Address</label>
+                  <input type="text" class="form-control" name="address" id="" value="{{ Auth::user()->address }}">
+                </div>
+                <div class="mb-3">
                   <label for="bio" class="form-label">Bio <span class="text-muted">Max 200 chr</span></label>
                   <textarea type="text" class="form-control" name="bio" id="bio">{{ Auth::user()->bio }}</textarea>
                 </div>
@@ -212,41 +157,17 @@
             </div>
 
             <!-- Setting Tab -->
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <div class="tab-pane fade" id="v-pills-resume" role="tabpanel" aria-labelledby="v-pills-resume-tab">
               <form action="">
-                <h5 class="pb-2"><strong>Setting</strong></h5>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
+                <h5 class="pb-2"><strong>Resume/CV</strong></h5>
+                  <div class="mb-3">
                     <label for="" class="form-label">Name</label>
                     <input type="text" class="form-control" name="" id="" value="">
                   </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="" id="" value="">
+                  <div class="mb-3">
+                    <label for="" class="form-label">Create Your Resume</label>
+                    <textarea class="textarea" id="summernote" name="body"></textarea>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="" id="" value="">
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="" id="" value="">
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Name</label>
-                  <input type="text" class="form-control" name="" id="" value="">
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Name</label>
-                  <input type="text" class="form-control" name="" id="" value="">
-                </div>
-                <div class="mb-3">
-                  <label for="" class="form-label">Name</label>
-                  <input type="text" class="form-control" name="" id="" value="">
-                </div>
               </form>
             </div>
           </div>
@@ -256,6 +177,8 @@
   </section>
 @endsection
 @push('page-script')
+<!-- Summernote -->
+<script src="{{ asset('assets/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script>
   function readURL(input) {
     if (input.files && input.files[0]) {
@@ -270,6 +193,13 @@
   }
   $("#imageUpload").change(function () {
       readURL(this);
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+      $('#summernote').summernote({
+          height: 450,
+      });
   });
 </script>
 @endpush
