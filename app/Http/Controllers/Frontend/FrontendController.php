@@ -17,4 +17,9 @@ class FrontendController extends Controller
     {
         return view('website.search-by-company');
     }
+    // Contact 
+    public function contact()
+    {
+        return view('website.contact-page');
+    }
 }

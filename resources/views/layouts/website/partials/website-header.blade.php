@@ -119,6 +119,6 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="" class="contact-us-btn"><i class="fal fa-phone-volume"></i> Contact Us</a>
+      <a href="{{ route('contact') }}" class="contact-us-btn"><i class="fal fa-phone-volume"></i> Contact Us</a>
     </div>
   </header><!-- End Header -->
