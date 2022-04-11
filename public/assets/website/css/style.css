@@ -567,13 +567,13 @@ section {
 /*--------------------------------------------------------------
 # Counts
 --------------------------------------------------------------*/
-.counts {
+/* .counts {
   padding: 30px 0;
-}
+} */
 .counts .counters span {
   font-size: 30px;
   display: block;
-  color: #C2000C;
+  color: #ffffff;
   font-weight: 700;
 }
 .counts .counters p {
@@ -582,7 +582,7 @@ section {
   font-family: AvenirNextLTPro-Medium;
   font-size: 15px;
   font-weight: 600;
-  color: #37423b;
+  color: #ffffff;
 }
 /*--------------------------------------------------------------
 # Footer
