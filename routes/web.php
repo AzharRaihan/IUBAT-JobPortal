@@ -38,7 +38,7 @@ Auth::routes();
 // Frontend
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('search-by-company', [FrontendController::class, 'searchByCompany'])->name('search.by.company');
-
+Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 
 
 
