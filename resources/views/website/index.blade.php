@@ -107,8 +107,6 @@
     </div>
   </div>
 
-
-
   <!-- ======= Matrials Section ======= -->
   <section class="matrials section-bg">
     <div class="container">
@@ -170,37 +168,35 @@
   </section>
   <!-- End Matrials -->
 
-
-
   <!-- ======= Counts Section ======= -->
-  <section id="counts" class="counts">
-    <div class="container">
-      <div class="row counters">
-        <div class="col-lg-3 col-6 text-center">
-          <span><i class="fal fa-suitcase"></i></span>
-          <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Total Jobs</p>
-        </div>
-        <div class="col-lg-3 col-6 text-center">
-          <span><i class="fas fa-user-tie"></i></span>
-          <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Vacancy</p>
-        </div>
-        <div class="col-lg-3 col-6 text-center">
-          <span><i class="bi bi-building"></i></span>
-          <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
-          <p>Company</p>
-        </div>
-        <div class="col-lg-3 col-6 text-center">
-          <span><i class="fa fa-spinner"></i></span>
-          <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-          <p>New Jobs</p>
+  <div id="counts" class="counts" style="background-image: url({{ asset('assets/website/img/searchbar.jpg') }}); background-attachment: fixed;">
+    <div class="overlay">
+      <div class="container">
+        <div class="row counters">
+          <div class="col-lg-3 col-6 text-center">
+            <span><i class="fal fa-suitcase"></i></span>
+            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Total Jobs</p>
+          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span><i class="fas fa-user-tie"></i></span>
+            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Vacancy</p>
+          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span><i class="bi bi-building"></i></span>
+            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Company</p>
+          </div>
+          <div class="col-lg-3 col-6 text-center">
+            <span><i class="fa fa-spinner"></i></span>
+            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+            <p>New Jobs</p>
+          </div>
         </div>
       </div>
     </div>
-  </section><!-- End Counts Section -->
-
-
+  </div><!-- End Counts Section -->
 
   <!-- Hot Job -->
   <section class="section-bg">
