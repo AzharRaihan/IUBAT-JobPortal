@@ -81,12 +81,6 @@
 body{
   background: rgb(231, 231, 231);
 }
-a{
-  color: #4c4c4c;
-}
-a:hover{
-  color: #C2000C;
-}
 </style>
 @endpush
 @section('page-content')
@@ -238,6 +232,193 @@ a:hover{
               <div class="Numojob O-title">No. of Jobs</div>
             </div>
             
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                1
+              </div>
+              
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
+                  A Leading Group of Company
+                </a>
+                <span>
+                  (1)
+                </span>
+              </div>
+              <div class="Numojob">
+                  1
+              </div>
+            </div>
             <div class="org-t O-res O-res-O">
               <div class="Snum">
                 1

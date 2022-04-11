@@ -22,4 +22,8 @@ class FrontendController extends Controller
     {
         return view('website.contact-page');
     }
+    public function category()
+    {
+        return view('website.category-details');
+    }
 }

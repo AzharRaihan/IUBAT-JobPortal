@@ -2,12 +2,6 @@
 @section('page-title', '')
 @push('page-style')
 <style>
-  a{
-  color: #4c4c4c;
-  }
-  a:hover{
-    color: #C2000C;
-  }
   .contact-section ul  li{
     list-style-type: none;
     padding: 10px 0px;
