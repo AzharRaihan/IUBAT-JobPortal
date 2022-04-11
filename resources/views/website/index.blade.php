@@ -1,7 +1,6 @@
 @extends('layouts.website.website-layouts')
 @section('page-title', '')
 @push('page-style')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
 <style>
   #hero{
     width: 100%;
@@ -39,13 +38,6 @@
   }
   .public i{
     margin-right: 10px;
-  }
-  a{
-    color: rgb(73, 73, 73);
-  }
-  a:hover{
-    color: #C2000C;
-    transition: 0.6s;
   }
   .job-item-wrap{
     display: flex;
@@ -95,17 +87,17 @@
               </div>
               <div class="job-item text-center">
                 <i class="fal fa-suitcase m-0"></i>
-                <p>Live Job</p>
+                <p>Vacancies</p>
                 <span>390</span>
               </div>
               <div class="job-item text-center">
-                <i class="fal fa-suitcase m-0"></i>
-                <p>Live Job</p>
+                <i class="bi bi-building m-0"></i>
+                <p>Companies</p>
                 <span>390</span>
               </div>
               <div class="job-item text-center">
-                <i class="fal fa-suitcase m-0"></i>
-                <p>Live Job</p>
+                <i class="fa fa-spinner m-0"></i>
+                <p>New Jobs</p>
                 <span>390</span>
               </div>
             </div>
@@ -128,186 +120,14 @@
               <span>Brows Category</span>
             </h6>
             <div class="row">
+              @for ($i = 1; $i <= 30; $i++)
               <div class="col-md-4 py-1">
-                <a href="#">
+                <a href="{{ route('category') }}">
                   <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 1</span>
+                  <span>Category {{ $i }}</span>
                 </a>
               </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 2</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 3</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 4</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 5</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 6</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 7</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 8</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 9</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 10</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 11</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
-              <div class="col-md-4 py-1">
-                <a href="#">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category 12</span>
-                </a>
-              </div>
+              @endfor
             </div>
           </div>
         </div>
@@ -391,110 +211,21 @@
           Hot Josb</h6>
       </div>
       <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
+        @for ($i = 1; $i <= 32; $i++)
+          <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+            <div class="card">
+              <div class="job-card">
+                <div>
+                  <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+                </div>
+                <div>
+                  <p>Airlines</p>
+                  <p>Airlines</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-          <div class="card">
-            <div class="job-card">
-              <div>
-                <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
-              </div>
-              <div>
-                <p>Bd Airlinse</p>
-                <p>Bd Airlinse</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endfor
       </div>
     </div>
   </section>
@@ -504,7 +235,6 @@
 
 @push('page-script')
   <script src="{{ asset('assets/website/js/typed.js') }}"></script>
-  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> --}}
   <script>
     var typed4 = new Typed('#typed4', {
       strings: [

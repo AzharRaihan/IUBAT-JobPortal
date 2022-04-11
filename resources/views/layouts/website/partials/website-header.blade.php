@@ -102,9 +102,9 @@
       <a href="{{ route('index') }}" class="logo me-auto"><img src="{{ asset('assets/website/img/logo/m-logo.png') }}" alt="" class="img-fluid"></a>
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="{{ route('index') }}">Home</a></li>
-          <li><a class="active" href="#">Govt Jobs</a></li>
-          <li><a class="active" href="#">Public Jobs</a></li>
+          <li><a class="active" href="{{ route('index') }}"><i class="bi bi-house-fill"></i></i> Home</a></li>
+          <li><a class="" href="#"><i class="fal fa-suitcase"></i> My Jobs</a></li>
+          <li><a class="" href="{{ route('search.by.company') }}"><i class="bi bi-building"></i> Companies</a></li>
           <li class="dropdown">
             <a href="#"><span>Career Guides</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
