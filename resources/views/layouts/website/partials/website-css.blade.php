@@ -9,6 +9,8 @@
   <link href="{{ asset('assets/website/vendor/owl-carousel/css/owl.carousel.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/website/vendor/owl-carousel/css/owl.theme.default.min.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/website/css/custom-owl.css') }}" rel="stylesheet">
+  <!-- IziToast Css -->
+  <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/website/css/custom.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/website/css/style.css') }}" rel="stylesheet">

@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/adminlte.min.css') }}">
 <!-- overlayScrollbars -->
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+<!-- IziToast Css -->
+<link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
 <!-- Daterange picker -->
 <link rel="stylesheet" href="{{ asset('assets/admin/plugins/daterangepicker/daterangepicker.css') }}">
 <!-- summernote -->

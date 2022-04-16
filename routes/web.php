@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Frontend\FrontendController;
 
 /*
@@ -37,9 +38,11 @@ Auth::routes();
 
 // Frontend
 Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('search-by-company', [FrontendController::class, 'searchByCompany'])->name('search.by.company');
-Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
-Route::get('category', [FrontendController::class, 'category'])->name('category');
+Route::get('/search-by-company', [FrontendController::class, 'searchByCompany'])->name('search.by.company');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+Route::post('/contact/send', [FrontendController::class, 'contactSend'])->name('contact.send');
+Route::get('/category', [FrontendController::class, 'category'])->name('category');
+Route::post('/subscribe', [FrontendController::class, 'subscriberStore'])->name('subscribe');
 
 
 

@@ -22,27 +22,46 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          <form action="" method="POST">
+          <form action="{{ route('contact.send') }}" method="POST">
             @csrf
-            @method('put')
             <h5 class="pb-3 border-bottom"><b>Contact Us</b></h5>
             <div class="row pt-2">
               <div class="col-md-6 mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" id="name" value="">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}">
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               </div>
               <div class="col-md-6 mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" id="" value="">
+                <input type="email" class="form-control @error('name') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}">
+                @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
               </div>
             </div>
             <div class="mb-3">
-              <label for="address" class="form-label">Subject</label>
-              <input type="text" class="form-control" name="address" id="" value="">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" class="form-control @error('subject') is-invalid @enderror" name="subject" id="subject" value="{{ old('subject') }}">
+              @error('subject')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
             </div>
             <div class="mb-3">
-              <label for="message" class="form-label">Message <span class="text-muted">Max 200 chr</span></label>
-              <textarea type="text" class="form-control" name="bio" id="bio"></textarea>
+              <label for="message" class="form-label">Message <span class="text-muted">Max 500 chr</span></label>
+              <textarea type="text" class="form-control @error('message') is-invalid @enderror" name="message" id="message">{{ old('message') }}</textarea>
+              @error('message')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
             </div>
             <button type="submit" class="btn site-btn"><i class="fal fa-paper-plane"></i> Send</button>
           </form>

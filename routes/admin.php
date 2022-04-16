@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\ProfileSettingController;
 
 //Admin Routes
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+
+    Route::get('starter-page', [AdminDashboardController::class, 'starterPage'])->name('starter.page');
+
     Route::get('profile', [ProfileSettingController::class, 'profile'])->name('profile');
     Route::put('profile-update', [ProfileSettingController::class, 'profileUpdate'])->name('profile.update');
     Route::get('change-password', [ProfileSettingController::class, 'changePassword'])->name('change.password');
@@ -20,6 +23,14 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('role',[AdminDashboardController::class, 'role'])->name('role');
     Route::get('data-table',[AdminDashboardController::class, 'dataTable'])->name('data.table');
     Route::get('setting', [AdminDashboardController::class, 'setting'])->name('setting');
+
+    Route::get('subscribers', [AdminDashboardController::class, 'subscribers'])->name('subscribers');
+    Route::delete('subscriber/destroy/{id}', [AdminDashboardController::class, 'subscriberDestroy'])->name('subscriber.destroy');
+    Route::get('contacts', [AdminDashboardController::class, 'contacts'])->name('contacts');
+    Route::get('contact/show/{id}', [AdminDashboardController::class, 'contactShow'])->name('contact.show');
+    Route::delete('contact/destroy/{id}', [AdminDashboardController::class, 'contactDestroy'])->name('contact.destroy');
+
+
 });
 
 // Setting Routes
