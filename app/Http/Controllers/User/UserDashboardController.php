@@ -36,13 +36,7 @@ class UserDashboardController extends Controller
         $user->update([
             'profile_photo'=>$filename
         ]);
-        
-
-
-
-        // dd('success');
-
-        // notify()->success('User Successfully Updated.', 'Updated');
+        notify()->success('User Successfully Updated.', 'Updated');
         return back();
     }
 
@@ -83,6 +77,7 @@ class UserDashboardController extends Controller
             'gender' => $request->gender,
             'bio' => $request->bio,
         ]);
+        notify()->success('User Successfully Updated.', 'Updated');
         return back();
     }
     // Setting
