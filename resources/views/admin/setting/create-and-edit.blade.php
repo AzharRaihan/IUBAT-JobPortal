@@ -1,4 +1,4 @@
-@extends('layouts.admin.admin-layouts')
+@extends('layouts.admin.admin-layout')
 @section('page-title','Admin-Dashboard | LaraStarter')
 @push('page-css')
 <!--Form Wizard-->

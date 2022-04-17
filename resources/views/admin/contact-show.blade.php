@@ -30,7 +30,7 @@
         <div class="card card-default color-palette-box">
           <div class="card-header">
             <h3 class="card-title">
-              <a href="{{ route('admin.contacts') }}" class="btn btn-info btn-sm">
+              <a href="{{ route('admin.contact.index') }}" class="btn btn-info btn-sm">
                 <i class="fas fa-arrow-alt-circle-left"></i>
                 <span>Back To List</span>
               </a>
