@@ -46,33 +46,5 @@ class AdminDashboardController extends Controller
     {
         return view('admin.setting.add-edit');
     }
-    public function subscribers()
-    {
-        $data['subscribers'] = Subscriber::latest()->get();
-        return view('admin.subscriber', $data);
-    }
-    public function subscriberDestroy($id)
-    {
-        $subscriber = Subscriber::findOrFail($id);
-        $subscriber->delete();
-        notify()->success('Delete', 'Subscriber Deleted', );
-        return back();
-    }
-    public function contacts()
-    {
-        $data['contacts'] = Contact::latest()->get();
-        return view('admin.contact', $data);
-    }
-    public function contactShow($id)
-    {
-        $data['contact'] = Contact::findOrFail($id);
-        return view('admin.contact-show', $data);
-    }
-    public function contactDestroy($id)
-    {
-        $contact = Contact::findOrFail($id);
-        $contact->delete();
-        notify()->success('Delete', 'Contact Deleted', );
-        return back();
-    }
+
 }

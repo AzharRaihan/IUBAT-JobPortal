@@ -145,11 +145,21 @@
                 <div class="row"> 
                   <div class="col-md-6 mb-3">
                     <label for="password" class="form-label">New Passowrd</label>
-                    <input type="password" class="form-control" name="password" id="password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="password_confirmation" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" id="password_confirmation">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                   </div>
                 </div>
                 <button type="submit" class="btn site-btn"><i class="fal fa-arrow-circle-up"></i> Update</button>

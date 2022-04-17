@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Company\CompanyDashboardController;
 use App\Http\Controllers\Auth\CompanyLoginController;
 use App\Http\Controllers\Auth\CompanyRegisterController;
 
@@ -18,5 +18,8 @@ Route::group(['as' => 'company.', 'prefix' => 'company'], function(){
 
 //After login company can access the  below Routes
 Route::group(['as' => 'company.', 'prefix' => 'company', 'middleware' => ['auth', 'company']], function () {
-    Route::get('dashboard', [CompanyController::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard', [CompanyDashboardController::class, 'dashboard'])->name('dashboard');
+    Route::put('update-avater', [CompanyDashboardController::class, 'updateAvater'])->name('update.avater');
+    Route::put('update-password', [CompanyDashboardController::class, 'updatePassword'])->name('update.password');
+    Route::put('edit-profile', [CompanyDashboardController::class, 'editProfile'])->name('edit-profile');
 });

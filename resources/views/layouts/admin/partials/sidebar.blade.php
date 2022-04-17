@@ -126,7 +126,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.contacts') }}" class="nav-link">
+            <a href="{{ route('admin.contact.index') }}" class="nav-link">
               <i class="nav-icon fas fa-address-book"></i>
               <p>
                 Contact Us
@@ -135,7 +135,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.subscribers') }}" class="nav-link">
+            <a href="{{ route('admin.subscriber.index') }}" class="nav-link">
               <i class="nav-icon far fa-bell"></i>
               <p>
                 Subscribers
