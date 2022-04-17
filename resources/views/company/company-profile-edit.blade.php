@@ -1,28 +1,7 @@
 @extends('layouts.website.website-layouts')
 @section('page-title', '')
 @push('page-style')
-<link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
-<style>
-  .dashboard .card{
-    width: 100%;
-    border-top: 3px solid #C1000C;
-    background: #F3F3F3;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    margin-bottom: 24px;
-  }
-  input[type="radio"]:focus {
-    outline: none;
-  }
-  .update-avater {
-    position: relative;
-    left: 36px;
-    top: -63px;
-  }
-</style>
+<link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
 @endpush
 @section('page-content')
   <section>
@@ -86,20 +65,4 @@
   </section>
 @endsection
 @push('page-script')
-<script>
-  function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-          $('#imagePreview').hide();
-          $('#imagePreview').fadeIn(650);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $("#imageUpload").change(function () {
-        readURL(this);
-    });
-</script>
 @endpush
