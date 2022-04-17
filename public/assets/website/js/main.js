@@ -1,10 +1,4 @@
 /**
-* Template Name: Mentor - v4.3.0
-* Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-  /**
    * Sticky Header Navbar
    */
     window.onscroll = function() {myFunction()};
@@ -42,7 +36,20 @@
     }
   });
 
-
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+        $('#imagePreview').hide();
+        $('#imagePreview').fadeIn(650);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#imageUpload").change(function () {
+      readURL(this);
+  });
 
 
 (function() {
@@ -185,45 +192,4 @@
     bindInputFocusEvents: true,
     loop: true
   });
-  
-
-
-
-    /** 
-     * Owl Carousel For Course And Mashtors
-    */
-    //  $('.owl-carousel').owlCarousel({
-    //   loop:true,
-    //   margin:10,
-    //   responsiveClass:true,
-    //   responsive:{
-    //     0:{
-    //         items:1,
-    //         nav:true
-    //     },
-    //     600:{
-    //         items:3,
-    //         nav:false
-    //     },
-    //     1000:{
-    //         items:4,
-    //         nav:true,
-    //         loop:false
-    //     }
-    //   }
-    // })
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-          $('#imagePreview').hide();
-          $('#imagePreview').fadeIn(650);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $("#imageUpload").change(function () {
-        readURL(this);
-    });
 })()

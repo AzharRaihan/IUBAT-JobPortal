@@ -19,15 +19,9 @@ Route::group(['as' => 'company.', 'prefix' => 'company'], function(){
 //After login company can access the  below Routes
 Route::group(['as' => 'company.', 'prefix' => 'company', 'middleware' => ['auth', 'company']], function () {
     Route::get('dashboard', [CompanyDashboardController::class, 'dashboard'])->name('dashboard');
-
-    Route::get('edit-profile', [CompanyDashboardController::class, 'editProfile'])->name('edit.profile');
-
-
-
     Route::put('update-avater', [CompanyDashboardController::class, 'updateAvater'])->name('update.avater');
-    Route::put('update-password', [CompanyDashboardController::class, 'updatePassword'])->name('update.password');
+    Route::get('edit-profile', [CompanyDashboardController::class, 'editProfile'])->name('edit.profile');
     Route::put('update-profile', [CompanyDashboardController::class, 'profileUpdate'])->name('update-profile');
-
-
-
+    Route::get('change-passwrod', [CompanyDashboardController::class, 'changePassword'])->name('change.password');
+    Route::put('update-password', [CompanyDashboardController::class, 'updatePassword'])->name('update.password');
 });

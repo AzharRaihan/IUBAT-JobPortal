@@ -15,10 +15,6 @@ class CompanyDashboardController extends Controller
     {
         return view('company.company-dashboard');
     }
-    public function editProfile()
-    {
-        return view('company.company-profile-edit');
-    }
     public function updateAvater(Request $request)
     {
         // Get Logedin company
@@ -40,10 +36,32 @@ class CompanyDashboardController extends Controller
         $company->update([
             'profile_photo'=>$filename
         ]);
-        notify()->success('Company Successfully Updated.', 'Updated');
+        notify()->success('Updated','Successfully Updated');
         return back();
     }
-
+    public function editProfile()
+    {
+        return view('company.company-profile-edit');
+    }
+    // Edit Profile
+    public function profileUpdate(Request $request)
+    {
+        $company = Auth::user();
+        $company->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'gender' => $request->gender,
+            'bio' => $request->bio,
+        ]);
+        notify()->success('Updated','Successfully Updated');
+        return back();
+    }
+    public function changePassword()
+    {
+        return view('company.company-change-password');
+    }
     // Change Password
     public function updatePassword(Request $request)
     {
@@ -59,35 +77,15 @@ class CompanyDashboardController extends Controller
                     'password' => Hash::make($request->password)
                 ]);
                 Auth::logout();
-                notify()->success('Password Successfully Changed.', 'Success');
+                notify()->success('Success','Password Successfully Changed');
                 return redirect()->route('login');
             } else {
-                notify()->warning('New password cannot be the same as old password.', 'Warning');
+                notify()->warning('Warning', 'New password cannot be the same as old password');
             }
         } else {
-            notify()->error('Current password not match.', 'Error');
+            notify()->error('Error','Current password not match');
         }
         return redirect()->back();
-    }
-    // Edit Profile
-    public function updateProfile(Request $request)
-    {
-        $company = Auth::user();
-        $company->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'gender' => $request->gender,
-            'bio' => $request->bio,
-        ]);
-        notify()->success('Company Successfully Updated.', 'Updated');
-        return back();
-    }
-    // Setting
-    public function setting(Request $request)
-    {
-        //
     }
 
 

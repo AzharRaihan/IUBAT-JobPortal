@@ -1,26 +1,16 @@
 @extends('layouts.website.website-layouts')
 @section('page-title', '')
 @push('page-style')
-<link rel="stylesheet" href="{{ asset('assets/user/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
 <style>
-  .dashboard .card{
-    width: 100%;
-    border-top: 3px solid #C1000C;
-    background: #F3F3F3;
-    border-radius: 10px;
+  .card-element{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px 0px;
-    margin-bottom: 24px;
-  }
-  input[type="radio"]:focus {
-    outline: none;
-  }
-  .update-avater {
-    position: relative;
-    left: 36px;
-    top: -63px;
+    padding: 30px 0px;
+    border-top: 3px solid #C1000C;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
   }
 </style>
 @endpush
@@ -33,20 +23,32 @@
           @include('layouts.company.company-sidebar')
         </div>
         <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-                <h6>Applied Jobs</h6>
-                <i class="fas fa-suitcase"></i>
+          <div class="card p-3">
+            <div class="row">
+              <div class="col-md-4">
+                <a href="javascript:void(0)">
+                  <div class="card card-element">
+                    <h6>Applied Jobs</h6>
+                    <i class="fas fa-suitcase"></i>
+                  </div>
+                </a>
               </div>
-            </div>
-            <div class="col-md-4">
-              <a href="javascript:void(0)">
-                <div class="card">
-                  <h6>View Resume</h6>
-                  <i class="fal fa-briefcase"></i>
-                </div>
-              </a>
+              <div class="col-md-4">
+                <a href="javascript:void(0)">
+                  <div class="card card-element">
+                    <h6>View Resume</h6>
+                    <i class="fal fa-briefcase"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="javascript:void(0)">
+                  <div class="card card-element">
+                    <h6>View Resume</h6>
+                    <i class="fal fa-briefcase"></i>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -56,20 +58,4 @@
 @endsection
 @push('page-script')
 
-<script>
-  function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-          $('#imagePreview').hide();
-          $('#imagePreview').fadeIn(650);
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    $("#imageUpload").change(function () {
-        readURL(this);
-    });
-</script>
 @endpush

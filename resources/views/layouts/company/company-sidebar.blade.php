@@ -24,10 +24,10 @@
         <span>Hello</span>
         <h5>{{ Auth::user()->name }}</h5>
       </div>
-      <button type="submit" class="btn update-avater">
-        <i class="bi bi-check2-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Clic To Update"></i>
-      </button>
     </div>
+    <button type="submit" class="btn update-avater">
+      <i class="bi bi-check2-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Clic To Update"></i>
+    </button>
   </form>
   <!-- User Sidebar -->
   <div class="nav flex-column mt-4 px-2">
@@ -43,7 +43,7 @@
     </a>
   
     <!-- Change Password List -->
-    <a href="">
+    <a href="{{ route('company.change.password') }}">
       <li class="element-items mb-2"><i class="bi bi-key"></i> Change Password</li>
     </a>
   
