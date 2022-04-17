@@ -21,7 +21,7 @@ class UserDashboardController extends Controller
         $user = Auth::user();
         if ($request->hasfile('profile_photo'))
         {
-            $profile_photo_path = public_path('users/profile-pic/' . $user->profile_photo);
+            $profile_photo_path = public_path('uploads/users/profile-pic/' . $user->profile_photo);
             // Find and Delete Old Image
             if (File::exists($profile_photo_path)) {
                 File::delete($profile_photo_path);
@@ -29,7 +29,7 @@ class UserDashboardController extends Controller
             $file = $request->file('profile_photo');
             $extension = $file->extension();
             $filename =  time() . '.' . $extension;
-            $file->move('users/profile-pic/', $filename);
+            $file->move('uploads/users/profile-pic/', $filename);
         } else {
             $filename = $user->profile_photo;
         }

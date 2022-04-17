@@ -19,9 +19,9 @@
           <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             @if(Auth::user())
               @if(Auth::user()->role_id == 2)
-                <img src="{{ Auth::user()->profile_photo != null ? asset('company/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
+                <img src="{{ Auth::user()->profile_photo != null ? asset('uploads/company/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
               @else
-                <img src="{{ Auth::user()->profile_photo != null ? asset('users/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
+                <img src="{{ Auth::user()->profile_photo != null ? asset('uploads/users/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
               @endif
             @else
             <img src="{{ asset('assets/application-default/img/user.png') }}" alt="" width="35" height="35">
@@ -64,9 +64,9 @@
               <div class="auth-img">
                 @if(Auth::user())
                   @if(Auth::user()->role_id == 2)
-                    <img src="{{ Auth::user()->profile_photo != null ? asset('company/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="company-avater" width="50px" height="50px">
+                    <img src="{{ Auth::user()->profile_photo != null ? asset('uploads/company/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="company-avater" width="50px" height="50px">
                   @else
-                    <img src="{{ Auth::user()->profile_photo != null ? asset('users/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="user-avater" width="50px" height="50px">
+                    <img src="{{ Auth::user()->profile_photo != null ? asset('uploads/users/profile-pic/'. Auth::user()->profile_photo) : asset('assets/application-default/img/user.png') }}" alt="user-avater" width="50px" height="50px">
                   @endif
                 @else 
                   <img src="{{ asset('assets/application-default/img/user.png') }}" alt="default-avater" width="50px" height="50px">
