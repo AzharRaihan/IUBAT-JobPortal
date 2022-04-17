@@ -15,13 +15,17 @@ class CompanyDashboardController extends Controller
     {
         return view('company.company-dashboard');
     }
+    public function editProfile()
+    {
+        return view('company.company-profile-edit');
+    }
     public function updateAvater(Request $request)
     {
         // Get Logedin company
         $company = Auth::user();
         if ($request->hasfile('profile_photo'))
         {
-            $profile_photo_path = public_path('company/profile-pic/' . $company->profile_photo);
+            $profile_photo_path = public_path('uploads/company/profile-pic/' . $company->profile_photo);
             // Find and Delete Old Image
             if (File::exists($profile_photo_path)) {
                 File::delete($profile_photo_path);
@@ -29,7 +33,7 @@ class CompanyDashboardController extends Controller
             $file = $request->file('profile_photo');
             $extension = $file->extension();
             $filename =  time() . '.' . $extension;
-            $file->move('company/profile-pic/', $filename);
+            $file->move('uploads/company/profile-pic/', $filename);
         } else {
             $filename = $company->profile_photo;
         }
@@ -66,7 +70,7 @@ class CompanyDashboardController extends Controller
         return redirect()->back();
     }
     // Edit Profile
-    public function editProfile(Request $request)
+    public function updateProfile(Request $request)
     {
         $company = Auth::user();
         $company->update([
