@@ -66,21 +66,22 @@
                 <div class="col-md-6 mb-3">
                   <label for="industry" class="form-label">Industry Type</label>
                   <select class="form-control" name="industry" id="industry">
-                    <option>Select--</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option>Select Industry Type</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                   </select>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="employee-size" class="form-label">Employee Size</label>
                   <select class="form-control" name="employee_size" id="employee-size">
-                    <option>Select--</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option selected disabled>Select Company Size</option>
+                    <option value="1-15">1-15 Employees</option>
+                    <option value="16-30">16-30 Employees</option>
+                    <option value="31-50">31-50 Employees</option>
+                    <option value="51-120">51-120 Employees</option>
+                    <option value="121-300">121-300 Employees</option>
+                    <option value="301-500">301-500 Employees</option>
                   </select>
                 </div>
               </div>
@@ -88,21 +89,23 @@
                 <div class="col-md-6 mb-3">
                   <label for="district" class="form-label">District</label>
                   <select class="form-control js-example-basic-single" name="district">
-                    <option>Select--</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option selected disabled>Select District</option>
+                    @foreach ($districts as $district)
+                      <option @isset($companyInfo)
+                      {{ $companyInfo->district	== $district->district_name ? 'selected' : '' }}
+                      @endisset value="{{ $district->district_name }}">{{ $district->district_name }}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="thana" class="form-label">Thana</label>
                   <select class="form-control js-example-basic-single" name="thana">
-                    <option>Select--</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option selected disabled>Select Thana</option>
+                    @foreach ($thanas as $thana)
+                      <option @isset($companyInfo)
+                      {{ $companyInfo->thana == $thana->thana_name ? 'selected' : '' }}
+                      @endisset value="{{ $thana->thana_name }}">{{ $thana->thana_name }}</option>
+                    @endforeach
                   </select>
                 </div>
               </div>
