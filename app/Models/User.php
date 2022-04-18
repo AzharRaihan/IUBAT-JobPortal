@@ -56,7 +56,12 @@ class User extends Authenticatable
 
     public function resume()
     {
-        $this->belongsTo(Resume::class);
+        return $this->belongsTo(Resume::class);
+    }
+
+    public function company()
+    {
+        return $this->hasOne(Company::class);
     }
 
 }

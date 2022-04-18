@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Thana extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function jobPost()
+    public function district()
     {
-        $this->hasMany(JobPost::class);
-    }
-
-    public function user()
-    {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(District::class);
     }
 }

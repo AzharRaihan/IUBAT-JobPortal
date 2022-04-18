@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ThanaController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -27,6 +29,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::resource('contact', ContactController::class)->only('index', 'show', 'destroy');
     // Subscriber
     Route::resource('subscriber', SubscriberController::class)->only('index', 'destroy');
+    Route::resource('district', DistrictController::class);
+    Route::resource('thana', ThanaController::class);
 });
 
 // Setting Routes
