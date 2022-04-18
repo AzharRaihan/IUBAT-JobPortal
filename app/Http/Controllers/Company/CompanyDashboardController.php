@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Company;
 
 use App\Models\User;
+use App\Models\Thana;
 use App\Models\Company;
+use App\Models\District;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -43,8 +45,10 @@ class CompanyDashboardController extends Controller
     }
     public function editProfile()
     {
-        $companyInfo = Company::where('user_id', Auth::user()->id)->first();
-        return view('company.company-profile-edit', compact('companyInfo'));
+        $data['companyInfo'] = Company::where('user_id', Auth::user()->id)->first();
+        $data['districts'] = District::orderBy('district_name')->get();
+        $data['thanas'] = Thana::orderBy('thana_name')->get();
+        return view('company.company-profile-edit', $data);
     }
     // Edit Profile
     public function profileUpdate(Request $request)

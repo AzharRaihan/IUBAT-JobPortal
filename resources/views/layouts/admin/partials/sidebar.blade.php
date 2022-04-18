@@ -97,7 +97,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-pause-circle"></i>
+              <i class="nav-icon fas fa-list"></i>
               <p>
                 District/Thana
                 <i class="fas fa-angle-left right"></i>
