@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Models\User;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -41,20 +43,46 @@ class CompanyDashboardController extends Controller
     }
     public function editProfile()
     {
-        return view('company.company-profile-edit');
+        $companyInfo = Company::where('user_id', Auth::user()->id)->first();
+        return view('company.company-profile-edit', compact('companyInfo'));
     }
     // Edit Profile
     public function profileUpdate(Request $request)
     {
-        $company = Auth::user();
-        $company->update([
+        $companyAuth = Auth::user();
+        $companyInfo = Company::where('user_id', $companyAuth->id)->first();
+        $companyAuth->update([
             'name' => $request->name,
             'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'gender' => $request->gender,
-            'bio' => $request->bio,
         ]);
+        if($companyInfo == null){
+            Company::updateOrCreate([
+                'user_id' => $companyAuth->id,
+                'company_name' => $request->company_name,
+                'entrepreneur' => $request->entrepreneur,
+                'company_address' => $request->company_address,
+                'employee_size' => $request->employee_size,
+                'thana' => $request->thana,
+                'district' => $request->district,
+                'trade_license' => $request->trade_license,
+                'industry' => $request->industry,
+                'website_url' => $request->website_url,
+            ]);
+        }else{
+            $companyInfo->update([
+                'user_id' => Auth::user()->id,
+                'company_name' => $request->company_name,
+                'entrepreneur' => $request->entrepreneur,
+                'company_address' => $request->company_address,
+                'employee_size' => $request->employee_size,
+                'thana' => $request->thana,
+                'district' => $request->district,
+                'trade_license' => $request->trade_license,
+                'industry' => $request->industry,
+                'website_url' => $request->website_url,
+            ]);
+        }
+
         notify()->success('Updated','Successfully Updated');
         return back();
     }
