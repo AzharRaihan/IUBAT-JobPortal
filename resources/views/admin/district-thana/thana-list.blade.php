@@ -13,12 +13,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h5 class="mb-0">Subscribers</h5>
+            <h5 class="mb-0">Thana</h5>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">subscribers</li>
+              <li class="breadcrumb-item active">Thana</li>
             </ol>
           </div>
         </div>
@@ -32,27 +32,36 @@
           <div class="card">
             <!-- /.card-header -->
             <div class="card-body">
+              <a href="{{ route('admin.thana.create') }}" class="btn btn-info btn-sm mb-3">
+                <i class="fas fa-plus-circle"></i> Create Thana
+              </a>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>#SL</th>
-                  <th>Email</th>
+                  <th>District Name</th>
+                  <th>Thana Name</th>
                   <th>Creation Time</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($subscribers as $key=>$subscriber)
+                @foreach ($thanas as $key=>$thana)
                 <tr>
                   <td>{{ $key + 1 }}</td>
-                  <td>{{ $subscriber->email }}</td>
-                  <td>{{ $subscriber->created_at->diffForHumans() }}</td>
+                  <td>{{ $thana->district->district_name }}</td>
+                  <td>{{ $thana->thana_name }}</td>
+                  <td>{{ $thana->created_at->diffForHumans() }}</td>
                   <td>
-                    <button type="button" onclick="deleteData({{ $subscriber->id }})"  class="btn btn-danger rounded-right btn-sm">
+                    <a href="{{ route('admin.thana.edit',$thana->id) }}" class="btn btn-info btn-sm">
+                      <span>Edit</span>
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <button type="button" onclick="deleteData({{ $thana->id }})"  class="btn btn-danger rounded-right btn-sm">
                       <span>Delete</span>
                       <i class="fas fa-trash-alt"></i>
                     </button>
-                    <form id="delete-form-{{ $subscriber->id }}" action="{{ route('admin.subscriber.destroy', $subscriber->id) }}" method="POST" style="display: none;">
+                    <form id="delete-form-{{ $thana->id }}" action="{{ route('admin.thana.destroy', $thana->id) }}" method="POST" style="display: none;">
                       @csrf
                       @method('DELETE')
                     </form>
@@ -72,6 +81,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
 @endsection
 
 @push('page-js')

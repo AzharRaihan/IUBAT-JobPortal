@@ -13,12 +13,12 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h5 class="mb-0">District</h5>
+            <h5 class="mb-0">Thana</h5>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">District</li>
+              <li class="breadcrumb-item active">Thana</li>
             </ol>
           </div>
         </div>
@@ -32,20 +32,30 @@
           <div class="card">
             <!-- /.card-header -->
             <div class="card-body">
-              <a href="{{ route('admin.district.index') }}" class="btn btn-info btn-sm"><i class="fas fa-arrow-alt-circle-left"></i> Back To District List</a>
-              <form action="{{ isset($district) ? route('admin.district.update', $district->id) : route('admin.district.store') }}" method="POST">
+              <a href="{{ route('admin.thana.index') }}" class="btn btn-info btn-sm"><i class="fas fa-arrow-alt-circle-left"></i> Back To Thana List</a>
+              <form action="{{ isset($thana) ? route('admin.thana.update', $thana->id) : route('admin.thana.store') }}" method="POST">
                 @csrf
-                @isset($district)
+                @isset($thana)
                   @method('put')
                 @endisset
                 <div class="modal-header">
-                  <h4 class="modal-title">Create District</h4>
+                  <h4 class="modal-title">Create Thana</h4>
                 </div>
                 <div class="modal-body">
                   <div class="mb-3">
                     <label for="district" class="form-label">District Name</label>
-                    <input type="text" name="district_name" id="district" class="form-control @error('district_name') is-invalid @enderror" placeholder="District Name" value="{{ isset($district) ? $district->district_name : '' }}" required>
-                    @error('district_name')
+                    <select name="district_id" id="district" class="form-control">
+                      <option selected disabled>Select District</option>
+                      @foreach ($districts as $district)
+                        <option @isset($thana)
+                        {{ $district->id == $thana->district_id ? 'selected' : '' }} @endisset value="{{ $district->id }}">{{ $district->district_name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="thana" class="form-label">Thana Name</label>
+                    <input type="text" name="thana_name" id="thana" class="form-control @error('thana_name') is-invalid @enderror" placeholder="Thana Name" value="{{ isset($thana) ? $thana->thana_name : '' }}" required>
+                    @error('thana_name')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
@@ -53,10 +63,10 @@
                   </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                  @isset($district)
-                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-arrow-circle-up"></i> Update District</button>
+                  @isset($thana)
+                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-arrow-circle-up"></i> Update Thana</button>
                   @else
-                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-paper-plane"></i> Save District</button>
+                    <button type="submit" class="btn btn-info btn-sm"><i class="fas fa-paper-plane"></i> Save Thana</button>
                   @endisset
 
                 </div>

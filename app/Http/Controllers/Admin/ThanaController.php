@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Thana;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\District;
 
 class ThanaController extends Controller
 {
@@ -14,7 +16,8 @@ class ThanaController extends Controller
      */
     public function index()
     {
-        //
+        $data['thanas'] = Thana::with('district')->latest()->get();
+        return view('admin.district-thana.thana-list', $data);
     }
 
     /**
@@ -24,7 +27,8 @@ class ThanaController extends Controller
      */
     public function create()
     {
-        //
+        $data['districts'] = District::orderBy('district_name')->get();
+        return view('admin.district-thana.thana-create-edit', $data);
     }
 
     /**
@@ -35,7 +39,16 @@ class ThanaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'thana_name' => 'required|unique:thanas,thana_name',
+            'district_id' => 'required'
+        ]);
+        Thana::create([
+            'thana_name' => $request->thana_name,
+            'district_id' => $request->district_id,
+        ]);
+        notify()->success('Successfully Saved', 'Success');
+        return back();
     }
 
     /**
@@ -57,7 +70,9 @@ class ThanaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['districts'] = District::orderBy('district_name')->get();
+        $data['thana'] = Thana::findOrFail($id);
+        return view('admin.district-thana.thana-create-edit', $data);
     }
 
     /**
@@ -69,7 +84,13 @@ class ThanaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $thana = Thana::findOrFail($id);
+        $thana->update([
+            'thana_name' => $request->thana_name,
+            'district_id' => $request->district_id,
+        ]);
+        notify()->success('Successfully Updated', 'Update');
+        return back();
     }
 
     /**
@@ -80,6 +101,9 @@ class ThanaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $thana = Thana::findOrFail($id);
+        $thana->delete();
+        notify()->success('Successfully Deleted', 'Delete');
+        return back();
     }
 }

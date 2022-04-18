@@ -79,7 +79,12 @@ class DistrictController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $district = District::findOrFail($id);
+        $district->update([
+            'district_name' => $request->district_name,
+        ]);
+        notify()->success('Successfully Updated', 'Update');
+        return back();
     }
 
     /**
