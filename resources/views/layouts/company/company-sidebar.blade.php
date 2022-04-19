@@ -47,8 +47,8 @@
       <li class="element-items mb-2"><i class="bi bi-key"></i> Change Password</li>
     </a>
   
-    <!-- Setting List -->
-    <a href="">
+    <!-- Create Job Pos -->
+    <a href="{{ route('company.create.job.post') }}">
       <li class="element-items mb-2"><i class="fal fa-briefcase"></i>Create Job Post</li>
     </a>
   
