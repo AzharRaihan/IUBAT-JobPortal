@@ -19,6 +19,7 @@ class CreateCompaniesTable extends Migration
             ->constrained()
             ->cascadeOnUpdate()
             ->cascadeOnDelete();
+            $table->unsignedBigInteger('industry_id');
             $table->string('company_name', 150)->nullable();
             $table->string('entrepreneur', 10)->nullable();
             $table->text('company_address', 300)->nullable();
@@ -26,7 +27,6 @@ class CreateCompaniesTable extends Migration
             $table->string('district', 55)->nullable();
             $table->string('thana', 55)->nullable();
             $table->string('trade_license', 150)->nullable();
-            $table->string('industry', 150)->nullable();
             $table->string('website_url', 255)->nullable();
             $table->timestamps();
         });

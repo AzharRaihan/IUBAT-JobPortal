@@ -13,11 +13,16 @@ class Company extends Model
 
     public function jobPost()
     {
-        $this->hasMany(JobPost::class);
+        return $this->hasMany(JobPost::class);
     }
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function industry()
+    {
+        return $this->belongsTo(Industry::class);
     }
 }
