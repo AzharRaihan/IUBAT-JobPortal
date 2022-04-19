@@ -17,7 +17,7 @@ class ThanaController extends Controller
     public function index()
     {
         $data['thanas'] = Thana::with('district')->latest()->get();
-        return view('admin.district-thana.thana-list', $data);
+        return view('admin.site-basic-info.thana-list', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class ThanaController extends Controller
     public function create()
     {
         $data['districts'] = District::orderBy('district_name')->get();
-        return view('admin.district-thana.thana-create-edit', $data);
+        return view('admin.site-basic-info.thana-create-edit', $data);
     }
 
     /**
@@ -72,7 +72,7 @@ class ThanaController extends Controller
     {
         $data['districts'] = District::orderBy('district_name')->get();
         $data['thana'] = Thana::findOrFail($id);
-        return view('admin.district-thana.thana-create-edit', $data);
+        return view('admin.site-basic-info.thana-create-edit', $data);
     }
 
     /**

@@ -99,7 +99,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
-                District/Thana
+                Site Basif Info
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -114,6 +114,12 @@
                 <a href="{{ route('admin.thana.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Thana</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.industry.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Industry</p>
                 </a>
               </li>
             </ul>

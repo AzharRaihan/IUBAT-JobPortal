@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\District;
+use App\Models\Industry;
 use Illuminate\Http\Request;
 
-class DistrictController extends Controller
+class IndustryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $districts = District::latest()->get();
-        return view('admin.site-basic-info.district-list', compact('districts'));
+        $industries = Industry::latest()->get();
+        return view('admin.site-basic-info.industry-list', compact('industries'));
     }
 
     /**
@@ -26,7 +26,7 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        return view('admin.site-basic-info.district-create-edit');
+        return view('admin.site-basic-info.industry-create-edit');
     }
 
     /**
@@ -38,10 +38,10 @@ class DistrictController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'district_name' => 'required|unique:districts,district_name'
+            'industry_name' => 'required|unique:industries,industry_name'
         ]);
-        District::create([
-            'district_name' => $request->district_name,
+        Industry::create([
+            'industry_name' => $request->industry_name,
         ]);
         notify()->success('Successfully Saved', 'Success');
         return back();
@@ -66,8 +66,8 @@ class DistrictController extends Controller
      */
     public function edit($id)
     {
-        $district = District::findOrFail($id);
-        return view('admin.site-basic-info.district-create-edit', compact('district'));
+        $industry = Industry::findOrFail($id);
+        return view('admin.site-basic-info.industry-create-edit', compact('industry'));
     }
 
     /**
@@ -79,9 +79,9 @@ class DistrictController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $district = District::findOrFail($id);
-        $district->update([
-            'district_name' => $request->district_name,
+        $industry = Industry::findOrFail($id);
+        $industry->update([
+            'industry_name' => $request->industry_name,
         ]);
         notify()->success('Successfully Updated', 'Update');
         return back();
@@ -95,8 +95,8 @@ class DistrictController extends Controller
      */
     public function destroy($id)
     {
-        $district = District::findOrFail($id);
-        $district->delete();
+        $industry = Industry::findOrFail($id);
+        $industry->delete();
         notify()->success('Successfully Deleted', 'Delete');
         return back();
     }

@@ -65,23 +65,25 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="industry" class="form-label">Industry Type</label>
-                  <select class="form-control" name="industry" id="industry">
-                    <option>Select Industry Type</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                  <select class="form-control js-example-basic-single" name="industry_id" id="industry">
+                    <option selected disabled>Select Industry Type</option>
+                    @foreach ($industries as $industry)
+                      <option @isset($companyInfo)
+                      {{ $companyInfo->industry_id == $industry->id ? 'selected' : '' }} 
+                      @endisset value="{{ $industry->id }}">{{ $industry->industry_name }}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="employee-size" class="form-label">Employee Size</label>
-                  <select class="form-control" name="employee_size" id="employee-size">
+                  <select class="form-control js-example-basic-single" name="employee_size" id="employee-size">
                     <option selected disabled>Select Company Size</option>
-                    <option value="1-15">1-15 Employees</option>
-                    <option value="16-30">16-30 Employees</option>
-                    <option value="31-50">31-50 Employees</option>
-                    <option value="51-120">51-120 Employees</option>
-                    <option value="121-300">121-300 Employees</option>
-                    <option value="301-500">301-500 Employees</option>
+                    <option {{ $companyInfo != null ? $companyInfo->employee_size == '1-15' ? 'selected' : '' : ''}} value="1-15">1-15 Employees</option>
+                    <option {{ $companyInfo != null ? $companyInfo->employee_size == '16-30' ? 'selected' : '' : ''}} value="16-30">16-30 Employees</option>
+                    <option {{ $companyInfo != null ? $companyInfo->employee_size == '31-50' ? 'selected' : '' : ''}} value="31-50">31-50 Employees</option>
+                    <option {{ $companyInfo != null ? $companyInfo->employee_size == '51-120' ? 'selected' : '' : ''}} value="51-120">51-120 Employees</option>
+                    <option {{ $companyInfo != null ? $companyInfo->employee_size == '121-300' ? 'selected' : '' : ''}} value="121-300">121-300 Employees</option>
+                    <option {{ $companyInfo != null ? $companyInfo->employee_size == '301-500' ? 'selected' : '' : ''}} value="301-500">301-500 Employees</option>
                   </select>
                 </div>
               </div>

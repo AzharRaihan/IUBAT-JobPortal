@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Resume extends Model
+class Industry extends Model
 {
     use HasFactory;
 
-    public function user()
+    protected $guarded = [];
+
+    public function company()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Company::class);
     }
 }

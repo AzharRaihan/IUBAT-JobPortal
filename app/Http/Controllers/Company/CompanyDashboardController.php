@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\District;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Industry;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -48,6 +49,7 @@ class CompanyDashboardController extends Controller
         $data['companyInfo'] = Company::where('user_id', Auth::user()->id)->first();
         $data['districts'] = District::orderBy('district_name')->get();
         $data['thanas'] = Thana::orderBy('thana_name')->get();
+        $data['industries'] = Industry::orderBy('industry_name')->get();
         return view('company.company-profile-edit', $data);
     }
     // Edit Profile
@@ -69,7 +71,7 @@ class CompanyDashboardController extends Controller
                 'thana' => $request->thana,
                 'district' => $request->district,
                 'trade_license' => $request->trade_license,
-                'industry' => $request->industry,
+                'industry_id' => $request->industry_id,
                 'website_url' => $request->website_url,
             ]);
         }else{
@@ -82,7 +84,7 @@ class CompanyDashboardController extends Controller
                 'thana' => $request->thana,
                 'district' => $request->district,
                 'trade_license' => $request->trade_license,
-                'industry' => $request->industry,
+                'industry_id' => $request->industry_id,
                 'website_url' => $request->website_url,
             ]);
         }
