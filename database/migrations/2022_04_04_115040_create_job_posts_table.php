@@ -15,20 +15,21 @@ class CreateJobPostsTable extends Migration
     {
         Schema::create('job_posts', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 150);
-            $table->string('slug', 150);
-            $table->string('company_name', 150);
-            $table->string('job_location', 150);
-            $table->string('req_degree', 255);
-            $table->string('experience', 100);
-            $table->string('employment_status', 100);
-            $table->string('age', 100);
-            $table->string('vacancy', 50);
-            $table->string('salary', 10);
-            $table->date('published_on', 55);
-            $table->date('deadline', 55);
-            $table->text('report', 300);
+            $table->string('job_title', 255);
+            $table->string('slug', 255)->unique();
+            $table->string('company_name', 200);
+            $table->string('job_location', 255)->nullable();
+            $table->date('published_on', 55)->nullable();
+            $table->date('deadline', 55)->nullable();
+            $table->text('req_degree', 350)->nullable();
+            $table->string('age', 100)->nullable();
+            $table->string('experience', 100)->nullable();
+            $table->string('employment_status', 100)->nullable();
+            $table->string('vacancy', 55)->nullable();
+            $table->float('salary', 8,2)->nullable();
+            $table->text('report', 300)->nullable();
             $table->text('description')->nullable();
+            $table->string('job_thumbnail', 55)->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
