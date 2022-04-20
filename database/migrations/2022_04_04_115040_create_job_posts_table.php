@@ -15,6 +15,10 @@ class CreateJobPostsTable extends Migration
     {
         Schema::create('job_posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')
+            ->constrained()
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
             $table->string('job_title', 255);
             $table->string('slug', 255)->unique();
             $table->string('company_name', 200);

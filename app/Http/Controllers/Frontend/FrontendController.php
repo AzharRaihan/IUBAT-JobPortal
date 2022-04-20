@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\JobPost;
 use App\Models\Subscriber;
 
 class FrontendController extends Controller
@@ -12,7 +14,8 @@ class FrontendController extends Controller
     // Index/Home Page
     public function index()
     {
-        return view('website.index');
+        $categories = Category::where('status', 1)->orderBy('category_name')->get();
+        return view('website.index', compact('categories'));
     }
     // Search By Company
     public function searchByCompany()
@@ -52,8 +55,15 @@ class FrontendController extends Controller
         notify()->success('Success', 'Successfully Subscribed');
         return back();
     }
-    public function category()
+    public function category($id)
     {
-        return view('website.category-details');
+        $jobPosts = JobPost::where('category_id', $id)->latest()->get();
+        return view('website.category-details', compact('jobPosts'));
+    }
+    public function jobPostDetails($id)
+    {
+        $jobPost = JobPost::findOrFail($id);
+        dd($jobPost);
+        return view('website.job-details');
     }
 }

@@ -118,14 +118,14 @@
               <span>Brows Category</span>
             </h6>
             <div class="row">
-              @for ($i = 1; $i <= 30; $i++)
+              @foreach ($categories as $category)
               <div class="col-md-4 py-1">
-                <a href="{{ route('category') }}">
+                <a href="{{ route('category', $category->id) }}">
                   <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>Category {{ $i }}</span>
+                  <span>{{ $category->category_name }}</span>
                 </a>
               </div>
-              @endfor
+              @endforeach
             </div>
           </div>
         </div>
