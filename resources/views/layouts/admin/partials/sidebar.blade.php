@@ -122,6 +122,12 @@
                   <p>Industry</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.category.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">

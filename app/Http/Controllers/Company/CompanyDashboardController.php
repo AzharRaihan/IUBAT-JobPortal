@@ -11,6 +11,7 @@ use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -128,13 +129,15 @@ class CompanyDashboardController extends Controller
     // Create Job Post
     public function createJobPost()
     {
-        return view('company.create-edit-job-post');
+        $categories = Category::orderBy('category_name')->get();
+        return view('company.create-edit-job-post', compact('categories'));
     }
 
     public function storeJobPost(Request $request)
     {
 
         $this->validate($request, [
+            'category_id' => 'required',
             'job_title' => 'required|max:255',
             'company_name' => 'required|max:200',
             'job_location' => 'required|max:255',
@@ -182,8 +185,9 @@ class CompanyDashboardController extends Controller
         $content = $dom->saveHTML();
 
         $jobPost = new JobPost();
+        $jobPost->category_id = $request->category_id;
         $jobPost->job_title = $request->job_title;
-        $jobPost->slug = Str::slug($request->job_title);
+        $jobPost->slug = Str::slug($request->job_title) . '-' . time();
         $jobPost->company_name = $request->company_name;
         $jobPost->job_location = $request->job_location;
         $jobPost->published_on = $request->published_on;

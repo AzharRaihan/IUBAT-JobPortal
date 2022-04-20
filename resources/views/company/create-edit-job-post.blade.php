@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
 <!-- Summernote Css CDN -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
 <style>
   .card-element{
     display: flex;
@@ -70,6 +70,15 @@
                 </div>
               </div>
               <div class="mb-3">
+                <label for="category-id" class="form-label">Select Job Category</label>
+                <select class="form-control js-example-basic-single" name="category_id" id="category-id">
+                  <option selected disable>(: Select Category :)</option>
+                  @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="mb-3">
                 <label for="job-location" class="form-label">Job Location</label>
                 <textarea type="text" class="form-control" name="job_location" id="job-location">{{ old('job_location') }}</textarea>
               </div>
@@ -93,27 +102,24 @@
                   @enderror
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="req-degree" class="form-label">Required Degree</label>
-                  <input type="text" class="form-control @error('req_degree') is-invalid @enderror" name="req_degree" id="req-degree" value="{{ old('req_degree') }}">
-                  @error('req_degree')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="age" class="form-label">Age</label>
-                  <input type="text" class="form-control @error('age') is-invalid @enderror" name="age" id="age" value="{{ old('age') }}">
-                  @error('age')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
-                </div>
+              <div class="mb-3">
+                <label for="req-degree" class="form-label">Required Degree</label>
+                <textarea type="text" class="form-control @error('req_degree') is-invalid @enderror" name="req_degree" id="req-degree">{{ old('req_degree') }}</textarea>
+                @error('req_degree')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
               </div>
-
+              <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="text" class="form-control @error('age') is-invalid @enderror" name="age" id="age" value="{{ old('age') }}">
+                @error('age')
+                  <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
+              </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="experience" class="form-label">Experience</label>
@@ -145,7 +151,13 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="employment-status" class="form-label">Employee Status</label>
-                  <input type="text" class="form-control @error('employment_status') is-invalid @enderror" name="employment_status" id="employment-status" value="{{ old('employment_status') }}">
+                  <select class="form-control @error('employment_status') is-invalid @enderror" name="employment_status" id="employment-status">
+                    <option selected disabled>(: Select Employmet Status :)</option>
+                    <option value="FT">Full Time</option>
+                    <option value="PT">Part Time</option>
+                    <option value="FLC">Freelance Time</option>
+                    <option value="TT">Temporary Time</option>
+                  </select>
                   @error('employment_status')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -186,6 +198,12 @@
 @push('page-script')
 <!-- Summernote Js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+  });
+</script>
 <script type="text/javascript">
 $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',

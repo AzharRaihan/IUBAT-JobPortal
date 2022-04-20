@@ -48,10 +48,10 @@
         </div>
         <div class="search-body">
           <div class="row">
-            @forelse ($jobPosts as $jobPost)
+            @foreach ($jobPosts as $jobPost)
             <div class="col-md-6 col-item">
               <div class="card">
-                <a href="{{ route('jobpost.details',$jobPost->id) }}" target="blank">
+                <a href="javascript:void(0)">
                   <div class="row">
                     <div class="col-9">
                       <div class="logo pb-2">
@@ -100,9 +100,7 @@
                 </a>
               </div>
             </div>
-            @empty
-              <span>Not Found</span>
-            @endforelse
+            @endforeach
           </div>
         </div>
       </div>
