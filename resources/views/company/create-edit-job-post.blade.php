@@ -69,14 +69,24 @@
                   @enderror
                 </div>
               </div>
-              <div class="mb-3">
-                <label for="category-id" class="form-label">Select Job Category</label>
-                <select class="form-control js-example-basic-single" name="category_id" id="category-id">
-                  <option selected disable>(: Select Category :)</option>
-                  @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                  @endforeach
-                </select>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="company-type" class="form-label">Company Type</label>
+                  <select class="form-control js-example-basic-single" name="company_type" id="company-type">
+                    <option selected disable>(: Company Type :)</option>
+                      <option value="GOVT">Government</option>
+                      <option value="PVT">Private</option>
+                  </select>
+                </div>
+                <div class="col-md-6  mb-3">
+                  <label for="category-id" class="form-label">Select Job Category</label>
+                  <select class="form-control js-example-basic-single" name="category_id" id="category-id">
+                    <option selected disable>(: Select Category :)</option>
+                    @foreach ($categories as $category)
+                      <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                    @endforeach
+                  </select>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="job-location" class="form-label">Job Location</label>

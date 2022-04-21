@@ -118,14 +118,16 @@
               <span>Brows Category</span>
             </h6>
             <div class="row">
-              @foreach ($categories as $category)
+              @forelse ($categories as $category)
               <div class="col-md-4 py-1">
                 <a href="{{ route('category', $category->id) }}">
                   <i class="fal fa-arrow-alt-circle-right"></i>
                   <span>{{ $category->category_name }}</span>
                 </a>
               </div>
-              @endforeach
+              @empty
+              Not Found
+              @endforelse
             </div>
           </div>
         </div>
@@ -137,10 +139,11 @@
                 <span>Govt Jobs</span>
               </h6>
               <ul class="p-0 m-0">
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 1</a></li>
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 2</a></li>
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 3</a></li>
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 4</a></li>
+                @forelse ($companyGovts as $companyGovt)
+                  <li><a href="{{ route('jobpost.details', $companyGovt->id) }}"><i class="fal fa-caret-circle-right"></i>{{ $companyGovt->job_title }}</a></li>
+                @empty
+                  Not Found
+                @endforelse
               </ul>
               <div class="see-all">
                 <a href="">See All <span><i class="far fa-angle-double-right"></i></span></a>
@@ -152,10 +155,11 @@
                 <span>Private Jobs</span>
               </h6>
               <ul class="p-0 m-0">
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 1</a></li>
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 2</a></li>
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 3</a></li>
-                <li><a href="#"><i class="fal fa-caret-circle-right"></i>Item 4</a></li>
+                @forelse ($companyPvts as $companyPvt)
+                  <li><a href="{{ route('jobpost.details', $companyPvt->id) }}"><i class="fal fa-caret-circle-right"></i>{{ $companyPvt->job_title }}</a></li>
+                @empty
+                  Not Found
+                @endforelse
               </ul>
               <div class="see-all">
                 <a href="">See All <span><i class="far fa-angle-double-right"></i></span></a>
@@ -207,21 +211,25 @@
           Hot Josb</h6>
       </div>
       <div class="row">
-        @for ($i = 1; $i <= 32; $i++)
-          <div class="col-lg-3 col-md-4 col-sm-6 col-item">
-            <div class="card">
+        @forelse ($jobPosts as $jobPost)
+        <div class="col-lg-3 col-md-4 col-sm-6 col-item">
+          <div class="card">
+            <a href="{{ route('jobpost.details', $jobPost->id) }}">
               <div class="job-card">
                 <div>
-                  <img src="{{ asset('assets/website/img/bd.jpg') }}" alt="" height="50" width="50">
+                  <img src="{{ asset('uploads/job-thumbnail/'. $jobPost->job_thumbnail) }}" alt="{{ $jobPost->job_title }}" height="50" width="50">
                 </div>
-                <div>
-                  <p>Airlines</p>
-                  <p>Airlines</p>
+                <div class="ps-2">
+                  <p>{{ $jobPost->job_title }}</p>
+                  <p>{{ $jobPost->job_location }}</p>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
-        @endfor
+        </div>
+        @empty
+          Not Found
+        @endforelse
       </div>
     </div>
   </section>
