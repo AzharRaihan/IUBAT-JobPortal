@@ -37,7 +37,7 @@
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="company_name" class="form-label">CompanyName</label>
+                  <label for="company_name" class="form-label">Company Name</label>
                   <input type="text" class="form-control" name="company_name" id="company_name" value="{{ $companyInfo != null ? $companyInfo->company_name : '' }}">
                 </div>
                 <div class="col-md-6 mb-3">

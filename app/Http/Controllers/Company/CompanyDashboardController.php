@@ -140,6 +140,7 @@ class CompanyDashboardController extends Controller
             'category_id' => 'required',
             'job_title' => 'required|max:255',
             'company_name' => 'required|max:200',
+            'company_type' => 'required|max:55',
             'job_location' => 'required|max:255',
             'published_on' => 'required|max:55',
             'deadline' => 'required|max:55',
@@ -189,6 +190,7 @@ class CompanyDashboardController extends Controller
         $jobPost->job_title = $request->job_title;
         $jobPost->slug = Str::slug($request->job_title) . '-' . time();
         $jobPost->company_name = $request->company_name;
+        $jobPost->company_type = $request->company_type;
         $jobPost->job_location = $request->job_location;
         $jobPost->published_on = $request->published_on;
         $jobPost->deadline = $request->deadline;

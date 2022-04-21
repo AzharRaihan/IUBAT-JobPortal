@@ -14,8 +14,14 @@ class FrontendController extends Controller
     // Index/Home Page
     public function index()
     {
-        $categories = Category::where('status', 1)->orderBy('category_name')->get();
-        return view('website.index', compact('categories'));
+        $data['categories'] = Category::where('status', 1)
+        ->orderBy('category_name')->take(36)->get();
+        $data['jobPosts'] = JobPost::where('status',1)->latest()->get();
+        $data['companyGovts'] = JobPost::where(['company_type'=>'GOVT'],['status'=>true])
+        ->latest()->take(4)->get();
+        $data['companyPvts'] = JobPost::where(['company_type'=>'PVT'],['status'=>true])
+        ->latest()->take(4)->get();
+        return view('website.index', $data);
     }
     // Search By Company
     public function searchByCompany()
@@ -63,7 +69,6 @@ class FrontendController extends Controller
     public function jobPostDetails($id)
     {
         $jobPost = JobPost::findOrFail($id);
-        dd($jobPost);
-        return view('website.job-details');
+        return view('website.jobpost-details', compact('jobPost'));
     }
 }
