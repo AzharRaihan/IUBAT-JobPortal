@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Css -->
   @include('layouts.admin.partials.css')
-  <!-- Page-Css -->
+  <!-- Page-css -->
   @stack('page-css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

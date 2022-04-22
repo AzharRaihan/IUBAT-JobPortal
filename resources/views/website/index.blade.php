@@ -221,7 +221,7 @@
                 </div>
                 <div class="ps-2">
                   <p>{{ $jobPost->job_title }}</p>
-                  <p>{{ $jobPost->job_location }}</p>
+                  <p>{{ $jobPost->company_name }}</p>
                 </div>
               </div>
             </a>

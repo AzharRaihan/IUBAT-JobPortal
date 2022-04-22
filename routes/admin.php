@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ThanaController;
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -35,6 +36,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::resource('thana', ThanaController::class);
     Route::resource('industry', IndustryController::class);
     Route::resource('category', CategoryController::class);
+    Route::resource('company', CompanyController::class);
+    Route::get('company/posted-jobs/{id}',[CompanyController::class, 'postedJobs'])->name('company.posted.jobs');
+    Route::get('company/show-job/{id}',[CompanyController::class, 'showJob'])->name('company.show.job');
+    Route::put('company/approved-job-post/{id}',[CompanyController::class, 'approvedJobPost'])->name('company.approved.job.post');
+    Route::put('company/reject-job-post/{id}',[CompanyController::class, 'rejectJobPost'])->name('company.reject.job.post');
 });
 
 // Setting Routes

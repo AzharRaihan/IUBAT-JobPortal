@@ -61,12 +61,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="company-name" class="form-label">Company Name</label>
-                  <input type="text" class="form-control @error('company_name') is-invalid @enderror" name="company_name" id="company-name" value="{{ old('company_name') }}">
-                  @error('company_name')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                  @enderror
+                  <input type="text" class="form-control" id="company-name" value="" disabled>
                 </div>
               </div>
               <div class="row">
@@ -165,8 +160,8 @@
                     <option selected disabled>(: Select Employmet Status :)</option>
                     <option value="FT">Full Time</option>
                     <option value="PT">Part Time</option>
-                    <option value="FLC">Freelance Time</option>
-                    <option value="TT">Temporary Time</option>
+                    <option value="FLC">Freelancing</option>
+                    <option value="TJ">Temporary Job</option>
                   </select>
                   @error('employment_status')
                     <span class="invalid-feedback" role="alert">
@@ -197,8 +192,8 @@
                 <textarea class="form-control" id="summernote" name="description">
                 </textarea>
               </div>
-              <button type="submit" class="btn btn-info">Submit</button>
             </div>
+            <button type="submit" class="btn site-btn mt-3"><span><i class="bi bi-megaphone-fill"></i></span> Published Post</button>
           </form>
         </div>
       </div>
