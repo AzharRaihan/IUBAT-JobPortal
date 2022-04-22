@@ -6,6 +6,7 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Company;
 use App\Models\JobPost;
 use App\Models\Subscriber;
 
@@ -21,13 +22,25 @@ class FrontendController extends Controller
         ->latest()->take(4)->get();
         $data['companyPvts'] = JobPost::where([['company_type','PVT'],['status',1]])
         ->latest()->take(4)->get();
+        $data['companyCount'] = Company::count();
+        $data['jobPostCount'] = JobPost::count();
         return view('website.index', $data);
     }
-    // Search By Company
-    public function searchByCompany()
+    public function governmentCompany()
     {
-        return view('website.search-by-company');
+        $data['companyTypeName'] = 'Government';
+        $data['companyType'] = JobPost::with('company')->where('company_type', 'GOVT')->get();
+        return view('website.company-type', $data);
+
     }
+    public function privateCompany()
+    {
+        $data['companyTypeName'] = 'Private';
+        $data['companyType'] = JobPost::with('company')->where('company_type', 'PVT')->get();
+        return view('website.company-type', $data);
+    }
+
+
     // Contact 
     public function contact()
     {

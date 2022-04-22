@@ -1,6 +1,7 @@
 @extends('layouts.website.website-layouts')
 @section('page-title', '')
 @push('page-style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
 <style>
 .search-menu{
   background: rgb(204, 204, 204);
@@ -81,6 +82,18 @@
 body{
   background: rgb(231, 231, 231);
 }
+/* Pagination Css */
+.hidden{
+  padding: 10px;
+}
+.page .inline-flex{
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  border-radius: 7px;
+  background: gray !important;
+  color: white;
+}
 </style>
 @endpush
 @section('page-content')
@@ -89,137 +102,138 @@ body{
   <div class="container">
     <div class="card">
       <div class="row">
+        @isset($searchWord)
         <div class="col-12">
           <p class="text-center py-3">Please click at the company name to view offering jobs</p>
           <div class="search-menu mb-3">
             <ul class="nav flex-row justify-content-between">
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="A" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="B" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="C" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="D" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="E" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="F" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="G" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="H" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="I" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="J" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="K" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="L" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="M" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="N" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="O" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="P" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="Q" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="R" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="S" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="T" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="U" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="V" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="W" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="X" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="Y" name="searc_word">
                     </form>
                 </li>
                 <li>
-                    <form action="" method="GET">
+                    <form action="{{ route('search.by.word') }}" method="GET">
                         <input type="submit" value="Z" name="searc_word">
                     </form>
                 </li>
@@ -231,213 +245,190 @@ body{
               <div class="Org-name O-title">Company Name <span>(No. of Jobs)</span></div>
               <div class="Numojob O-title">No. of Jobs</div>
             </div>
-            
+            @foreach ($companies as $key=>$company)
             <div class="org-t O-res O-res-O">
               <div class="Snum">
-                1
+                {{ $key + 1 }}
               </div>
-              
               <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
+                <a class="sub_window_new_update" id="ViewAllJobs0" href="{{ route('company.job.posts', $company->id) }}">
+                  {{ $company->company_name }}
                 </a>
-                <span>
-                  (1)
-                </span>
               </div>
               <div class="Numojob">
-                  1
+                  {{ count($company->jobPost) }}
               </div>
             </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
-            <div class="org-t O-res O-res-O">
-              <div class="Snum">
-                1
-              </div>
-              
-              <div class="Org-name">
-                <a class="sub_window_new_update" id="ViewAllJobs0" data-path="companyofferedjobs.asp?id=42261&amp;alias=1&amp;companyname=+A+Leading+Group+of+Company" href="javascript:void(0);">
-                  A Leading Group of Company
-                </a>
-                <span>
-                  (1)
-                </span>
-              </div>
-              <div class="Numojob">
-                  1
-              </div>
-            </div>
+            @endforeach
+            <p class="pagination px-2">
+              {{ $companies->links() }}
+            </p>
           </div>
         </div>
+        @else
+        <div class="col-12">
+          <p class="text-center py-3">Please click at the company name to view offering jobs</p>
+          <div class="search-menu mb-3">
+            <ul class="nav flex-row justify-content-between">
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="A" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="B" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="C" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="D" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="E" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="F" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="G" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="H" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="I" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="J" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="K" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="L" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="M" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="N" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="O" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="P" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="Q" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="R" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="S" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="T" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="U" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="V" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="W" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="X" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="Y" name="searc_word">
+                    </form>
+                </li>
+                <li>
+                    <form action="{{ route('search.by.word') }}" method="GET">
+                        <input type="submit" value="Z" name="searc_word">
+                    </form>
+                </li>
+            </ul>
+          </div>
+          <div class="emp-wrap"> 
+            <div class="org-t O-res">
+              <div class="Snum O-title">SL.</div>
+              <div class="Org-name O-title">Company Name <span>(No. of Jobs)</span></div>
+              <div class="Numojob O-title">No. of Jobs</div>
+            </div>
+            @foreach ($companies as $key=>$company)
+            <div class="org-t O-res O-res-O">
+              <div class="Snum">
+                {{ $key + 1 }}
+              </div>
+              <div class="Org-name">
+                <a class="sub_window_new_update" id="ViewAllJobs0" href="{{ route('company.job.posts', $company->id) }}">
+                  {{ $company->company_name }}
+                </a>
+              </div>
+              <div class="Numojob">
+                  {{ count($company->jobPost) }}
+              </div>
+            </div>
+            @endforeach
+            <p class="pagination px-2">
+              {{ $companies->links() }}
+            </p>
+          </div>
+        </div>
+        @endisset
       </div>
     </div>
 

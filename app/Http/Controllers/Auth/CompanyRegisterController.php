@@ -45,22 +45,22 @@ class CompanyRegisterController extends Controller
     }
 
     // Company Registration Create
-    // public function companyRegisterCreate(Request $request)
-    // {
-    //     $this->validate($request, [
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users',
-    //         'password' => 'required|string|min:8|confirmed',
-    //         'password_confirmation' => 'required',
-    //     ]);
-    //     User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'role_id' => 2,
-    //         'password' => Hash::make($request->password),
-    //     ]);
-    //     return redirect()->route('company.dashboard');
-    // }
+    public function companyRegisterCreate(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required',
+        ]);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role_id' => 2,
+            'password' => Hash::make($request->password),
+        ]);
+        return redirect()->route('company.dashboard');
+    }
 
 
 
