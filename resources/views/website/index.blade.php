@@ -41,7 +41,7 @@
   }
   .job-item-wrap{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
   }
   .job-item{
     color: white;
@@ -80,25 +80,15 @@
               <button class="btn contact-us-btn" type="button" id="button-addon2"><i class="bi bi-search"></i> Search</button>
             </div>
             <div class="job-item-wrap">
-              <div class="job-item text-center">
-                <i class="fal fa-suitcase m-0"></i>
-                <p>Live Job</p>
-                <span>390</span>
-              </div>
-              <div class="job-item text-center">
-                <i class="fal fa-suitcase m-0"></i>
-                <p>Vacancies</p>
-                <span>390</span>
-              </div>
-              <div class="job-item text-center">
+              <div class="job-item text-center mx-3">
                 <i class="bi bi-building m-0"></i>
                 <p>Companies</p>
-                <span>390</span>
+                <span>{{ $companyCount }}</span>
               </div>
-              <div class="job-item text-center">
+              <div class="job-item text-center mx-3">
                 <i class="fa fa-spinner m-0"></i>
-                <p>New Jobs</p>
-                <span>390</span>
+                <p>Jobs</p>
+                <span>{{ $jobPostCount }}</span>
               </div>
             </div>
           </div>
@@ -146,7 +136,7 @@
                 @endforelse
               </ul>
               <div class="see-all">
-                <a href="">See All <span><i class="far fa-angle-double-right"></i></span></a>
+                <a href="{{ route('government.company') }}">See All <span><i class="far fa-angle-double-right"></i></span></a>
               </div>
             </div>
             <div class="public">
@@ -162,7 +152,7 @@
                 @endforelse
               </ul>
               <div class="see-all">
-                <a href="">See All <span><i class="far fa-angle-double-right"></i></span></a>
+                <a href="{{ route('private.company') }}">See All <span><i class="far fa-angle-double-right"></i></span></a>
               </div>
             </div>
           </div>
@@ -189,13 +179,13 @@
           </div>
           <div class="col-lg-3 col-6 text-center">
             <span><i class="bi bi-building"></i></span>
-            <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{ $companyCount }}" data-purecounter-duration="1" class="purecounter"></span>
             <p>Company</p>
           </div>
           <div class="col-lg-3 col-6 text-center">
             <span><i class="fa fa-spinner"></i></span>
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-            <p>New Jobs</p>
+            <span data-purecounter-start="0" data-purecounter-end="{{ $jobPostCount }}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Jobs</p>
           </div>
         </div>
       </div>
@@ -217,7 +207,7 @@
             <a href="{{ route('jobpost.details', $jobPost->id) }}">
               <div class="job-card">
                 <div>
-                  <img src="{{ asset('uploads/job-thumbnail/'. $jobPost->job_thumbnail) }}" alt="{{ $jobPost->job_title }}" height="50" width="50">
+                  <img src="{{ $jobPost->job_thumbnail != null ? asset('uploads/job-thumbnail/'. $jobPost->job_thumbnail) : asset('assets/application-default/img/gallery-default.png') }}" alt="{{ $jobPost->job_title }}" height="50" width="50">
                 </div>
                 <div class="ps-2">
                   <p>{{ $jobPost->job_title }}</p>

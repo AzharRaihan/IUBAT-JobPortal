@@ -47,8 +47,10 @@
           </div>
         </div>
         <div class="search-body">
+          @if (count($jobPosts) > 0)
+          <h4 class="py-3 text-center">{{ $companyName->company_name }} All Job Posts</h4>
           <div class="row">
-            @forelse ($jobPosts as $jobPost)
+            @foreach ($jobPosts as $jobPost)
             <div class="col-md-6 col-item">
               <div class="card">
                 <a href="{{ route('jobpost.details',$jobPost->id) }}" target="blank">
@@ -100,10 +102,11 @@
                 </a>
               </div>
             </div>
-            @empty
-              <span>Not Found</span>
-            @endforelse
+            @endforeach
           </div>
+          @else
+          No Job Found
+          @endif
         </div>
       </div>
     </div>
