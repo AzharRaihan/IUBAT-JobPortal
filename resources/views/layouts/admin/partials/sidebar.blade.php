@@ -97,6 +97,29 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
+              <i class="nav-icon far fa-building"></i>
+              <p>
+                Companies 
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.company.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Companies Lists</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.data.table') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pendig Jobs</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Site Basif Info
@@ -126,36 +149,6 @@
                 <a href="{{ route('admin.category.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-building"></i>
-              
-              <p>
-                Companies
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.data.table') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
                 </a>
               </li>
             </ul>

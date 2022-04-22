@@ -16,10 +16,10 @@ class FrontendController extends Controller
     {
         $data['categories'] = Category::where('status', 1)
         ->orderBy('category_name')->take(36)->get();
-        $data['jobPosts'] = JobPost::where('status',1)->latest()->get();
-        $data['companyGovts'] = JobPost::where(['company_type'=>'GOVT'],['status'=>true])
+        $data['jobPosts'] = JobPost::where('status',1)->latest()->take(40)->get();
+        $data['companyGovts'] = JobPost::where([['company_type','GOVT'],['status',1]])
         ->latest()->take(4)->get();
-        $data['companyPvts'] = JobPost::where(['company_type'=>'PVT'],['status'=>true])
+        $data['companyPvts'] = JobPost::where([['company_type','PVT'],['status',1]])
         ->latest()->take(4)->get();
         return view('website.index', $data);
     }
@@ -68,7 +68,7 @@ class FrontendController extends Controller
     }
     public function jobPostDetails($id)
     {
-        $jobPost = JobPost::findOrFail($id);
+        $jobPost = JobPost::with('company')->where('id',$id)->first();
         return view('website.jobpost-details', compact('jobPost'));
     }
 }

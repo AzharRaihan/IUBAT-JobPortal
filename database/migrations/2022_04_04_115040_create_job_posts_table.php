@@ -15,13 +15,14 @@ class CreateJobPostsTable extends Migration
     {
         Schema::create('job_posts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
             $table->foreignId('category_id')
             ->constrained()
             ->cascadeOnUpdate()
             ->cascadeOnDelete();
             $table->string('job_title', 255);
             $table->string('slug', 255)->unique();
-            $table->string('company_name', 200);
+            // $table->string('company_name', 200);
             $table->string('company_type', 55)->nullable();
             $table->string('job_location', 255)->nullable();
             $table->date('published_on', 55)->nullable();
@@ -36,6 +37,7 @@ class CreateJobPostsTable extends Migration
             $table->text('description')->nullable();
             $table->string('job_thumbnail', 55)->nullable();
             $table->boolean('status')->default(0);
+            $table->boolean('is_published')->default(0);
             $table->timestamps();
         });
     }

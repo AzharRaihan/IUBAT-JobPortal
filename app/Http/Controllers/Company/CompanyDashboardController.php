@@ -139,7 +139,6 @@ class CompanyDashboardController extends Controller
         $this->validate($request, [
             'category_id' => 'required',
             'job_title' => 'required|max:255',
-            'company_name' => 'required|max:200',
             'company_type' => 'required|max:55',
             'job_location' => 'required|max:255',
             'published_on' => 'required|max:55',
@@ -185,11 +184,13 @@ class CompanyDashboardController extends Controller
         }
         $content = $dom->saveHTML();
 
+        $authUser = Auth::user()->id;
+        $companyId = Company::where('user_id', $authUser)->first();
         $jobPost = new JobPost();
+        $jobPost->company_id = $companyId->id;
         $jobPost->category_id = $request->category_id;
         $jobPost->job_title = $request->job_title;
         $jobPost->slug = Str::slug($request->job_title) . '-' . time();
-        $jobPost->company_name = $request->company_name;
         $jobPost->company_type = $request->company_type;
         $jobPost->job_location = $request->job_location;
         $jobPost->published_on = $request->published_on;
