@@ -42,31 +42,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($companyLists as $key=>$company)
-                <tr>
-                  <td>{{ $key + 1 }}</td>
-                  <td>{{ $company->company_name }}</td>
-                  <td>{{ $company->created_at->diffForHumans() }}</td>
-                  <td>
-                    <a href="{{ route('admin.company.posted.jobs',$company->id) }}" class="btn btn-info btn-sm">
-                      <i class="fas fa-upload"></i>
-                      <span>Posted Jobs</span>
-                    </a>
-                    <a href="{{ route('admin.company.show',$company->id) }}" class="btn btn-info btn-sm">
-                      <i class="fas fa-eye"></i>
-                      <span>Show Details</span>
-                    </a>
-                    <button type="button" onclick="deleteData({{ $company->id }})"  class="btn btn-danger rounded-right btn-sm">
-                      <i class="fas fa-trash-alt"></i>
-                      <span>Delete</span>
-                    </button>
-                    <form id="delete-form-{{ $company->id }}" action="{{ route('admin.company.destroy', $company->id) }}" method="POST" style="display: none;">
-                      @csrf
-                      @method('DELETE')
-                    </form>
-                  </td>
-                </tr>
-                @endforeach
+                @if(count($companyLists) > 0)
+                  @foreach ($companyLists as $key=>$company)
+                  <tr>
+                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $company->company_name }}</td>
+                    <td>{{ $company->created_at != null ? $company->created_at->diffForHumans() : '' }}</td>
+                    <td>
+                      <a href="{{ route('admin.company.posted.jobs',$company->id) }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-upload"></i>
+                        <span>Posted Jobs</span>
+                      </a>
+                      <a href="{{ route('admin.company.show',$company->id) }}" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                        <span>Show Details</span>
+                      </a>
+                      <button type="button" onclick="deleteData({{ $company->id }})"  class="btn btn-danger rounded-right btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                        <span>Delete</span>
+                      </button>
+                      <form id="delete-form-{{ $company->id }}" action="{{ route('admin.company.destroy', $company->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                      </form>
+                    </td>
+                  </tr>
+                  @endforeach
+                @endif
               </table>
             </div>
             <!-- /.card-body -->

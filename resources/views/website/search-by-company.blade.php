@@ -94,6 +94,9 @@ body{
   background: gray !important;
   color: white;
 }
+.container{
+    
+}
 </style>
 @endpush
 @section('page-content')
