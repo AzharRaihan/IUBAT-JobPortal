@@ -9,7 +9,9 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Admin\PendingJobController;
 use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\ApprovedJobController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ProfileSettingController;
 
@@ -41,6 +43,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::get('company/show-job/{id}',[CompanyController::class, 'showJob'])->name('company.show.job');
     Route::put('company/approved-job-post/{id}',[CompanyController::class, 'approvedJobPost'])->name('company.approved.job.post');
     Route::put('company/reject-job-post/{id}',[CompanyController::class, 'rejectJobPost'])->name('company.reject.job.post');
+    Route::resource('pending-job', PendingJobController::class);
+    Route::resource('approved-job', ApprovedJobController::class);
 });
 
 // Setting Routes
