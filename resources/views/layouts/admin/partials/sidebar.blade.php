@@ -22,14 +22,51 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-suitcase"></i>
               <p>
-                Posted Jobs
-                <span class="right badge badge-danger">New</span>
+                Jobs
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.approved-job.index') }}" class="nav-link">
+                  <i class="nav-icon fas fa-check-circle"></i>
+                  <p>Approved Jobs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.pending-job.index') }}" class="nav-link">
+                  <i class="nav-icon far fa-pause-circle"></i>
+                  <p>Pending Jobs</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-building"></i>
+              <p>
+                Companies 
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.company.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Companies Lists</p>
+                </a>
+              </li>
+              {{-- <li class="nav-item">
+                <a href="{{ route('admin.data.table') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Company</p>
+                </a>
+              </li> --}}
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -56,64 +93,6 @@
                 <a href="pages/charts/inline.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inline</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-pause-circle"></i>
-              <p>
-                Pending Job
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-building"></i>
-              <p>
-                Companies 
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('admin.company.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Companies Lists</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.data.table') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pendig Jobs</p>
                 </a>
               </li>
             </ul>

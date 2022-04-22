@@ -54,7 +54,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin-right: 0px !important;
+    margin: auto !important;
   }
   .job-card{
     display: flex;
