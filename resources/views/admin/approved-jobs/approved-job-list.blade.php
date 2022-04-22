@@ -48,7 +48,7 @@
                   <td>{{ $key + 1 }}</td>
                   <td>{{ $approvedPost->job_title }}</td>
                   {{-- <td>{{ $jobPost->company->company_name }}</td> --}}
-                  <td>{{ $approvedPost->created_at->diffForHumans() }}</td>
+                  <td>{{ $approvedPost->created_at != null ?$approvedPost->created_at->diffForHumans() : '' }}</td>
                   <td>
                     <a href="javascript:void(0)" class="btn btn-success btn-sm" style="cursor: no-drop">
                       <i class="fas fa-check-circle"></i>
