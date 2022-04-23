@@ -22,6 +22,8 @@ Route::group(['as' => 'company.', 'prefix' => 'company', 'middleware' => ['auth'
     Route::put('update-avater', [CompanyDashboardController::class, 'updateAvater'])->name('update.avater');
     Route::get('edit-profile', [CompanyDashboardController::class, 'editProfile'])->name('edit.profile');
     Route::get('create/job-post', [CompanyDashboardController::class, 'createJobPost'])->name('create.job.post');
+    Route::get('all-posted/jobs', [CompanyDashboardController::class, 'allPostedJobs'])->name('all.posted.jobs');
+    Route::delete('delete-posted/job/{id}', [CompanyDashboardController::class, 'deletePostedJob'])->name('delete.posted.job');
     Route::post('store/job-post', [CompanyDashboardController::class, 'storeJobPost'])->name('store.job.post');
     Route::get('edit/job-post/{id}', [CompanyDashboardController::class, 'editJobPost'])->name('edit.job.post');
     Route::put('update/job-post/{id}', [CompanyDashboardController::class, 'updateJobPost'])->name('update.job.post');

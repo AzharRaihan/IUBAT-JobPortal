@@ -5,6 +5,7 @@
 <!-- Summernote Css CDN -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 <style>
   .card-element{
     display: flex;
@@ -30,6 +31,19 @@
   .note-dropdown-item h5{
     font-size: 1rem !important;
   }
+  .t-switchery .toggle-off.btn {
+    padding-left: 24px;
+    background: #E6E6E6;
+
+  }
+  .t-switchery .toggle-handle {
+    background: rgb(255, 255, 255);
+  }
+  .t-switchery .btn-primary {
+    color: #fff;
+    background-color: #C1000C;
+    border-color: #C1000C;
+  }
 
 </style>
 @endpush
@@ -52,7 +66,7 @@
               <div class="row pt-3">
                 <div class="col-md-6 mb-3">
                   <label for="job-title" class="form-label">Job Title</label>
-                  <input type="text" class="form-control @error('job_title') is-invalid @enderror" name="job_title" id="job-title" value="{{ old('job_title') }}">
+                  <input type="text" class="form-control @error('job_title') is-invalid @enderror" name="job_title" id="job-title" value="{{ isset($jobPostEdit) ? $jobPostEdit->job_title : old('job_title') }}">
                   @error('job_title')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -61,7 +75,12 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="company-name" class="form-label">Company Name</label>
-                  <input type="text" class="form-control" id="company-name" value="" disabled>
+                  <input type="text" class="form-control" name="company_name" id="company-name" value="{{ isset($jobPostEdit) ? $jobPostEdit->company_name : old('company_name') }}">
+                  @error('company_name')
+                    <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                    </span>
+                  @enderror
                 </div>
               </div>
               <div class="row">
@@ -69,8 +88,8 @@
                   <label for="company-type" class="form-label">Company Type</label>
                   <select class="form-control js-example-basic-single" name="company_type" id="company-type">
                     <option selected disable>(: Company Type :)</option>
-                      <option value="GOVT">Government</option>
-                      <option value="PVT">Private</option>
+                      <option {{ isset($jobPostEdit) ? $jobPostEdit->company_type == 'GOVT' ? 'selected' : '' : '' }} value="GOVT">Government</option>
+                      <option {{ isset($jobPostEdit) ? $jobPostEdit->company_type == 'PVT' ? 'selected' : '' : '' }} value="PVT">Private</option>
                   </select>
                 </div>
                 <div class="col-md-6  mb-3">
@@ -78,19 +97,23 @@
                   <select class="form-control js-example-basic-single" name="category_id" id="category-id">
                     <option selected disable>(: Select Category :)</option>
                     @foreach ($categories as $category)
-                      <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                      <option 
+                      @isset($jobPostEdit)  
+                      {{ $jobPostEdit->category_id == $category->id ? 'selected' : '' }}
+                      @endisset 
+                      value="{{ $category->id }}">{{ $category->category_name }}</option>
                     @endforeach
                   </select>
                 </div>
               </div>
               <div class="mb-3">
                 <label for="job-location" class="form-label">Job Location</label>
-                <textarea type="text" class="form-control" name="job_location" id="job-location">{{ old('job_location') }}</textarea>
+                <textarea type="text" class="form-control" name="job_location" id="job-location">{{ isset($jobPostEdit) ? $jobPostEdit->job_location : old('job_location') }}</textarea>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="published-on" class="form-label">Published On</label>
-                  <input type="date" class="form-control @error('published_on') is-invalid @enderror" name="published_on" id="published-on" value="{{ old('published_on') }}">
+                  <input type="date" class="form-control @error('published_on') is-invalid @enderror" name="published_on" id="published-on" value="{{ isset($jobPostEdit) ? $jobPostEdit->published_on : old('published_on') }}">
                   @error('published_on')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -99,7 +122,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="deadline" class="form-label">Application Dedline</label>
-                  <input type="date" class="form-control @error('deadline') is-invalid @enderror" name="deadline" id="deadline" value="{{ old('deadline') }}">
+                  <input type="date" class="form-control @error('deadline') is-invalid @enderror" name="deadline" id="deadline" value="{{ isset($jobPostEdit) ? $jobPostEdit->deadline : old('deadline') }}">
                   @error('deadline')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -109,7 +132,7 @@
               </div>
               <div class="mb-3">
                 <label for="req-degree" class="form-label">Required Degree</label>
-                <textarea type="text" class="form-control @error('req_degree') is-invalid @enderror" name="req_degree" id="req-degree">{{ old('req_degree') }}</textarea>
+                <textarea type="text" class="form-control @error('req_degree') is-invalid @enderror" name="req_degree" id="req-degree">{{ isset($jobPostEdit) ? $jobPostEdit->req_degree : old('req_degree') }}</textarea>
                 @error('req_degree')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -118,7 +141,7 @@
               </div>
               <div class="mb-3">
                 <label for="age" class="form-label">Age</label>
-                <input type="text" class="form-control @error('age') is-invalid @enderror" name="age" id="age" value="{{ old('age') }}">
+                <input type="text" class="form-control @error('age') is-invalid @enderror" name="age" id="age" value="{{ isset($jobPostEdit) ? $jobPostEdit->age : old('age') }}">
                 @error('age')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -128,7 +151,7 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="experience" class="form-label">Experience</label>
-                  <input type="text" class="form-control @error('experience') is-invalid @enderror" name="experience" id="experience" value="{{ old('experience') }}">
+                  <input type="text" class="form-control @error('experience') is-invalid @enderror" name="experience" id="experience" value="{{ isset($jobPostEdit) ? $jobPostEdit->experience : old('experience') }}">
                   @error('experience')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -141,7 +164,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">BDT</span>
                     </div>
-                    <input type="number" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{ old('salary') }}">
+                    <input type="number" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{ isset($jobPostEdit) ? $jobPostEdit->salary : old('salary') }}">
                     <div class="input-group-append">
                       <span class="input-group-text">.00</span>
                     </div>
@@ -158,10 +181,10 @@
                   <label for="employment-status" class="form-label">Employee Status</label>
                   <select class="form-control @error('employment_status') is-invalid @enderror" name="employment_status" id="employment-status">
                     <option selected disabled>(: Select Employmet Status :)</option>
-                    <option value="FT">Full Time</option>
-                    <option value="PT">Part Time</option>
-                    <option value="FLC">Freelancing</option>
-                    <option value="TJ">Temporary Job</option>
+                    <option {{ isset($jobPostEdit) ? $jobPostEdit->employment_status == 'FT' ? 'selected' : '' : '' }} value="FT">Full Time</option>
+                    <option {{ isset($jobPostEdit) ? $jobPostEdit->employment_status == 'PT' ? 'selected' : '' : '' }} value="PT">Part Time</option>
+                    <option {{ isset($jobPostEdit) ? $jobPostEdit->employment_status == 'FLC' ? 'selected' : '' : '' }} value="FLC">Freelancing</option>
+                    <option {{ isset($jobPostEdit) ? $jobPostEdit->employment_status == 'TJ' ? 'selected' : '' : '' }} value="TJ">Temporary Job</option>
                   </select>
                   @error('employment_status')
                     <span class="invalid-feedback" role="alert">
@@ -171,7 +194,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="vacancy" class="form-label">Vacancy</label>
-                  <input type="text" class="form-control @error('vacancy') is-invalid @enderror" name="vacancy" id="vacancy" value="{{ old('vacancy') }}">
+                  <input type="text" class="form-control @error('vacancy') is-invalid @enderror" name="vacancy" id="vacancy" value="{{ isset($jobPostEdit) ? $jobPostEdit->vacancy : old('vacancy') }}">
                   @error('vacancy')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -185,15 +208,23 @@
               </div>
               <div class="mb-3">
                 <label for="report" class="form-label">Report</label>
-                <textarea type="text" class="form-control" name="report" id="report">{{ old('report') }}</textarea>
+                <textarea type="text" class="form-control" name="report" id="report">{{ isset($jobPostEdit) ? $jobPostEdit->report : old('report') }}</textarea>
               </div>
               <div>
                 <label for="job-details" class="form-label">Job Details</label>
                 <textarea class="form-control" id="summernote" name="description">
+                  @isset($jobPostEdit)
+                    {!! $jobPostEdit->description !!}
+                  @endisset
                 </textarea>
               </div>
+              <div class="d-flex  t-switchery mt-3">
+                <button type="submit" class="btn site-btn"><span><i class="bi bi-megaphone-fill"></i></span> Published Post</button>
+                <div class="ps-3">
+                  <input type="checkbox" {{ isset($jobPostEdit) ? $jobPostEdit->status == 1 ? 'checked' : '' : '' }} data-toggle="toggle" data-on="Approve" data-off="Pending" name="status">
+                </div>
+              </div>
             </div>
-            <button type="submit" class="btn site-btn mt-3"><span><i class="bi bi-megaphone-fill"></i></span> Published Post</button>
           </form>
         </div>
       </div>
@@ -204,6 +235,7 @@
 <!-- Summernote Js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script>
   $(document).ready(function() {
     $('.js-example-basic-single').select2();
@@ -224,5 +256,13 @@ $('#summernote').summernote({
           ['view', ['fullscreen', 'codeview', 'help']]
         ]
       });
+</script>
+<script>
+  $(function() {
+    $('#toggle-two').bootstrapToggle({
+      on: 'Enabled',
+      off: 'Disabled'
+    });
+  })
 </script>
 @endpush
