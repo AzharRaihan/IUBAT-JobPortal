@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\User;
+use App\Models\Company;
 use App\Models\Contact;
+use App\Models\JobPost;
+use App\Models\ApplyJob;
+use App\Models\Category;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Company;
-use App\Models\JobPost;
-use App\Models\Subscriber;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -17,10 +20,10 @@ class FrontendController extends Controller
     {
         $data['categories'] = Category::where('status', 1)
         ->orderBy('category_name')->take(36)->get();
-        $data['jobPosts'] = JobPost::where('status',1)->latest()->take(40)->get();
-        $data['companyGovts'] = JobPost::where([['company_type','GOVT'],['status',1]])
+        $data['jobPosts'] = JobPost::where('status',1)->where('is_published',1)->latest()->take(40)->get();
+        $data['companyGovts'] = JobPost::where([['company_type','GOVT'],['status',1],['is_published',1]])
         ->latest()->take(4)->get();
-        $data['companyPvts'] = JobPost::where([['company_type','PVT'],['status',1]])
+        $data['companyPvts'] = JobPost::where([['company_type','PVT'],['status',1],['is_published',1]])
         ->latest()->take(4)->get();
         $data['companyCount'] = Company::count();
         $data['jobPostCount'] = JobPost::count();
@@ -83,5 +86,32 @@ class FrontendController extends Controller
     {
         $jobPost = JobPost::with('company')->where('id',$id)->first();
         return view('website.jobpost-details', compact('jobPost'));
+    }
+
+
+    public function applyTheJob($id)
+    {
+        if(Auth::user()){
+            $companyGet = User::where('id', Auth::user())->where('role_id', 2)->first();
+            if($companyGet != 2 ){
+                $findJob = JobPost::findOrFail($id);
+                ApplyJob::create([
+                    'company_id' => $findJob->company_id,
+                    'company_name' => $findJob->company_name,
+                    'user_id' => Auth::user()->id,
+                    'name' => Auth::user()->name,
+                    'email' => Auth::user()->email,
+                ]);
+                notify()->success("Success", "Successfully Apply");
+                return back();
+            }else{
+                notify()->error("Error", "Company Can't Apply The Job !!!");
+                return back();
+            }
+
+        }else{
+            notify()->info('Info', 'Please Login Firs');
+            return back();
+        }
     }
 }

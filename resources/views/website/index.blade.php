@@ -64,6 +64,7 @@
     font-size: 23px;
     color: #C2000C;
   }
+  
 </style>
 @endpush
 
@@ -79,7 +80,7 @@
               @csrf
               <div class="input-group mb-3">
                 <input type="text" class="form-control" id="typed4" placeholder="Search key word :" name="search">
-                <button class="btn contact-us-btn" type="submit" id="button-addon2"><i class="bi bi-search"></i> Search</button>
+                <button class="btn contact-us-btn" type="submit" id="button-addon2"><i class="bi bi-search"></i> Search Job</button>
               </div>
             </form>
             <div class="job-item-wrap">
@@ -210,7 +211,14 @@
             <a href="{{ route('jobpost.details', $jobPost->id) }}">
               <div class="job-card">
                 <div>
+                  @php
+                    $path = public_path('uploads/job-thumbnail/'. $jobPost->job_thumbnail)
+                  @endphp
+                  @if(File::exists($path))
                   <img src="{{ $jobPost->job_thumbnail != null ? asset('uploads/job-thumbnail/'. $jobPost->job_thumbnail) : asset('assets/application-default/img/gallery-default.png') }}" alt="{{ $jobPost->job_title }}" height="50" width="50">
+                  @else
+                  <img src="{{ asset('assets/application-default/img/gallery-default.png') }}" alt="{{ $jobPost->job_title }}" height="50" width="50">
+                  @endif
                 </div>
                 <div class="ps-2">
                   <p>{{ $jobPost->job_title }}</p>
@@ -221,7 +229,17 @@
           </div>
         </div>
         @empty
-          Not Found
+        <div class="col-12">
+          <div class="card empty">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+              <span>
+                <i class="fal fa-suitcase"></i>
+              </span>
+              <p class="py-1"><b>Sorry No Job Founds</b></p>
+              <p>Please Try Something else</p>
+            </div>
+          </div>
+        </div>
         @endforelse
       </div>
     </div>
