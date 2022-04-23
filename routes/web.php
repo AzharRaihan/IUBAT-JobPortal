@@ -28,15 +28,6 @@ Auth::routes();
 
 
 
-
-
-// Login Socialite
-// Route::group(['as' => 'login.', 'prefix' => 'login', 'namespace' => 'Auth'], function () {
-//     Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('provider');
-//     Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('callback');
-// });
-
-
 // Frontend
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
@@ -52,6 +43,7 @@ Route::get('/search-by-company', [SearchController::class, 'searchByCompany'])->
 // Search By Word
 Route::get('/search-by-word',[SearchController::class,'searchByWord'])->name('search.by.word');
 Route::get('/company-job-posts/{id}',[SearchController::class,'companyJobPosts'])->name('company.job.posts');
+Route::get('job-search', [SearchController::class,'jobSearch'])->name('job.search');
 
 
 

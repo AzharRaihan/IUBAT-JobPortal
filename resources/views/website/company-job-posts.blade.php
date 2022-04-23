@@ -41,10 +41,12 @@
     <div class="row">
       <div class="col-12">
         <div class="search-bar mb-3">
+          <form action="{{ route('job.search') }}" method="GET">
           <div class="input-group">
-            <input type="text" class="form-control" id="typed4" placeholder="Search key word :">
-            <button class="btn contact-us-btn" type="button" id="button-addon2"><i class="bi bi-search"></i> Search</button>
+            <input type="text" class="form-control" id="typed4" placeholder="Search key word :" name="search">
+            <button class="btn contact-us-btn" type="button" id="button-addon2"><i class="bi bi-search"></i> Search Job</button>
           </div>
+          </form>
         </div>
         <div class="search-body">
           @if (count($jobPosts) > 0)

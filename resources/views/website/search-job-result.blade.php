@@ -49,13 +49,11 @@
           </form>
         </div>
         <div class="search-body">
-          @if (count($companyType) > 0)
-          <h4 class="py-3 text-center">{{ $companyTypeName }} Jobs</h4>
           <div class="row">
-            @foreach ($companyType as $jobPost)
+            @forelse ($jobSearch as $result)
             <div class="col-md-6 col-item">
               <div class="card">
-                <a href="{{ route('jobpost.details',$jobPost->id) }}" target="blank">
+                <a href="{{ route('jobpost.details',$result->id) }}" target="blank">
                   <div class="row">
                     <div class="col-9">
                       <div class="logo pb-2">
@@ -65,50 +63,49 @@
                       <div class="d-flex justify-content-between">
                         <div class="description">
                           <div class="py-2">
-                            <h6><strong>{{ $jobPost->job_title }}</strong></h6>
-                            <span>{{ $jobPost->company_name }}</span>
+                            <h6><strong>{{ $result->job_title }}</strong></h6>
+                            <span>{{ $result->company_name }}</span>
                           </div>
                           <div class="d-flex">
                             <div class="item-i">
                               <i class="bi bi-geo-alt-fill"></i>
                             </div>
-                            <span>{{ $jobPost->job_location }}</span>
+                            <span>{{ $result->job_location }}</span>
                           </div>
                           <div class="d-flex">
                             <div class="item-i">
                               <i class="fas fa-graduation-cap"></i>
                             </div>
-                            <span>{{ $jobPost->req_degree }}</span>
+                            <span>{{ $result->req_degree }}</span>
                           </div>
                           <div class="d-flex">
                             <div class="item-i">
                               <i class="bi bi-calendar-check-fill"></i>
                             </div>
-                            <span>Published On : {{ date('F j, Y', strtotime($jobPost->published_on)) }}</span>
+                            <span>Published On : {{ date('F j, Y', strtotime($result->published_on)) }}</span>
                           </div>
                           <div class="d-flex">
                             <div class="item-i">
                               <i class="bi bi-calendar-check-fill"></i>
                             </div>
-                            <span>Application Deadline : {{ date('F j, Y', strtotime($jobPost->deadline)) }}</span>
+                            <span>Application Deadline : {{ date('F j, Y', strtotime($result->deadline)) }}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-3">
                       <div class="company-logo">
-                        <img src="{{ $jobPost->job_thumbnail != null ? asset('uploads/job-thumbnail/'. $jobPost->job_thumbnail) : asset('assets/application-default/img/gallery-default.png') }}" alt="job-thumbnail-image" height="70" width="70">
+                        <img src="{{ $result->job_thumbnail != null ? asset('uploads/job-thumbnail/'. $result->job_thumbnail) : asset('assets/application-default/img/gallery-default.png') }}" alt="job-thumbnail-image" height="70" width="70">
                       </div>
                     </div>
                   </div>
                 </a>
               </div>
             </div>
-            @endforeach
+            @empty
+              <span>Not Found</span>
+            @endforelse
           </div>
-          @else
-          No Job Found
-          @endif
         </div>
       </div>
     </div>

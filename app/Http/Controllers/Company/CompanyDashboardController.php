@@ -135,81 +135,89 @@ class CompanyDashboardController extends Controller
 
     public function storeJobPost(Request $request)
     {
-        $this->validate($request, [
-            'category_id' => 'required',
-            'job_title' => 'required|max:255',
-            'company_name' => 'required|max:200',
-            'company_type' => 'required|max:55',
-            'job_location' => 'required|max:255',
-            'published_on' => 'required|max:55',
-            'deadline' => 'required|max:55',
-            'req_degree' => 'required|max:300',
-            'age' => 'required|max:100',
-            'experience' => 'required|max:100',
-            'employment_status' => 'required|max:100',
-            'vacancy' => 'required|max:55',
-            'salary' => 'required|max:8',
-            'report' => 'required|max:300',
-            'description' => 'required',
-            'job_thumbnail' => 'required|mimes:jpg,bmp,png,jpeg',
-        ]); 
-        // Get Job Thumbnail for store
-        if($request->hasfile('job_thumbnail'))
-        {
-            $file = $request->file('job_thumbnail');
-            $extension = $file->extension();
-            $fileName = time() . '.' . $extension;
+        $authUserID = Auth::user()->id;
+        $companyId = Company::where('user_id', $authUserID)->exists();
+        if($companyId == true){
+            $this->validate($request, [
+                'category_id' => 'required',
+                'job_title' => 'required|max:255',
+                'company_name' => 'required|max:200',
+                'company_type' => 'required|max:55',
+                'job_location' => 'required|max:255',
+                'published_on' => 'required|max:55',
+                'deadline' => 'required|max:55',
+                'req_degree' => 'required|max:300',
+                'age' => 'required|max:100',
+                'experience' => 'required|max:100',
+                'employment_status' => 'required|max:100',
+                'vacancy' => 'required|max:55',
+                'salary' => 'required|max:8',
+                'report' => 'required|max:300',
+                'description' => 'required',
+                'job_thumbnail' => 'required|mimes:jpg,bmp,png,jpeg',
+            ]); 
+            // Get Job Thumbnail for store
+            if($request->hasfile('job_thumbnail'))
+            {
+                $file = $request->file('job_thumbnail');
+                $extension = $file->extension();
+                $fileName = time() . '.' . $extension;
+            }
+            // Get Body Data
+            $content = $request->description;
+            // Disable libxml errors and allow user to fetch error information
+            libxml_use_internal_errors(true);
+            // Body content object create
+            $dom = new \DomDocument();
+            // Load HTML from a string
+            $dom->loadHtml('<?xml encoding="utf-8" ?>' . $content); //Language Support for Bangla
+            // Get image name from summer note editor
+            $imageFile = $dom->getElementsByTagName('imageFile');
+            // Fetch Images And Store
+            foreach($imageFile as $item => $image){
+                $data = $image->getAttribute('src');
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $imgeData = base64_decode($data);
+                $image_name= "upload/" . time().$item.'.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_name);
+            }
+            $content = $dom->saveHTML();
+    
+            $authUser = Auth::user()->id;
+            $companyId = Company::where('user_id', $authUser)->first();
+            $jobPost = new JobPost();
+            $jobPost->company_id = $companyId->id;
+            $jobPost->category_id = $request->category_id;
+            $jobPost->job_title = $request->job_title;
+            $jobPost->company_name = $request->company_name;
+            $jobPost->slug = Str::slug($request->job_title) . '-' . time();
+            $jobPost->company_type = $request->company_type;
+            $jobPost->job_location = $request->job_location;
+            $jobPost->published_on = $request->published_on;
+            $jobPost->deadline = $request->deadline;
+            $jobPost->req_degree = $request->req_degree;
+            $jobPost->age = $request->age;
+            $jobPost->experience = $request->experience;
+            $jobPost->employment_status = $request->employment_status;
+            $jobPost->vacancy = $request->vacancy;
+            $jobPost->salary = $request->salary;
+            $jobPost->report = $request->report;
+            $jobPost->description = $request->description;
+            $jobPost->job_thumbnail = $fileName;
+            $jobPost->status = $request->filled('status');
+            $jobPost->save();
+            $file->move('uploads/job-thumbnail/', $fileName);
+            notify()->success('Success','Successfully Created');
+            return back();
+        }else{
+            notify()->error('Error','Please Complete Profile First');
+            return back();
         }
-        // Get Body Data
-        $content = $request->description;
-        // Disable libxml errors and allow user to fetch error information
-        libxml_use_internal_errors(true);
-        // Body content object create
-        $dom = new \DomDocument();
-        // Load HTML from a string
-        $dom->loadHtml('<?xml encoding="utf-8" ?>' . $content); //Language Support for Bangla
-        // Get image name from summer note editor
-        $imageFile = $dom->getElementsByTagName('imageFile');
-        // Fetch Images And Store
-        foreach($imageFile as $item => $image){
-            $data = $image->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name= "upload/" . time().$item.'.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $image_name);
-        }
-        $content = $dom->saveHTML();
-
-        $authUser = Auth::user()->id;
-        $companyId = Company::where('user_id', $authUser)->first();
-        $jobPost = new JobPost();
-        $jobPost->company_id = $companyId->id;
-        $jobPost->category_id = $request->category_id;
-        $jobPost->job_title = $request->job_title;
-        $jobPost->company_name = $request->company_name;
-        $jobPost->slug = Str::slug($request->job_title) . '-' . time();
-        $jobPost->company_type = $request->company_type;
-        $jobPost->job_location = $request->job_location;
-        $jobPost->published_on = $request->published_on;
-        $jobPost->deadline = $request->deadline;
-        $jobPost->req_degree = $request->req_degree;
-        $jobPost->age = $request->age;
-        $jobPost->experience = $request->experience;
-        $jobPost->employment_status = $request->employment_status;
-        $jobPost->vacancy = $request->vacancy;
-        $jobPost->salary = $request->salary;
-        $jobPost->report = $request->report;
-        $jobPost->description = $request->description;
-        $jobPost->job_thumbnail = $fileName;
-        $jobPost->status = $request->filled('status');
-        $jobPost->save();
-        $file->move('uploads/job-thumbnail/', $fileName);
-        notify()->success('Success','Successfully Created');
-        return back();
+        
     }
 
     public function editJobPost($id)

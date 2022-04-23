@@ -1,23 +1,68 @@
-<div class="nav flex-column nav-pills mt-4 px-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <!-- Dashboard List -->
-  <li class="element-items mb-2  active" id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true"><i class="bi bi-speedometer2"></i> Dashboard</li>
+<div class="card">
+  <form action="{{ route('user.update.avater') }}" method="POST" enctype="multipart/form-data"> 
+    @csrf
+    @method('put')
+    <div class="d-flex align-items-center border-bottom">
+      <div class="form-group user-avater mt-4">
+        <div class="avatar-upload">
+          <div class="avatar-edit">
+            <input type='file' id="imageUpload" name="profile_photo" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"><i class="bi bi-camera" data-bs-toggle="tooltip" data-bs-placement="right" title="Select an Image"></i></label>
+          </div>
+          <div class="avatar-preview">
+            @if(Auth::user()->profile_photo != null)
+            <div id="imagePreview" style="background-image: url({{ asset('uploads/users/profile-pic/'. Auth::user()->profile_photo) }});">
+            </div>
+            @else
+            <div id="imagePreview" style="background-image: url({{ asset('assets/application-default/img/user.png') }});">
+            </div>
+            @endif
+          </div>
+        </div>
+      </div>
+      <div class="description ps-3">
+        <span>Hello</span>
+        <h5>{{ Auth::user()->name }}</h5>
+      </div>
+    </div>
+    <button type="submit" class="btn update-avater">
+      <i class="bi bi-check2-circle" data-bs-toggle="tooltip" data-bs-placement="right" title="Clic To Update"></i>
+    </button>
+  </form>
+  <!-- User Sidebar -->
+  <div class="nav flex-column mt-4 px-2">
 
-  <!-- Edit Profile List -->
-  <li class="element-items mb-2" id="v-pills-edit-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-edit-profile" role="tab" aria-controls="v-pills-edit-profile" aria-selected="false"><i class="bi bi-pencil-square"></i> Edit Profile</li>
+    <!-- Dashboard List -->
+    <a href="{{ route('user.dashboard') }}">
+      <li class="element-items mb-2  active"><i class="bi bi-speedometer2"></i> Dashboard</li>
+    </a>
+  
+    <!-- Edit Profile List -->
+    <a href="{{ route('user.edit.profile') }}">
+      <li class="element-items mb-2"><i class="bi bi-pencil-square"></i> Edit Profile</li>
+    </a>
+  
+    <!-- Change Password List -->
+    <a href="{{ route('user.change.password') }}">
+      <li class="element-items mb-2"><i class="bi bi-key"></i> Change Password</li>
+    </a>
 
-  <!-- Change Password List -->
-  <li class="element-items mb-2" id="v-pills-change-password-tab" data-bs-toggle="pill" data-bs-target="#v-pills-change-password" role="tab" aria-controls="v-pills-change-password" aria-selected="false"><i class="bi bi-key"></i> Change Password</li>
-
-  <!-- Setting List -->
-  <li class="element-items mb-2" id="v-pills-resume-tab" data-bs-toggle="pill" data-bs-target="#v-pills-resume" role="tab" aria-controls="v-pills-resume" aria-selected="false"><i class="fal fa-briefcase"></i> Resume</li>
-
-  <!-- Logout List -->
-  <li class="element-items mb-2" id="v-pills-signout-tab" data-bs-toggle="pill" data-bs-target="#v-pills-signout" role="tab" aria-controls="v-pills-signout" aria-selected="false">
-    <a href="javascript:void(0);" onclick="event.preventDefault();
-    document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right"></i> Sign Out
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-      @csrf
-    </form>
-  </a>
-  </li>
+    <!-- Resume -->
+    <a href="{{ route('user.resume') }}">
+      <li class="element-items mb-2"><i class="bi bi-file-arrow-up"></i>CV/Resume</li>
+    </a>
+  
+  
+    <!-- Logout List -->
+    <li class="element-items mb-2">
+      <a href="javascript:void(0);" onclick="event.preventDefault();
+      document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-right"></i> Sign Out
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+      </form>
+      </a>
+    </li>
+  </div>
 </div>
+
+
