@@ -35,4 +35,21 @@ class SearchController extends Controller
         return view('website.company-job-posts', $data);
     }
 
+
+    public function jobSearch(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+        // Search in the title
+        $jobSearch = JobPost::where('job_title', 'LIKE', "%{$search}%")
+        ->orWhere('company_name', 'LIKE', "%{$search}%")
+        ->orWhere('company_type', 'LIKE', "%{$search}%")
+        ->orWhere('job_location', 'LIKE', "%{$search}%")
+        ->where('status', true)
+        ->where('is_published', true)
+        ->get();
+        return view('website.search-job-result', compact('jobSearch'));
+    
+    }
+
 }

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
+use App\Models\Thana;
+use App\Models\District;
 use Illuminate\Http\Request;
 use Laravel\Ui\Presets\React;
 use App\Http\Controllers\Controller;
+use App\Models\Resume;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +43,35 @@ class UserDashboardController extends Controller
         return back();
     }
 
+    public function editProfile()
+    {
+        $data['districts'] = District::orderBy('district_name')->get();
+        $data['thanas'] = Thana::orderBy('thana_name')->get();
+        return view('user.user-profile-edit', $data);
+    }
+
+
+    public function profileUpdate(Request $request)
+    {
+        $user = Auth::user();
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'gender' => $request->gender,
+            'bio' => $request->bio,
+        ]);
+        notify()->success('User Successfully Updated.', 'Updated');
+        return back();
+    }
+
+
+
+    public function changePassword()
+    {
+        return view('user.user-change-password');
+    }
     // Change Password
     public function updatePassword(Request $request)
     {
@@ -55,34 +87,54 @@ class UserDashboardController extends Controller
                     'password' => Hash::make($request->password)
                 ]);
                 Auth::logout();
-                notify()->success('Password Successfully Changed.', 'Success');
+                notify()->success('Success','Password Successfully Changed');
                 return redirect()->route('login');
             } else {
-                notify()->warning('New password cannot be the same as old password.', 'Warning');
+                notify()->warning('Warning', 'New password cannot be the same as old password');
             }
         } else {
-            notify()->error('Current password not match.', 'Error');
+            notify()->error('Error','Current password not match');
         }
         return redirect()->back();
     }
-    // Edit Profile
-    public function editProfile(Request $request)
+
+
+    public function resume()
     {
-        $user = Auth::user();
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'gender' => $request->gender,
-            'bio' => $request->bio,
-        ]);
-        notify()->success('User Successfully Updated.', 'Updated');
-        return back();
+        return view('user.user-resume');
     }
-    // Setting
-    public function setting(Request $request)
+
+    public function storeResume(Request $request)
     {
-        //
+        
+        // Validation Check
+        // $this->validate($request, [
+        //     'resume' => 'required|mimes:pdf,doc',
+        // ]);
+        $authUserID = Auth::user()->id;
+        $existResume = Resume::where('user_id', $authUserID)->exists();
+
+        if($existResume == false){
+            if($request->hasfile('resume'))
+            {
+                $file = $request->file('resume');
+                $extension = $file->getClientOriginalExtension();
+                $fileName = time() . '.' . $extension;
+            }
+            // Resume
+            $resume = new Resume();
+            $resume->user_id = $authUserID;
+            $resume->resume = $fileName;
+            $file->move('uploads/users/resume/', $fileName);
+            $resume->save();
+            notify()->success('Success','Successfully Sumbitted');
+            return back();
+        }else{
+            notify()->info('Info','Resume Already Uploaded');
+            return back();
+        }
+
+
+        
     }
 }

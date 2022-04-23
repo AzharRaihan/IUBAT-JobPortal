@@ -75,10 +75,13 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" id="typed4" placeholder="Search key word :">
-              <button class="btn contact-us-btn" type="button" id="button-addon2"><i class="bi bi-search"></i> Search</button>
-            </div>
+            <form action="{{ route('job.search') }}" method="GET">
+              @csrf
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="typed4" placeholder="Search key word :" name="search">
+                <button class="btn contact-us-btn" type="submit" id="button-addon2"><i class="bi bi-search"></i> Search</button>
+              </div>
+            </form>
             <div class="job-item-wrap">
               <div class="job-item text-center mx-3">
                 <i class="bi bi-building m-0"></i>

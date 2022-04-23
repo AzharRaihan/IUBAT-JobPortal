@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\ApprovedJobController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ProfileSettingController;
-
+use App\Http\Controllers\Admin\ResumeContrller;
 
 //Admin Routes
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
@@ -45,6 +45,8 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::put('company/reject-job-post/{id}',[CompanyController::class, 'rejectJobPost'])->name('company.reject.job.post');
     Route::resource('pending-job', PendingJobController::class);
     Route::resource('approved-job', ApprovedJobController::class);
+    Route::resource('resume', ResumeContrller::class);
+
 });
 
 // Setting Routes

@@ -33,7 +33,7 @@
                   </div>
                 </a>
               </div>
-              <div class="col-md-4">
+              {{-- <div class="col-md-4">
                 <a href="javascript:void(0)">
                   <div class="card card-element">
                     <h6>View Resume</h6>
@@ -48,7 +48,7 @@
                     <i class="fal fa-briefcase"></i>
                   </div>
                 </a>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>

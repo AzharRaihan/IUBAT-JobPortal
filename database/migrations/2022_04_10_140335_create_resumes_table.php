@@ -15,10 +15,12 @@ class CreateResumesTable extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->text('title')->nullable();
-            $table->text('resume_des')->nullable();
-            $table->string('cv', 55)->nullable();
-            $table->boolean('status')->nullable();
+            $table->foreignId('user_id')
+            ->constrained()
+            ->cascadeOnUpdate()
+            ->cascadeOnDelete();
+            $table->string('resume', 55)->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
