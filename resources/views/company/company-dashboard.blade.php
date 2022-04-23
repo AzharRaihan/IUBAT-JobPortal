@@ -26,9 +26,9 @@
           <div class="card p-3">
             <div class="row">
               <div class="col-md-4">
-                <a href="javascript:void(0)">
+                <a href="{{ route('company.all.posted.jobs') }}">
                   <div class="card card-element">
-                    <h6>Applied Jobs</h6>
+                    <h6>All Posted Jobs</h6>
                     <i class="fas fa-suitcase"></i>
                   </div>
                 </a>

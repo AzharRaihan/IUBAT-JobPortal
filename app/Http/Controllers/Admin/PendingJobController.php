@@ -15,7 +15,7 @@ class PendingJobController extends Controller
      */
     public function index()
     {
-        $jobPosts = JobPost::with('company')->where('is_published', 0)->latest()->get();
+        $jobPosts = JobPost::with('company')->where([['is_published', 0], ['status', 1]])->latest()->get();
         return view('admin.pending-jobs.pending-job-list', compact('jobPosts'));
     }
 

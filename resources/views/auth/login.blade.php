@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/application-default/css/custom-log-reg.css') }}">
-    <title>USER | LOGIN</title>
+    <title>LOGIN</title>
     <style>
         .login-page{
             width: 100%;
@@ -26,7 +26,7 @@
             <div class="login-child  p-4">
                 <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <h5 class="text-center">User Login</h5>
+                    <h5 class="text-center">Login</h5>
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror">

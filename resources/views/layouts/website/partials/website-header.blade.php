@@ -53,7 +53,7 @@
                   <h5>Companies</h5>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, commodi!</p>
                   <div class="d-flex login-signup">
-                    <a href="{{ route('company.login') }}" class="btn btn-sm login">Login</a>
+                    <a href="{{ route('login') }}" class="btn btn-sm login">Login</a>
                     <a href="{{ route('company.register') }}" class="btn btn-sm signup">Sign Up</a>
                   </div>
                 </div>

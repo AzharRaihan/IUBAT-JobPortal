@@ -59,3 +59,5 @@ Route::get('/company-job-posts/{id}',[SearchController::class,'companyJobPosts']
 
 
 
+
+

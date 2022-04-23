@@ -135,10 +135,10 @@ class CompanyDashboardController extends Controller
 
     public function storeJobPost(Request $request)
     {
-
         $this->validate($request, [
             'category_id' => 'required',
             'job_title' => 'required|max:255',
+            'company_name' => 'required|max:200',
             'company_type' => 'required|max:55',
             'job_location' => 'required|max:255',
             'published_on' => 'required|max:55',
@@ -190,6 +190,7 @@ class CompanyDashboardController extends Controller
         $jobPost->company_id = $companyId->id;
         $jobPost->category_id = $request->category_id;
         $jobPost->job_title = $request->job_title;
+        $jobPost->company_name = $request->company_name;
         $jobPost->slug = Str::slug($request->job_title) . '-' . time();
         $jobPost->company_type = $request->company_type;
         $jobPost->job_location = $request->job_location;
@@ -204,6 +205,7 @@ class CompanyDashboardController extends Controller
         $jobPost->report = $request->report;
         $jobPost->description = $request->description;
         $jobPost->job_thumbnail = $fileName;
+        $jobPost->status = $request->filled('status');
         $jobPost->save();
         $file->move('uploads/job-thumbnail/', $fileName);
         notify()->success('Success','Successfully Created');
@@ -212,8 +214,9 @@ class CompanyDashboardController extends Controller
 
     public function editJobPost($id)
     {
-        $jobPostEdit = JobPost::findOrFail($id);
-        return view('company.create-edit-job-post', compact('jobPostEdit'));
+        $data['jobPostEdit'] = JobPost::findOrFail($id);
+        $data['categories'] = Category::orderBy('category_name')->get();
+        return view('company.create-edit-job-post', $data);
     }
 
     public function updateJobPost(Request $request, $id)
@@ -262,10 +265,12 @@ class CompanyDashboardController extends Controller
         $content = $dom->saveHTML();
         $jobPostUp->update([
             'job_title' => $request->job_title,
-            'slug' => $jobPostSlug,
             'company_name' => $request->company_name,
+            'slug' => $jobPostSlug,
+            'company_type' => $request->company_type,
             'job_location' => $request->job_location,
             'published_on' => $request->published_on,
+            'category_id' => $request->category_id,
             'deadline' => $request->deadline,
             'req_degree' => $request->req_degree,
             'age' => $request->age,
@@ -276,8 +281,32 @@ class CompanyDashboardController extends Controller
             'report' => $request->report,
             'description' => $request->description,
             'job_thumbnail' => $fileName,
+            'status' => $request->filled('status'),
         ]);
         notify()->success('Update','Successfully Updated');
+        return back();
+    }
+
+
+    public function allPostedJobs()
+    {
+        $authCompanyId = Auth::user()->company->id;
+        $allPostedJobs = JobPost::where('company_id', $authCompanyId)->latest()->get();
+        return view('company.all-posted-jobs', compact('allPostedJobs'));
+    }
+
+    public function editPostedJob($id)
+    {
+        $jobPost = JobPost::findOrFail($id);
+        return view('company.create-edit-job-post', compact('jobPost'));
+
+    }
+
+    public function deletePostedJob($id)
+    {
+        $jobPost = JobPost::findOrFail($id);
+        $jobPost->delete();
+        notify()->success('Delete','Successfully Deleted');
         return back();
     }
 
