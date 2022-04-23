@@ -6,7 +6,7 @@
     /* padding: 20px 15px; */
   }
   .card-title{
-    background: #C2000C;
+    background: #002B36;
     padding: 6px 10px;
     color: white;
     border-top-left-radius: 5px;
@@ -16,7 +16,7 @@
     padding: 6px 12px 15px 12px;
   }
   .logo i{
-    color: #C2000C;
+    color: #002B36;
     font-size: 18px;
   }
   .description{
@@ -58,6 +58,9 @@
         <div class="card">
           <div class="card-body">
             <p>{!! $jobPost->description !!}</p>
+            <div class="text-center">
+              <a href="{{ route('apply.the.job', $jobPost->id) }}" class="btn site-btn ">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
+            </div>
           </div>
         </div>
       </div>

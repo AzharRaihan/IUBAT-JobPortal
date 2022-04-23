@@ -44,6 +44,7 @@ Route::get('/search-by-company', [SearchController::class, 'searchByCompany'])->
 Route::get('/search-by-word',[SearchController::class,'searchByWord'])->name('search.by.word');
 Route::get('/company-job-posts/{id}',[SearchController::class,'companyJobPosts'])->name('company.job.posts');
 Route::get('job-search', [SearchController::class,'jobSearch'])->name('job.search');
+Route::get('apply-the-job/{id}', [FrontendController::class,'applyTheJob'])->name('apply.the.job');
 
 
 
