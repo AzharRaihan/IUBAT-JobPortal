@@ -16,7 +16,7 @@
     align-items: center;
   }
   .form-control{
-    border: 1px solid #c2000c;
+    border: 1px solid #002B36;
   }
   .card{
     height: 100%;
@@ -62,7 +62,7 @@
   }
   .hto-job-title i{
     font-size: 23px;
-    color: #C2000C;
+    color: #002B36;
   }
   
 </style>

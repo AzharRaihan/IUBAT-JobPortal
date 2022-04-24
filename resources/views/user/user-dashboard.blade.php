@@ -1,5 +1,5 @@
 @extends('layouts.website.website-layouts')
-@section('page-title', '')
+@section('page-title', '{{ Auth::user()->name }} | Dashboard')
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
 <style>
@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     padding: 30px 0px;
-    border-top: 3px solid #C1000C;
+    border-top: 3px solid #002B36;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
   }

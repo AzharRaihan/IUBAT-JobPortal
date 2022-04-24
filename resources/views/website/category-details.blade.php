@@ -6,7 +6,7 @@
     padding: 20px 15px;
   }
   .logo i{
-    color: #C2000C;
+    color: #002B36;
     font-size: 18px;
   }
   .description{
