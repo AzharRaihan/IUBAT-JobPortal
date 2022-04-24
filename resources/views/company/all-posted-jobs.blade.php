@@ -1,5 +1,8 @@
 @extends('layouts.website.website-layouts')
-@section('page-title',  '{{ Auth::user()->company->company_name }}| All Posted Jobs')
+@section('page-title')
+{{ Auth::user()->company->company_name }} | All Posted Jobs
+@endsection
+
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
   <!-- DataTables -->

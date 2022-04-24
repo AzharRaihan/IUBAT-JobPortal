@@ -18,8 +18,10 @@ class FrontendController extends Controller
     // Index/Home Page
     public function index()
     {
-        $data['categories'] = Category::where('status', 1)
-        ->orderBy('category_name')->take(36)->get();
+        $data['categories'] = Category::withCount('jobPost')->whereHas('jobPost', function ($query) {
+            return $query->where('status', 1)->where('is_published', 1);
+        })->where('status', 1)->orderBy('category_name')->take(36)->get();
+
         $data['jobPosts'] = JobPost::where('status',1)->where('is_published',1)->latest()->take(40)->get();
         $data['companyGovts'] = JobPost::where([['company_type','GOVT'],['status',1],['is_published',1]])
         ->latest()->take(4)->get();
@@ -79,7 +81,7 @@ class FrontendController extends Controller
     }
     public function category($id)
     {
-        $jobPosts = JobPost::where('category_id', $id)->latest()->get();
+        $jobPosts = JobPost::where('category_id', $id)->where('status', 1)->where('is_published', 1)->latest()->get();
         return view('website.category-details', compact('jobPosts'));
     }
     public function jobPostDetails($id)
@@ -92,8 +94,9 @@ class FrontendController extends Controller
     public function applyTheJob($id)
     {
         if(Auth::user()){
-            $companyGet = User::where('id', Auth::user())->where('role_id', 2)->first();
-            if($companyGet != 2 ){
+            $authId = Auth::user()->id;
+            $companyGet = User::where('id', $authId)->first();
+            if($companyGet->role_id != 2 ){
                 $findJob = JobPost::findOrFail($id);
                 ApplyJob::create([
                     'company_id' => $findJob->company_id,

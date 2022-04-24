@@ -1,5 +1,7 @@
 @extends('layouts.website.website-layouts')
-@section('page-title', "{{ isset($jobPostEdit) ? 'Edit Job Post' : 'Create Job Post' }}")
+@section('page-title')
+{{ Auth::user()->company->company_name }} | {{ isset($jobPostEdit) ? 'Edit Job Post' : 'Create Job Post' }}
+@endsection
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
 <!-- Summernote Css CDN -->
@@ -87,7 +89,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="company-type" class="form-label">Company Type</label>
                   <select class="form-control js-example-basic-single" name="company_type" id="company-type">
-                    <option selected disable>(: Company Type :)</option>
+                    <option selected disabled>(: Company Type :)</option>
                       <option {{ isset($jobPostEdit) ? $jobPostEdit->company_type == 'GOVT' ? 'selected' : '' : '' }} value="GOVT">Government</option>
                       <option {{ isset($jobPostEdit) ? $jobPostEdit->company_type == 'PVT' ? 'selected' : '' : '' }} value="PVT">Private</option>
                   </select>
@@ -95,7 +97,7 @@
                 <div class="col-md-6  mb-3">
                   <label for="category-id" class="form-label">Select Job Category</label>
                   <select class="form-control js-example-basic-single" name="category_id" id="category-id">
-                    <option selected disable>(: Select Category :)</option>
+                    <option selected disabled>(: Select Category :)</option>
                     @foreach ($categories as $category)
                       <option 
                       @isset($jobPostEdit)  

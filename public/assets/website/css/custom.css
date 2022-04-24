@@ -154,6 +154,7 @@
     padding: 30px 0px;
     justify-content: center;
     margin: 0 auto;
+    background: rgba(166, 243, 242, 0.7) !important; 
 }
 .empty i{
     display: flex;

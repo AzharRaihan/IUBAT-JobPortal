@@ -270,11 +270,11 @@ body{
             @else
             <div class="card empty">
                 <div class="d-flex justify-content-center align-items-center flex-column">
-                <span>
-                    <i class="fal fa-suitcase"></i>
-                </span>
-                <p class="py-1"><b>Sorry No Job Founds</b></p>
-                <p>Please Try Something else</p>
+                    <span>
+                        <i class="bi bi-building"></i>
+                    </span>
+                    <p class="py-1"><b>Sorry No Company Founds</b></p>
+                    <p>Please Try Something else</p>
                 </div>
             </div>
             @endif
@@ -445,11 +445,11 @@ body{
             @else
             <div class="card empty">
                 <div class="d-flex justify-content-center align-items-center flex-column">
-                <span>
-                    <i class="fal fa-suitcase"></i>
-                </span>
-                <p class="py-1"><b>Sorry No Job Founds</b></p>
-                <p>Please Try Something else</p>
+                    <span>
+                        <i class="bi bi-building"></i>
+                    </span>
+                    <p class="py-1"><b>Sorry No Company Founds</b></p>
+                    <p>Please Try Something else</p>
                 </div>
             </div>
             @endif

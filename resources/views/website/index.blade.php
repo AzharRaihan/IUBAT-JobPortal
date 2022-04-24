@@ -113,14 +113,22 @@
             </h6>
             <div class="row">
               @forelse ($categories as $category)
-              <div class="col-md-4 py-1">
-                <a href="{{ route('category', $category->id) }}">
-                  <i class="fal fa-arrow-alt-circle-right"></i>
-                  <span>{{ $category->category_name }}</span>
-                </a>
-              </div>
+                <div class="col-md-4 py-1">
+                  <a href="{{ route('category', $category->id) }}">
+                    <i class="fal fa-arrow-alt-circle-right"></i>
+                    <span>{{ $category->category_name }}</span>
+                    <span>({{ $category->job_post_count }})</span>
+                  </a>
+                </div>
               @empty
-              Not Found
+              <div class="card empty">
+                <div class="d-flex justify-content-center align-items-center flex-column">
+                  <span>
+                    <i class="far fa-list-ul"></i>
+                  </span>
+                  <p class="py-1"><b>Sorry No Category Founds</b></p>
+                </div>
+              </div>
               @endforelse
             </div>
           </div>
@@ -136,7 +144,7 @@
                 @forelse ($companyGovts as $companyGovt)
                   <li><a href="{{ route('jobpost.details', $companyGovt->id) }}"><i class="fal fa-caret-circle-right"></i>{{ $companyGovt->job_title }}</a></li>
                 @empty
-                  Not Found
+                  <span>No Job Yet</span>
                 @endforelse
               </ul>
               <div class="see-all">
@@ -152,7 +160,7 @@
                 @forelse ($companyPvts as $companyPvt)
                   <li><a href="{{ route('jobpost.details', $companyPvt->id) }}"><i class="fal fa-caret-circle-right"></i>{{ $companyPvt->job_title }}</a></li>
                 @empty
-                  Not Found
+                  <span>No Job Yet</span>
                 @endforelse
               </ul>
               <div class="see-all">
@@ -230,7 +238,7 @@
         </div>
         @empty
         <div class="col-12">
-          <div class="card empty">
+          <div class="card empty ">
             <div class="d-flex justify-content-center align-items-center flex-column">
               <span>
                 <i class="fal fa-suitcase"></i>
