@@ -1,16 +1,13 @@
 @extends('layouts.website.website-layouts')
-@section('page-title', 'Category-Details')
+@section('page-title', 'Company Types')
 @push('page-style')
 <style>
   .card{
     padding: 20px 15px;
   }
   .logo i{
-    color: #C2000C;
+    color: #002B36;
     font-size: 18px;
-  }
-  .description{
-
   }
   .description .item-i{
     width: 30px;
@@ -26,16 +23,12 @@
   .card:hover{
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
-  a{
-    color: 
-  }
   .company-logo img{
     object-fit: cover;
   }
 </style>
 @endpush
 @section('page-content')
-
 <section>
   <div class="container">
     <div class="row">
@@ -131,8 +124,6 @@
     </div>
   </div>
 </section>
-
-
 @endsection
 @push('page-script')
   <script src="{{ asset('assets/website/js/typed.js') }}"></script>

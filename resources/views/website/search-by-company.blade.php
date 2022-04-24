@@ -1,5 +1,5 @@
 @extends('layouts.website.website-layouts')
-@section('page-title', '')
+@section('page-title', 'Search By Company Name')
 @push('page-style')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"/>
 <style>
@@ -10,7 +10,7 @@
 .search-menu ul li form > [type=submit] {
   border: 0;
   background: none;
-  color: #8A0000;
+  color: #002B36;
   font-weight: 500;
   width: 20px;
   background: #858585;

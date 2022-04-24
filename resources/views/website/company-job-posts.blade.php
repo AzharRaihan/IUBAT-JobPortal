@@ -1,12 +1,12 @@
 @extends('layouts.website.website-layouts')
-@section('page-title', 'Category-Details')
+@section('page-title', 'Companies Job Post')
 @push('page-style')
 <style>
   .card{
     padding: 20px 15px;
   }
   .logo i{
-    color: #C2000C;
+    color: #002B36;
     font-size: 18px;
   }
   .description{

@@ -6,11 +6,8 @@
     padding: 20px 15px;
   }
   .logo i{
-    color: #C2000C;
+    color: #002B36;
     font-size: 18px;
-  }
-  .description{
-
   }
   .description .item-i{
     width: 30px;
@@ -25,9 +22,6 @@
   }
   .card:hover{
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  }
-  a{
-    color: 
   }
   .company-logo img{
     object-fit: cover;

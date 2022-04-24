@@ -48,7 +48,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::resource('resume', ResumeContrller::class);
 
 });
-
 // Setting Routes
 Route::group(['as' => 'admin.setting.', 'prefix' => 'admin/setting'], function(){
     Route::get('generel', [SettingController::class, 'generel'])->name('generel');
@@ -56,8 +55,6 @@ Route::group(['as' => 'admin.setting.', 'prefix' => 'admin/setting'], function()
     Route::put('appearance-update', [SettingController::class, 'appearanceUpdate'])->name('appearance.update');
     Route::put('mail-update', [SettingController::class, 'mailUpdate'])->name('mail.update');
 });
-
-
 // Admin Login
 Route::get('admin/login', [AdminLoginController::class, 'adminLogin'])->name('admin.login');
 Route::post('admin/login/check', [AdminLoginController::class, 'adminLoginCheck'])->name('admin.login.check');
