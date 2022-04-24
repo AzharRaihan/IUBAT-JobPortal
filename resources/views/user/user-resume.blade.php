@@ -1,5 +1,7 @@
 @extends('layouts.website.website-layouts')
-@section('page-title', '{{ Auth::user()->name }} | Resume')
+@section('page-title')
+{{ Auth::user()->name }} | Resume
+@endsection
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
 <style>

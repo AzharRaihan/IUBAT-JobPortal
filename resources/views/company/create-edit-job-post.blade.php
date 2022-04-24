@@ -1,5 +1,7 @@
 @extends('layouts.website.website-layouts')
-@section('page-title', "{{ isset($jobPostEdit) ? 'Edit Job Post' : 'Create Job Post' }}")
+@section('page-title')
+{{ Auth::user()->company->company_name }} | {{ isset($jobPostEdit) ? 'Edit Job Post' : 'Create Job Post' }}
+@endsection
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
 <!-- Summernote Css CDN -->

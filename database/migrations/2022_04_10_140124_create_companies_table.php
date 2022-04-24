@@ -19,7 +19,10 @@ class CreateCompaniesTable extends Migration
             ->constrained()
             ->cascadeOnUpdate()
             ->cascadeOnDelete();
+
             $table->unsignedBigInteger('industry_id');
+
+
             $table->string('company_name', 150)->nullable();
             $table->string('entrepreneur', 10)->nullable();
             $table->text('company_address', 300)->nullable();
