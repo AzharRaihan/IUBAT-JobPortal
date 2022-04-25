@@ -126,7 +126,7 @@
                   <span>
                     <i class="far fa-list-ul"></i>
                   </span>
-                  <p class="py-1"><b>Sorry No Category Founds</b></p>
+                  <p class="py-1"><b> No Category Available</b></p>
                 </div>
               </div>
               @endforelse
@@ -181,7 +181,7 @@
         <div class="row counters">
           <div class="col-lg-3 col-6 text-center">
             <span><i class="fal fa-suitcase"></i></span>
-            <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
             <p>Total Jobs</p>
           </div>
           <div class="col-lg-3 col-6 text-center">

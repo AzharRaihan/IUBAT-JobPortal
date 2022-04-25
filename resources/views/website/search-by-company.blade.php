@@ -260,7 +260,7 @@ body{
                     </a>
                 </div>
                 <div class="Numojob">
-                    {{ count($company->jobPost) }}
+                    {{ $company->job_post_count }}
                 </div>
                 </div>
                 @endforeach
@@ -435,7 +435,7 @@ body{
                 </a>
               </div>
               <div class="Numojob">
-                  {{ count($company->jobPost) }}
+                  {{ $company->job_post_count }}
               </div>
             </div>
             @endforeach
