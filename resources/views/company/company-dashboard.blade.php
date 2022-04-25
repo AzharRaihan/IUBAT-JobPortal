@@ -1,6 +1,6 @@
 @extends('layouts.website.website-layouts')
 @section('page-title')
-{{ Auth::user()->company->company_name }} | Dashboard
+{{ isset($companyId) ? $companyId != null ? Auth::user()->company->company_name . ' |  Dashboard' : 'Company Dashboard' : 'Company Dashboard' }}
 @endsection
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">

@@ -101,7 +101,7 @@ margin-left: 10px;}
   top: -63px;
 }
 .update-avater i{
-  color: #77090A;
+  color: #002B36;
   font-size: 25px;
   cursor: pointer;
 }
@@ -117,8 +117,8 @@ input{
 
 .btn-check:active+.btn-outline-primary, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show, .btn-outline-primary:active {
   color: #fff;
-  background-color: #C1000C;
-  border-color: #C1000C;
+  background-color: #002B36;
+  border-color: #002B36;
 }
 .btn-outline-primary {
   color: #002B36;

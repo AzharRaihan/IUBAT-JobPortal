@@ -1,6 +1,6 @@
 @extends('layouts.website.website-layouts')
 @section('page-title')
-{{ Auth::user()->company->company_name }} | {{ isset($jobPostEdit) ? 'Edit Job Post' : 'Create Job Post' }}
+{{ isset($companyId) ? $companyId != null ? Auth::user()->company->company_name : 'Company' : 'Company' }} | {{ isset($jobPostEdit) ? 'Edit Job Post' : 'Create Job Post' }}
 @endsection
 @push('page-style')
 <link rel="stylesheet" href="{{ asset('assets/website/css/company-user-dashboard.css') }}">
@@ -64,7 +64,7 @@
               @method('put')
             @endisset
             <div class="card p-3">
-              <h5 class="pb-3 border-bottom"><b>Create Job Post</b></h4>
+              <h5 class="pb-3 border-bottom"><b>{{ isset($jobPostEdit) ? 'Edit' : 'Create ' }} Job Post</b></h4>
               <div class="row pt-3">
                 <div class="col-md-6 mb-3">
                   <label for="job-title" class="form-label">Job Title</label>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="company-name" class="form-label">Company Name</label>
-                  <input type="text" class="form-control" name="company_name" id="company-name" value="{{ isset($jobPostEdit) ? $jobPostEdit->company_name : old('company_name') }}">
+                  <input type="text" class="form-control" name="company_name" id="company-name" value="{{ isset($companyId) ? Auth::user()->company->company_name : '' }}" disabled>
                   @error('company_name')
                     <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
