@@ -27,7 +27,6 @@ Auth::routes();
 @include('user.php');
 
 
-
 // Frontend
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
