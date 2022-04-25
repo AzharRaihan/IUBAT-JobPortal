@@ -2,9 +2,9 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
-      <img src="{{ asset('assets/admin/dist/img/AdminLTELogo.png') }}" alt="Site Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Site Name</span>
+      <img src="{{ asset('assets/website/img/logo/m-logo.png') }}" alt="Site Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8" height="40" width="40">
+      <span class="brand-text font-weight-light">CareerLine BD</span>
     </a>
 
     <!-- Sidebar -->
