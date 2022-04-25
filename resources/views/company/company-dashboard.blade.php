@@ -35,6 +35,14 @@
                   </div>
                 </a>
               </div>
+              <div class="col-md-4">
+                <a href="{{ route('company.job.candidate') }}">
+                  <div class="card card-element">
+                    <h6>Candidate</h6>
+                    <i class="fas fa-users"></i>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>

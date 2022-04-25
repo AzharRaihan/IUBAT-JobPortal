@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Models\User;
 use App\Models\Thana;
 use App\Models\Company;
 use App\Models\JobPost;
+use App\Models\ApplyJob;
+use App\Models\Category;
 use App\Models\District;
 use App\Models\Industry;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -137,13 +139,12 @@ class CompanyDashboardController extends Controller
         return redirect()->back();
     }
 
-
     // All Job Post
     public function allPostedJobs()
     {
         $authCompanyId = Auth::user()->id;
         $companyId = Company::where('user_id', $authCompanyId)->first();
-        $allPostedJobs = JobPost::where('company_id', $companyId)->latest()->get();
+        $allPostedJobs = JobPost::where('company_id', $companyId->id)->latest()->get();
         return view('company.all-posted-jobs', compact('companyId', 'allPostedJobs'));
     }
 
@@ -325,5 +326,19 @@ class CompanyDashboardController extends Controller
         $jobPost->delete();
         notify()->success('Delete','Successfully Deleted');
         return back();
+    }
+
+
+    // Job Candidate
+    public function jobCandidate()
+    {
+        $authCompanyId = Auth::user()->id;
+        $companyId = Company::where('user_id', $authCompanyId)->first();
+        $allAppliedCandidate = ApplyJob::where('company_id', $companyId->id)->get();
+        // dd($allAppliedCandidate);
+        foreach ($allAppliedCandidate as $key=> $candidate) {
+            $users = User::where('id', $candidate->user_id)->get();
+        }
+        return view('company.job-candidate', compact('users'));
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CompanyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Company\CompanyDashboardController;
 use App\Http\Controllers\Auth\CompanyRegisterController;
@@ -25,4 +26,5 @@ Route::group(['as' => 'company.', 'prefix' => 'company', 'middleware' => ['auth'
     Route::get('edit/job-post/{id}', [CompanyDashboardController::class, 'editJobPost'])->name('edit.job.post');
     Route::put('update/job-post/{id}', [CompanyDashboardController::class, 'updateJobPost'])->name('update.job.post');
     Route::delete('delete/job-post/{id}', [CompanyDashboardController::class, 'deleteJobPost'])->name('delete.job.post');
+    Route::get('job-candidate', [CompanyDashboardController::class, 'jobCandidate'])->name('job.candidate');
 });
