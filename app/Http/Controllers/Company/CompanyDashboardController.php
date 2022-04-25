@@ -144,8 +144,13 @@ class CompanyDashboardController extends Controller
     {
         $authCompanyId = Auth::user()->id;
         $companyId = Company::where('user_id', $authCompanyId)->first();
-        $allPostedJobs = JobPost::where('company_id', $companyId->id)->latest()->get();
-        return view('company.all-posted-jobs', compact('companyId', 'allPostedJobs'));
+        if ($companyId == null) {
+            notify()->warning('Warning', 'Not yet posted');
+            return back();
+        } else {
+            $allPostedJobs = JobPost::where('company_id', $companyId->id)->latest()->get();
+            return view('company.all-posted-jobs', compact('companyId', 'allPostedJobs'));
+        }
     }
 
     // Create Job Post
@@ -334,11 +339,16 @@ class CompanyDashboardController extends Controller
     {
         $authCompanyId = Auth::user()->id;
         $companyId = Company::where('user_id', $authCompanyId)->first();
-        $allAppliedCandidate = ApplyJob::where('company_id', $companyId->id)->get();
-        // dd($allAppliedCandidate);
-        foreach ($allAppliedCandidate as $key=> $candidate) {
-            $users = User::where('id', $candidate->user_id)->get();
+        if ($companyId == null) {
+            notify()->warning('Warning','No candidate has applied');
+            return back();
+        } else {
+            $allAppliedCandidate = ApplyJob::where('company_id', $companyId->id)->get();
+            foreach ($allAppliedCandidate as $key=> $candidate) {
+                $users = User::where('id', $candidate->user_id)->get();
+            }
+            return view('company.job-candidate', compact('users'));
         }
-        return view('company.job-candidate', compact('users'));
+
     }
 }
