@@ -167,3 +167,7 @@
     width: 100px;
     height: 100px;
 }
+
+.card{
+    box-shadow: rgb(0 0 0 / 3%) 0px 6px 8px, rgb(0 0 0 / 30%) 0px 1px 2px;
+}

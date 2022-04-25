@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Company;
 
-use App\Models\User;
 use App\Models\Thana;
 use App\Models\Company;
 use App\Models\JobPost;
@@ -19,10 +18,13 @@ use Illuminate\Support\Facades\Session;
 
 class CompanyDashboardController extends Controller
 {
+    // Company Dashboard
     public function dashboard()
     {
-        return view('company.company-dashboard');
+        $companyId = Company::where('user_id', Auth::user()->id)->first();
+        return view('company.company-dashboard', compact('companyId'));
     }
+    // Profile Pic Update
     public function updateAvater(Request $request)
     {
         // Get Logedin company
@@ -47,6 +49,8 @@ class CompanyDashboardController extends Controller
         notify()->success('Updated','Successfully Updated');
         return back();
     }
+
+    // Edit Company Profile
     public function editProfile()
     {
         $data['companyInfo'] = Company::where('user_id', Auth::user()->id)->first();
@@ -55,7 +59,7 @@ class CompanyDashboardController extends Controller
         $data['industries'] = Industry::orderBy('industry_name')->get();
         return view('company.company-profile-edit', $data);
     }
-    // Edit Profile
+    // Update Company Profile
     public function profileUpdate(Request $request)
     {
         $companyAuth = Auth::user();
@@ -64,7 +68,15 @@ class CompanyDashboardController extends Controller
             'name' => $request->name,
             'email' => $request->email,
         ]);
-        if($companyInfo == null){
+        if ($companyInfo == null) {
+            $this->validate($request, [
+                'industry_id' => 'required',
+                'company_name' => 'required|max:150',
+                'entrepreneur' => 'required',
+                'employee_size' => 'required',
+                'district' => 'required',
+                'thana' => 'required',
+            ]);
             Company::updateOrCreate([
                 'user_id' => $companyAuth->id,
                 'company_name' => $request->company_name,
@@ -77,7 +89,7 @@ class CompanyDashboardController extends Controller
                 'industry_id' => $request->industry_id,
                 'website_url' => $request->website_url,
             ]);
-        }else{
+        } else {
             $companyInfo->update([
                 'user_id' => Auth::user()->id,
                 'company_name' => $request->company_name,
@@ -91,15 +103,15 @@ class CompanyDashboardController extends Controller
                 'website_url' => $request->website_url,
             ]);
         }
-
         notify()->success('Updated','Successfully Updated');
         return back();
     }
+    // Change Company Password
     public function changePassword()
     {
         return view('company.company-change-password');
     }
-    // Change Password
+    // Update Company Password
     public function updatePassword(Request $request)
     {
         $this->validate($request, [
@@ -126,13 +138,24 @@ class CompanyDashboardController extends Controller
     }
 
 
+    // All Job Post
+    public function allPostedJobs()
+    {
+        $authCompanyId = Auth::user()->id;
+        $companyId = Company::where('user_id', $authCompanyId)->first();
+        $allPostedJobs = JobPost::where('company_id', $companyId)->latest()->get();
+        return view('company.all-posted-jobs', compact('companyId', 'allPostedJobs'));
+    }
+
     // Create Job Post
     public function createJobPost()
     {
-        $categories = Category::orderBy('category_name')->get();
-        return view('company.create-edit-job-post', compact('categories'));
+        $data['categories'] = Category::orderBy('category_name')->get();
+        $data['companyId'] = Company::where('user_id', Auth::user()->id)->first();
+        return view('company.create-edit-job-post', $data);
     }
 
+    // Store Job Post
     public function storeJobPost(Request $request)
     {
         $authUserID = Auth::user()->id;
@@ -141,7 +164,6 @@ class CompanyDashboardController extends Controller
             $this->validate($request, [
                 'category_id' => 'required',
                 'job_title' => 'required|max:255',
-                'company_name' => 'required|max:200',
                 'company_type' => 'required|max:55',
                 'job_location' => 'required|max:255',
                 'published_on' => 'required|max:55',
@@ -193,7 +215,6 @@ class CompanyDashboardController extends Controller
             $jobPost->company_id = $companyId->id;
             $jobPost->category_id = $request->category_id;
             $jobPost->job_title = $request->job_title;
-            $jobPost->company_name = $request->company_name;
             $jobPost->slug = Str::slug($request->job_title) . '-' . time();
             $jobPost->company_type = $request->company_type;
             $jobPost->job_location = $request->job_location;
@@ -220,13 +241,16 @@ class CompanyDashboardController extends Controller
         
     }
 
+    // Edit Job Post
     public function editJobPost($id)
     {
+        $data['companyId'] = Company::where('user_id', Auth::user()->id)->first();
         $data['jobPostEdit'] = JobPost::findOrFail($id);
         $data['categories'] = Category::orderBy('category_name')->get();
         return view('company.create-edit-job-post', $data);
     }
 
+    // Update Job Post
     public function updateJobPost(Request $request, $id)
     {
         $jobPostUp = JobPost::findOrFail($id);
@@ -273,7 +297,6 @@ class CompanyDashboardController extends Controller
         $content = $dom->saveHTML();
         $jobPostUp->update([
             'job_title' => $request->job_title,
-            'company_name' => $request->company_name,
             'slug' => $jobPostSlug,
             'company_type' => $request->company_type,
             'job_location' => $request->job_location,
@@ -295,27 +318,12 @@ class CompanyDashboardController extends Controller
         return back();
     }
 
-
-    public function allPostedJobs()
-    {
-        $authCompanyId = Auth::user()->company->id;
-        $allPostedJobs = JobPost::where('company_id', $authCompanyId)->latest()->get();
-        return view('company.all-posted-jobs', compact('allPostedJobs'));
-    }
-
-    public function editPostedJob($id)
-    {
-        $jobPost = JobPost::findOrFail($id);
-        return view('company.create-edit-job-post', compact('jobPost'));
-
-    }
-
-    public function deletePostedJob($id)
+    // Delete Posted Job
+    public function deleteJobPost($id)
     {
         $jobPost = JobPost::findOrFail($id);
         $jobPost->delete();
         notify()->success('Delete','Successfully Deleted');
         return back();
     }
-
 }

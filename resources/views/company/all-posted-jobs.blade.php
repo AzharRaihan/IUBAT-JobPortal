@@ -1,6 +1,6 @@
 @extends('layouts.website.website-layouts')
 @section('page-title')
-{{ Auth::user()->company->company_name }} | All Posted Jobs
+{{ isset($companyId) ? $companyId != null ? Auth::user()->company->company_name : 'Company' : 'Company' }} | All Posted Jobs
 @endsection
 
 @push('page-style')
@@ -18,7 +18,6 @@
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
   }
-  
 </style>
 @endpush
 @section('page-content')
@@ -49,7 +48,7 @@
                     <i class="fas fa-eye"></i>
                     <span>Edit</span>
                   </a>
-                  <a href="{{ route('jobpost.details',$post->id) }}" class="btn btn-primary btn-sm" target="blank">
+                  <a href="{{ route('jobpost.details',$post->id) }}" class="btn btn-info btn-sm" target="blank">
                     <i class="fas fa-eye"></i>
                     <span>Show Details</span>
                   </a>
@@ -57,7 +56,7 @@
                     <i class="fas fa-trash-alt"></i>
                     <span>Delete</span>
                   </button>
-                  <form id="delete-form-{{ $post->id }}" action="{{ route('company.delete.posted.job', $post->id) }}" method="POST" style="display: none;">
+                  <form id="delete-form-{{ $post->id }}" action="{{ route('company.delete.job.post', $post->id) }}" method="POST" style="display: none;">
                     @csrf
                     @method('DELETE')
                   </form>
@@ -77,7 +76,6 @@
   <script src="{{ asset('assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
   <script src="{{ asset('assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-
   <script>
     $(function () {
     $("#example1").DataTable({
@@ -95,7 +93,6 @@
     });
   });
   </script>
-
  <!-- Sweet Aleart Js -->
  <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
  <script type="text/javascript">
