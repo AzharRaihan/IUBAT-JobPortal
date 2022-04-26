@@ -42,6 +42,7 @@ class IndustryController extends Controller
         ]);
         Industry::create([
             'industry_name' => $request->industry_name,
+            'status' => $request->filled('status'),
         ]);
         notify()->success('Successfully Saved', 'Success');
         return back();
@@ -82,6 +83,7 @@ class IndustryController extends Controller
         $industry = Industry::findOrFail($id);
         $industry->update([
             'industry_name' => $request->industry_name,
+            'status' => $request->filled('status'),
         ]);
         notify()->success('Successfully Updated', 'Update');
         return back();

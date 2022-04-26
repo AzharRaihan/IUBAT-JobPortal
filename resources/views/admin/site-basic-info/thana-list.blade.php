@@ -41,6 +41,7 @@
                   <th>#SL</th>
                   <th>District Name</th>
                   <th>Thana Name</th>
+                  <th>Status</th>
                   <th>Creation Time</th>
                   <th>Action</th>
                 </tr>
@@ -51,6 +52,9 @@
                   <td>{{ $key + 1 }}</td>
                   <td>{{ $thana->district->district_name }}</td>
                   <td>{{ $thana->thana_name }}</td>
+                  <td>
+                    <input type="checkbox" {{ isset($thana) ? $thana->status == 1 ? 'checked' : '' : '' }} name="status" data-bootstrap-switch data-off-color="danger" data-on-color="info" disabled>
+                  </td>
                   <td>{{ $thana->created_at->diffForHumans() }}</td>
                   <td>
                     <a href="{{ route('admin.thana.edit',$thana->id) }}" class="btn btn-info btn-sm">
@@ -142,5 +146,12 @@
        }
      })
    }
+ </script>
+ <!-- Bootstrap Switch -->
+ <script src="{{ asset('assets/admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+ <script>
+   $("input[data-bootstrap-switch]").each(function(){
+     $(this).bootstrapSwitch('state', $(this).prop('checked'));
+   });
  </script>
 @endpush

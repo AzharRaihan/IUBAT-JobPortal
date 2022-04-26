@@ -25,14 +25,20 @@ class FrontendController extends Controller
         })->where('status', 1)->orderBy('category_name')->take(36)->get();
 
         $data['jobPosts'] = JobPost::where('status',1)
+        ->whereHas('category', function($query){
+            return $query->where('status', 1);
+        })
         ->where('is_published',1)
         ->latest()->take(40)->get();
 
-        $data['companyGovts'] = JobPost::where([['company_type','GOVT'],['status',1],['is_published',1]])
+        $data['companyGovts'] = JobPost::where([['company_type','GOVT'],['status',1],['is_published',1]])->whereHas('category', function($query){
+            return $query->where('status', 1);
+        })
         ->latest()->take(4)->get();
 
-        $data['companyPvts'] = JobPost::where([['company_type','PVT'],['status',1],['is_published',1]])
-        ->latest()->take(4)->get();
+        $data['companyPvts'] = JobPost::where([['company_type','PVT'],['status',1],['is_published',1]])->whereHas('category', function($query){
+            return $query->where('status', 1);
+        })->latest()->take(4)->get();
 
         $data['companyCount'] = Company::count();
 
@@ -45,6 +51,9 @@ class FrontendController extends Controller
     {
         $data['companyTypeName'] = 'Government';
         $data['companyType'] = JobPost::with('company')
+        ->whereHas('category', function($query){
+            return $query->where('status', 1);
+        })
         ->where('company_type', 'GOVT')
         ->where('status',1)
         ->where('is_published',1)
@@ -57,6 +66,9 @@ class FrontendController extends Controller
     {
         $data['companyTypeName'] = 'Private';
         $data['companyType'] = JobPost::with('company')
+        ->whereHas('category', function($query){
+            return $query->where('status', 1);
+        })
         ->where('company_type', 'PVT')
         ->where('status',1)
         ->where('is_published',1)
