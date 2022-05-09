@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\ApplyJobNotificationToCompany;
+use Laravel\Ui\Presets\React;
 
 class FrontendController extends Controller
 {
@@ -155,5 +156,29 @@ class FrontendController extends Controller
             notify()->info('Info', 'Please Login Firs');
             return back();
         }
+    }
+
+
+    // Ajax Search Resutl
+    public function ajaxSearchResult(Request $request)
+    {
+        if ($request->ajax()) {
+            $jobSearch = Company::where('company_name', 'LIKE', "%". $request->input . "%")
+            ->get();
+
+            $output = "";
+
+            if (count($jobSearch) > 0) {
+                foreach ($jobSearch as $result) {
+                    $output .=' 
+                    <ul class="list-group">
+                        <li class="list-group-item">'. $result->company_name .'</li>
+                    </ul>';
+                }
+            } else {
+                $output .= "Not Founds";
+            }
+            return $output;
+        } 
     }
 }
