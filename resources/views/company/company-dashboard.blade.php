@@ -25,6 +25,7 @@
           @include('layouts.company.company-sidebar')
         </div>
         <div class="col-md-8">
+          @include('layouts.company.profile-update-message')
           <div class="card p-3">
             <div class="row">
               <div class="col-md-4">
@@ -36,9 +37,9 @@
                 </a>
               </div>
               <div class="col-md-4">
-                <a href="{{ route('company.job.candidate') }}">
+                <a href="{{ route('company.applied.jobs') }}">
                   <div class="card card-element">
-                    <h6>Candidate</h6>
+                    <h6>Applied Jobs</h6>
                     <i class="fas fa-users"></i>
                   </div>
                 </a>

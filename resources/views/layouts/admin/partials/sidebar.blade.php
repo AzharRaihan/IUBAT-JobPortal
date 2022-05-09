@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
       <img src="{{ asset('assets/website/img/logo/m-logo.png') }}" alt="Site Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8" height="40" width="40">
+           style="opacity: .8; height:40px !important; width:40px !important">
       <span class="brand-text font-weight-light">CareerLine BD</span>
     </a>
 

@@ -153,7 +153,7 @@ class FrontendController extends Controller
                 return back();
             }
         }else{
-            notify()->info('Info', 'Please Login Firs');
+            notify()->info('Info', 'Please Login First');
             return back();
         }
     }

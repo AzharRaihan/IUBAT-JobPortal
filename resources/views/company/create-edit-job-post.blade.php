@@ -58,6 +58,7 @@
           @include('layouts.company.company-sidebar')
         </div>
         <div class="col-md-8">
+          @include('layouts.company.profile-update-message')
           <form action="{{ isset($jobPostEdit) ? route('company.update.job.post', $jobPostEdit->id) : route('company.store.job.post') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @isset($jobPostEdit)

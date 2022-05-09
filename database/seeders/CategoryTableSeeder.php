@@ -35,5 +35,10 @@ class CategoryTableSeeder extends Seeder
             'slug' => 'education',
             'status' => 1,
         ]);
+        Category::create([
+            'category_name' => 'Software',
+            'slug' => 'software',
+            'status' => 1,
+        ]);
     }
 }

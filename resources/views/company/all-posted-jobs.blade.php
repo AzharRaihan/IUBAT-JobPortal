@@ -29,6 +29,7 @@
           @include('layouts.company.company-sidebar')
         </div>
         <div class="col-md-8">
+          @include('layouts.company.profile-update-message')
           <div class="card p-3">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
