@@ -19,8 +19,7 @@ class CreateResumesTable extends Migration
             ->constrained()
             ->cascadeOnUpdate()
             ->cascadeOnDelete();
-            $table->string('resume', 55)->nullable();
-            $table->boolean('status')->default(0);
+            $table->string('resume_name', 55)->nullable();
             $table->timestamps();
         });
     }

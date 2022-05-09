@@ -45,7 +45,7 @@
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $jobPost->job_title }}</td>
                 <td>
-                  <a href="{{ route('company.candidate-lists', $jobPost->id) }}" class="btn btn-info btn-sm">
+                  <a href="{{ route('company.candidate.lists', $jobPost->id) }}" class="btn btn-info btn-sm">
                     <i class="fas fa-eye"></i>
                     View Candidate</a>
                 </td>

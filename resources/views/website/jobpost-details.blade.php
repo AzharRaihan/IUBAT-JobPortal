@@ -51,9 +51,22 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-body">
-            <p>{!! $jobPost->description !!}</p>
+            <p class="pt-4 ps-2">{!! $jobPost->description !!}</p>
             <div class="text-center">
-              <a href="{{ route('apply.the.job', $jobPost->id) }}" class="btn site-btn ">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
+              @if (Auth::user())
+                @php
+                  $resumeExist = App\Models\Resume::where('user_id', Auth::user()->id)->exists();
+                  $existingJob = App\Models\ApplyJob::where('user_id', Auth::user()->id)->first();
+                @endphp
+                @if ($existingJob == null)
+                  <a href="{{ $resumeExist == false ? 'javascript:void(0)' : route('apply.the.job', $jobPost->id) }}" class="btn site-btn" data-bs-toggle="{{ $resumeExist == false ? 'modal' : '' }}" data-bs-target="{{ $resumeExist == false ? '#myModal' : '' }}">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
+                @else
+                <button class="btn site-btn" disabled>Already Applied</button>
+                @endif
+                
+              @else
+              <a href="{{ route('apply.the.job', $jobPost->id) }}" class="btn site-btn">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
+              @endif
             </div>
           </div>
         </div>
@@ -91,6 +104,39 @@
     </div>
   </div>
 </section>
+
+
+
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Upload CV / Resume</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form action="{{ route('user.store.resume') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          <div class="row">
+            <div class="col-12 mb-3">
+              <label for="resume" class="form-label">Upload Resume</label>
+              <input type="file" class="form-control" name="resume_name" id="resume">
+            </div>
+          </div>
+          <button type="submit" class="btn site-btn"><i class="fal fa-arrow-circle-up"></i> Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 @endsection

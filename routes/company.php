@@ -27,5 +27,5 @@ Route::group(['as' => 'company.', 'prefix' => 'company', 'middleware' => ['auth'
     Route::put('update/job-post/{id}', [CompanyDashboardController::class, 'updateJobPost'])->name('update.job.post');
     Route::delete('delete/job-post/{id}', [CompanyDashboardController::class, 'deleteJobPost'])->name('delete.job.post');
     Route::get('applied-jobs', [CompanyDashboardController::class, 'appliedJobs'])->name('applied.jobs');
-    Route::get('candidate-lists', [CompanyDashboardController::class, 'candidateLists'])->name('candidate.lists');
+    Route::get('candidate-lists/{id}', [CompanyDashboardController::class, 'candidateLists'])->name('candidate.lists');
 });

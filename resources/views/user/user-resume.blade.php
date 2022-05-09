@@ -32,7 +32,7 @@
               <div class="row">
                 <div class="col-12 mb-3">
                   <label for="resume" class="form-label">Upload Resume</label>
-                  <input type="file" class="form-control" name="resume" id="resume">
+                  <input type="file" class="form-control" name="resume_name" id="resume">
                 </div>
               </div>
               <button type="submit" class="btn site-btn"><i class="fal fa-arrow-circle-up"></i> Upload</button>
