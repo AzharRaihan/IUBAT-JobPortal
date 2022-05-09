@@ -48,6 +48,7 @@
               <button class="btn contact-us-btn" type="submit" id="button-addon2"><i class="bi bi-search"></i> Search Job</button>
             </div>
           </form>
+          <div id="s-result"></div>
         </div>
         <div class="search-body">
           <div class="row">
@@ -135,19 +136,39 @@
 @push('page-script')
   <script src="{{ asset('assets/website/js/typed.js') }}"></script>
   <script>
-  var typed4 = new Typed('#typed4', {
-    strings: [
-      'Search key word : Frontend Developer', 
-      'Search key word : Backend Developer',
-      'Search key word : Graphics Designer',
-      'Search key word : Accountent',
-      'Search key word : Data Entry',
-    ],
-    typeSpeed: 100,
-    backSpeed: 0,
-    attr: 'placeholder',
-    bindInputFocusEvents: true,
-    loop: true
-  });
-</script>
+    var typed4 = new Typed('#typed4', {
+      strings: [
+        'Search key word : Frontend Developer', 
+        'Search key word : Backend Developer',
+        'Search key word : Graphics Designer',
+        'Search key word : Accountent',
+        'Search key word : Data Entry',
+      ],
+      typeSpeed: 100,
+      backSpeed: 0,
+      attr: 'placeholder',
+      bindInputFocusEvents: true,
+      loop: true
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $("#typed4").keyup(function() { 
+        var input = $(this).val();
+        if (input != "") {
+          $.ajax({
+            url: "{{ route('ajax.search.result') }}",
+            method: "GET",
+            data:{input:input},
+            success: function(data) {
+              $("#s-result").html(data);
+              $("#s-result").css("disply", "block");
+            }
+          });
+        } else {
+          $("#s-result").css("disply", "none");
+        }
+      });
+    });
+  </script>
 @endpush

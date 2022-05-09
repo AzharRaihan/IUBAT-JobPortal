@@ -42,16 +42,4 @@ Route::get('/job-post/details/{id}',[FrontendController::class, 'jobPostDetails'
 Route::post('/contact/send', [FrontendController::class, 'contactSend'])->name('contact.send');
 Route::post('/subscribe', [FrontendController::class, 'subscriberStore'])->name('subscribe');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::get('ajax-search-result', [FrontendController::class, 'ajaxSearchResult'])->name('ajax.search.result');
