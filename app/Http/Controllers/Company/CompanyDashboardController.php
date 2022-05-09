@@ -335,7 +335,7 @@ class CompanyDashboardController extends Controller
 
 
     // Job Candidate
-    public function jobCandidate()
+    public function appliedJobs()
     {
         $authCompanyId = Auth::user()->id;
         $companyId = Company::where('user_id', $authCompanyId)->first();
@@ -343,11 +343,10 @@ class CompanyDashboardController extends Controller
             notify()->warning('Warning','No candidate has applied');
             return back();
         } else {
-            $allAppliedCandidate = ApplyJob::where('company_id', $companyId->id)->get();
-            foreach ($allAppliedCandidate as $key=> $candidate) {
-                $users = User::where('id', $candidate->user_id)->get();
-            }
-            return view('company.job-candidate', compact('users'));
+            $companyJobPosts = JobPost::where('company_id', $companyId->id)->pluck('id');
+            $appliedForJob = ApplyJob::whereIn('job_id', $companyJobPosts)->distinct()->pluck('job_id');
+            $jobPosts = JobPost::whereIn('id', $appliedForJob)->get();
+            return view('company.applied-job-lists', compact('jobPosts'));
         }
 
     }

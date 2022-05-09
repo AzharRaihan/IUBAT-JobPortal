@@ -41,6 +41,7 @@
               </a>
             </h3>
           </div>
+          @if ($company->job_post_count > 0)
           <div class="card-body">
             <h4 class="pt-2 pb-3 text-center">{{ $company->company_name }} All Posted Jobs</h4>
             <div class="row">
@@ -68,6 +69,11 @@
               @endforeach
             </div>
           </div>
+          @else
+          <div class="alert alert-danger mx-2 my-3 py-5 text-center" role="alert">
+            No Job Post yet !!
+          </div>
+          @endif
           <!-- /.card-body -->
         </div>
       </div>

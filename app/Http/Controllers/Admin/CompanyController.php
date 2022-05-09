@@ -79,7 +79,7 @@ class CompanyController extends Controller
 
     public function postedJobs($id)
     {
-        $company = Company::with('jobPost')->where('id', $id)->first();
+        $company = Company::withCount('jobPost')->where('id', $id)->first();
         return view('admin.companies.posted-jobs', compact('company'));
     }
 

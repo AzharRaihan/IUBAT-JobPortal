@@ -29,21 +29,26 @@
           @include('layouts.company.company-sidebar')
         </div>
         <div class="col-md-8">
+          @include('layouts.company.profile-update-message')
           <div class="card p-3">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
                 <th>#SL</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Job Title</th>
+                <th>View Candidate</th>
               </tr>
               </thead>
               <tbody>
-              @foreach ($users as $key=>$user)
+              @foreach ($jobPosts as $key=>$jobPost)
               <tr>
                 <td>{{ $key + 1 }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
+                <td>{{ $jobPost->job_title }}</td>
+                <td>
+                  <a href="{{ route('company.candidate-lists', $jobPost->id) }}" class="btn btn-info btn-sm">
+                    <i class="fas fa-eye"></i>
+                    View Candidate</a>
+                </td>
               </tr>
               @endforeach
             </table>

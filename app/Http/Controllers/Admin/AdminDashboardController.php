@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
-use App\Models\Contact;
 use App\Models\JobPost;
 use App\Models\Resume;
-use App\Models\Subscriber;
 
 class AdminDashboardController extends Controller
 {
@@ -28,7 +25,7 @@ class AdminDashboardController extends Controller
     public function user()
     {
         $data = [];
-        $data['users']=User::latest()->get();
+        $data['users'] = User::latest()->get();
         return view('admin.user.index', $data);
     }
     public function createUser()

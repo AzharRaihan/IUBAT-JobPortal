@@ -15,6 +15,7 @@
           @include('layouts.company.company-sidebar')
         </div>
         <div class="col-md-8">
+          @include('layouts.company.profile-update-message')
           <!-- Edit Profile Tab -->
           <div class="card p-3">
             <form action="{{ route('company.update-profile') }}" method="POST">
