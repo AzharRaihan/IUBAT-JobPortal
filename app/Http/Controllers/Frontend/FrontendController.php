@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
+use App\Models\Resume;
 use App\Models\Company;
 use App\Models\Contact;
 use App\Models\JobPost;
@@ -10,11 +11,11 @@ use App\Models\ApplyJob;
 use App\Models\Category;
 use App\Models\Subscriber;
 use Illuminate\Http\Request;
+use Laravel\Ui\Presets\React;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\ApplyJobNotificationToCompany;
-use Laravel\Ui\Presets\React;
 
 class FrontendController extends Controller
 {
@@ -132,24 +133,31 @@ class FrontendController extends Controller
     // Apply Job
     public function applyTheJob($id)
     {
-        if(Auth::user()){
+        if (Auth::user()) {
             $authId = Auth::user()->id;
             $companyGet = User::where('id', $authId)->first();
-            if($companyGet->role_id != 2 ){
-                $findJob = JobPost::findOrFail($id);
-                $applyJob = new ApplyJob();
-                $applyJob->company_id = $findJob->company_id;
-                $applyJob->job_id = $findJob->id;
-                $applyJob->user_id = Auth::user()->id;
-                $applyJob->save();
-                // Find company role id for notify
-                $user = User::where('role_id',2)->get();
-                // Notify to Company for thi apply job request
-                Notification::send($user, new ApplyJobNotificationToCompany($applyJob));
-                notify()->success("Success", "Successfully Apply");
-                return back();
+            $existResume = Resume::where('user_id', $authId)->exists();
+
+            if ($existResume) {
+                if ($companyGet->role_id != 2) {
+                    $findJob = JobPost::findOrFail($id);
+                    $applyJob = new ApplyJob();
+                    $applyJob->company_id = $findJob->company_id;
+                    $applyJob->job_id = $findJob->id;
+                    $applyJob->user_id = Auth::user()->id;
+                    $applyJob->save();
+                    // Find company role id for notify
+                    $user = User::where('role_id',2)->get();
+                    // Notify to Company for thi apply job request
+                    Notification::send($user, new ApplyJobNotificationToCompany($applyJob));
+                    notify()->success("Success", "Successfully Apply");
+                    return back();
+                }else{
+                    notify()->error("Error", "Company Can't Apply The Job !!!");
+                    return back();
+                }
             }else{
-                notify()->error("Error", "Company Can't Apply The Job !!!");
+                notify()->error("Error", "Please Upload Resume and Complete Profile");
                 return back();
             }
         }else{
@@ -160,25 +168,25 @@ class FrontendController extends Controller
 
 
     // Ajax Search Resutl
-    public function ajaxSearchResult(Request $request)
-    {
-        if ($request->ajax()) {
-            $jobSearch = Company::where('company_name', 'LIKE', "%". $request->input . "%")
-            ->get();
+    // public function ajaxSearchResult(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $jobSearch = Company::where('company_name', 'LIKE', "%". $request->input . "%")
+    //         ->get();
 
-            $output = "";
+    //         $output = "";
 
-            if (count($jobSearch) > 0) {
-                foreach ($jobSearch as $result) {
-                    $output .=' 
-                    <ul class="list-group">
-                        <li class="list-group-item">'. $result->company_name .'</li>
-                    </ul>';
-                }
-            } else {
-                $output .= "Not Founds";
-            }
-            return $output;
-        } 
-    }
+    //         if (count($jobSearch) > 0) {
+    //             foreach ($jobSearch as $result) {
+    //                 $output .=' 
+    //                 <ul class="list-group">
+    //                     <li class="list-group-item">'. $result->company_name .'</li>
+    //                 </ul>';
+    //             }
+    //         } else {
+    //             $output .= "Not Founds";
+    //         }
+    //         return $output;
+    //     } 
+    // }
 }

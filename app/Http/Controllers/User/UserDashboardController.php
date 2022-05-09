@@ -106,7 +106,6 @@ class UserDashboardController extends Controller
 
     public function storeResume(Request $request)
     {
-        
         // Validation Check
         // $this->validate($request, [
         //     'resume' => 'required|mimes:pdf,doc',
@@ -114,17 +113,17 @@ class UserDashboardController extends Controller
         $authUserID = Auth::user()->id;
         $existResume = Resume::where('user_id', $authUserID)->exists();
 
-        if($existResume == false){
-            if($request->hasfile('resume'))
+        if ($existResume == false) {
+            if ($request->hasfile('resume_name'))
             {
-                $file = $request->file('resume');
+                $file = $request->file('resume_name');
                 $extension = $file->getClientOriginalExtension();
                 $fileName = time() . '.' . $extension;
             }
             // Resume
             $resume = new Resume();
             $resume->user_id = $authUserID;
-            $resume->resume = $fileName;
+            $resume->resume_name = $fileName;
             $file->move('uploads/users/resume/', $fileName);
             $resume->save();
             notify()->success('Success','Successfully Sumbitted');

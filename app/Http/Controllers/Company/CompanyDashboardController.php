@@ -350,4 +350,12 @@ class CompanyDashboardController extends Controller
         }
 
     }
+
+
+    public function candidateLists($id)
+    {
+        $appliedUsers = ApplyJob::where('job_id', $id)->pluck('user_id');
+        $jobCandidates = User::with('resume')->whereIn('id', $appliedUsers)->latest()->get();
+        return view('company.candidate-lists', compact('jobCandidates'));
+    }
 }
