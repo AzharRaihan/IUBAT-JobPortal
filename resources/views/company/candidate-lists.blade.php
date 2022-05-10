@@ -70,6 +70,18 @@
                         @endif
                       </td>
                     </tr>
+                    <tr class="row m-0 w-100">
+                      <td class="col-md-10">
+                        <div class="d-flex">
+                          <button type="button" class="btn site-btn me-2" onclick="selectCandidate({{ $jobCandidate->id }})">Select For The Job</button>
+                          <form method="post" action="{{ route('company.selected.candidate',$jobCandidate->id) }}" id="approval-form" style="display: none">
+                            @csrf
+                            <input type="hidden" name="job_id" value="{{ $jobId->id }}">
+                          </form>
+                          <button type="button" class="btn btn-danger">Reject</button>
+                        </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -82,5 +94,38 @@
   </section>
 @endsection
 @push('page-script')
-
+ <!-- Sweet Aleart Js -->
+ <script src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></script>
+<script type="text/javascript">
+  function selectCandidate(id) {
+   swal({
+       title: 'Are you sure?',
+       text: "You went to Select this Candidate ",
+       type: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Yes, approve it!',
+       cancelButtonText: 'No, cancel!',
+       confirmButtonClass: 'btn btn-success',
+       cancelButtonClass: 'btn btn-danger',
+       buttonsStyling: false,
+       reverseButtons: true
+   }).then((result) => {
+       if (result.value) {
+           event.preventDefault();
+           document.getElementById('approval-form').submit();
+       } else if (
+           // Read more about handling dismissals
+           result.dismiss === swal.DismissReason.cancel
+       ) {
+           swal(
+               'Cancelled',
+               'The post remain pending :)',
+               'info'
+           )
+       }
+   })
+ }
+</script>
 @endpush

@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ApproveCandidateForJobNotification;
 
 class CompanyDashboardController extends Controller
 {
@@ -356,6 +358,19 @@ class CompanyDashboardController extends Controller
     {
         $appliedUsers = ApplyJob::where('job_id', $id)->pluck('user_id');
         $jobCandidates = User::with('resume')->whereIn('id', $appliedUsers)->latest()->get();
-        return view('company.candidate-lists', compact('jobCandidates'));
+        $jobId = JobPost::where('id', $id)->first();
+        return view('company.candidate-lists', compact('jobCandidates', 'jobId'));
+    }
+
+    public function selectedCandidate(Request $request,$id)
+    {
+        $findJob = JobPost::where('id', $request->job_id)->first();
+        // Find company role id for notify
+        $user = User::where('id',$id)->first();
+        // Notify to Company for thi apply job request
+        Notification::send($user, new ApproveCandidateForJobNotification($findJob));
+        notify()->success("Success", "Successfully Apply");
+        return back();
+
     }
 }

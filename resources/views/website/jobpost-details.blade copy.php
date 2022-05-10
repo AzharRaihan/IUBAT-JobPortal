@@ -56,13 +56,14 @@
               @if (Auth::user())
                 @php
                   $resumeExist = App\Models\Resume::where('user_id', Auth::user()->id)->exists();
-                  $existUserAndJob = App\Models\ApplyJob::where('user_id', Auth::user()->id)->where('job_id', $jobPost->id)->exists();
+                  $existingJob = App\Models\ApplyJob::where('user_id', Auth::user()->id)->first();
                 @endphp
-                @if (!$existUserAndJob)
-                <a href="{{ $resumeExist == false ? 'javascript:void(0)' : route('apply.the.job', $jobPost->id) }}" class="btn site-btn" data-bs-toggle="{{ $resumeExist == false ? 'modal' : '' }}" data-bs-target="{{ $resumeExist == false ? '#myModal' : '' }}">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
+                @if ($existingJob == null)
+                  <a href="{{ $resumeExist == false ? 'javascript:void(0)' : route('apply.the.job', $jobPost->id) }}" class="btn site-btn" data-bs-toggle="{{ $resumeExist == false ? 'modal' : '' }}" data-bs-target="{{ $resumeExist == false ? '#myModal' : '' }}">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
                 @else
                 <button class="btn site-btn" disabled>Already Applied</button>
                 @endif
+                
               @else
               <a href="{{ route('apply.the.job', $jobPost->id) }}" class="btn site-btn">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
               @endif
