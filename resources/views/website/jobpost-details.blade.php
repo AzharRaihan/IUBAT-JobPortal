@@ -57,9 +57,15 @@
                 @php
                   $resumeExist = App\Models\Resume::where('user_id', Auth::user()->id)->exists();
                   $existUserAndJob = App\Models\ApplyJob::where('user_id', Auth::user()->id)->where('job_id', $jobPost->id)->exists();
+                  $now = Carbon\Carbon::now();
+                  $today = date('Y-m-d', strtotime($now));
                 @endphp
                 @if (!$existUserAndJob)
-                <a href="{{ $resumeExist == false ? 'javascript:void(0)' : route('apply.the.job', $jobPost->id) }}" class="btn site-btn" data-bs-toggle="{{ $resumeExist == false ? 'modal' : '' }}" data-bs-target="{{ $resumeExist == false ? '#myModal' : '' }}">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
+                  @if ($today < $jobPost->deadline)
+                    <a href="{{ $resumeExist == false ? 'javascript:void(0)' : route('apply.the.job', $jobPost->id) }}" class="btn site-btn" data-bs-toggle="{{ $resumeExist == false ? 'modal' : '' }}" data-bs-target="{{ $resumeExist == false ? '#myModal' : '' }}">Apply Now  <i class="bi bi-exclamation-circle"></i></a>
+                  @else
+                  <button class="btn site-btn" disabled>Dedline Over</button>
+                  @endif
                 @else
                 <button class="btn site-btn" disabled>Already Applied</button>
                 @endif
