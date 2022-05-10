@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\SearchController;
@@ -43,3 +44,6 @@ Route::post('/contact/send', [FrontendController::class, 'contactSend'])->name('
 Route::post('/subscribe', [FrontendController::class, 'subscriberStore'])->name('subscribe');
 
 Route::get('ajax-search-result', [FrontendController::class, 'ajaxSearchResult'])->name('ajax.search.result');
+
+
+Route::get('test-date', [FrontendController::class, 'dateTest']);

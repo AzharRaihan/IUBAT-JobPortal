@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Resume;
 use App\Models\Company;
@@ -189,4 +190,17 @@ class FrontendController extends Controller
     //         return $output;
     //     } 
     // }
+
+    public function dateTest()
+    {
+        $now = Carbon::now();
+        $d = date('Y-m-d', strtotime($now));
+
+        dd($d);
+        $a = 1979-04-23;
+        $b = 1990-05-22;
+        if ($a > $b){
+            echo 'test';
+        }
+    }
 }
