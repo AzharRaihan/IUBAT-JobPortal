@@ -78,7 +78,6 @@
                             @csrf
                             <input type="hidden" name="job_id" value="{{ $jobId->id }}">
                           </form>
-                          <button type="button" class="btn btn-danger">Reject</button>
                         </div>
                       </td>
                     </tr>
