@@ -166,41 +166,4 @@ class FrontendController extends Controller
             return back();
         }
     }
-
-
-    // Ajax Search Resutl
-    // public function ajaxSearchResult(Request $request)
-    // {
-    //     if ($request->ajax()) {
-    //         $jobSearch = Company::where('company_name', 'LIKE', "%". $request->input . "%")
-    //         ->get();
-
-    //         $output = "";
-
-    //         if (count($jobSearch) > 0) {
-    //             foreach ($jobSearch as $result) {
-    //                 $output .=' 
-    //                 <ul class="list-group">
-    //                     <li class="list-group-item">'. $result->company_name .'</li>
-    //                 </ul>';
-    //             }
-    //         } else {
-    //             $output .= "Not Founds";
-    //         }
-    //         return $output;
-    //     } 
-    // }
-
-    public function dateTest()
-    {
-        $now = Carbon::now();
-        $d = date('Y-m-d', strtotime($now));
-
-        dd($d);
-        $a = 1979-04-23;
-        $b = 1990-05-22;
-        if ($a > $b){
-            echo 'test';
-        }
-    }
 }
