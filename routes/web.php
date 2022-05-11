@@ -42,8 +42,3 @@ Route::get('/private/company', [FrontendController::class, 'privateCompany'])->n
 Route::get('/job-post/details/{id}',[FrontendController::class, 'jobPostDetails'])->name('jobpost.details');
 Route::post('/contact/send', [FrontendController::class, 'contactSend'])->name('contact.send');
 Route::post('/subscribe', [FrontendController::class, 'subscriberStore'])->name('subscribe');
-
-Route::get('ajax-search-result', [FrontendController::class, 'ajaxSearchResult'])->name('ajax.search.result');
-
-
-Route::get('test-date', [FrontendController::class, 'dateTest']);
