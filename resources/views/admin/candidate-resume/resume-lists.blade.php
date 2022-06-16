@@ -49,11 +49,11 @@
                     <td>{{ $key + 1 }}</td>
                     <td>{{ $resume->user->name }}</td>
                     <td>
-                      <iframe id="iframe-pdf" src="{{ asset('uploads/users/resume/'.$resume->resume) }}" frameborder="0"></iframe>
+                      <iframe id="iframe-pdf" src="{{ asset('uploads/users/resume/'.$resume->resume_name) }}" frameborder="0"></iframe>
                     </td>
                     <td>{{ $resume->created_at != null ? $resume->created_at->diffForHumans() : '' }}</td>
                     <td>
-                      <a href="{{ asset('uploads/users/resume/'.$resume->resume) }}" class="btn btn-info btn-sm" target="blank">
+                      <a href="{{ asset('uploads/users/resume/'.$resume->resume_name) }}" class="btn btn-info btn-sm" target="blank">
                         <i class="fas fa-eye"></i>
                         <span>Show/Download Resume</span>
                       </a>
