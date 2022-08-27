@@ -46,7 +46,7 @@ class FrontendController extends Controller
         $data['companyCount'] = Company::count();
 
         $data['jobPostCount'] = JobPost::where('status', 1)->where('is_published',1)->count();
-        
+
         return view('website.index', $data);
     }
     // Government Company
@@ -79,7 +79,7 @@ class FrontendController extends Controller
         return view('website.company-type', $data);
     }
 
-    // Contact 
+    // Contact
     public function contact()
     {
         return view('website.contact-page');
@@ -148,9 +148,9 @@ class FrontendController extends Controller
                     $applyJob->user_id = Auth::user()->id;
                     $applyJob->save();
                     // Find company role id for notify
-                    $user = User::where('role_id',2)->get();
+                    // $user = User::where('role_id',2)->get();
                     // Notify to Company for thi apply job request
-                    Notification::send($user, new ApplyJobNotificationToCompany($applyJob));
+                    // Notification::send($user, new ApplyJobNotificationToCompany($applyJob));
                     notify()->success("Success", "Successfully Apply");
                     return back();
                 }else{

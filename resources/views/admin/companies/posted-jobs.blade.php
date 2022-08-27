@@ -41,11 +41,11 @@
               </a>
             </h3>
           </div>
-          @if ($company->job_post_count > 0)
+          @if (count($jobPost) > 0)
           <div class="card-body">
-            <h4 class="pt-2 pb-3 text-center">{{ $company->company_name }} All Posted Jobs</h4>
+            <h4 class="pt-2 pb-3 text-center"> {{ $company->company_name }} - All Posted Jobs</h4>
             <div class="row">
-              @foreach ($company->jobPost as $jPost)
+              @foreach ($jobPost as $jPost)
               <div class="col-lg-3 col-6">
                 <!-- small card -->
                 <div class="small-box">
@@ -84,5 +84,5 @@
 @endsection
 
 @push('page-js')
-    
+
 @endpush

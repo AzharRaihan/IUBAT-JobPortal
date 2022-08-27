@@ -166,6 +166,7 @@ class CompanyDashboardController extends Controller
     // Store Job Post
     public function storeJobPost(Request $request)
     {
+        // dd( $request->all());
         $authUserID = Auth::user()->id;
         $companyId = Company::where('user_id', $authUserID)->exists();
         if($companyId == true){
@@ -185,7 +186,7 @@ class CompanyDashboardController extends Controller
                 'report' => 'required|max:300',
                 'description' => 'required',
                 'job_thumbnail' => 'required|mimes:jpg,bmp,png,jpeg',
-            ]); 
+            ]);
             // Get Job Thumbnail for store
             if($request->hasfile('job_thumbnail'))
             {
@@ -216,7 +217,7 @@ class CompanyDashboardController extends Controller
                 $image->setAttribute('src', $image_name);
             }
             $content = $dom->saveHTML();
-    
+
             $authUser = Auth::user()->id;
             $companyId = Company::where('user_id', $authUser)->first();
             $jobPost = new JobPost();
@@ -246,7 +247,7 @@ class CompanyDashboardController extends Controller
             notify()->error('Error','Please Complete Profile First');
             return back();
         }
-        
+
     }
 
     // Edit Job Post

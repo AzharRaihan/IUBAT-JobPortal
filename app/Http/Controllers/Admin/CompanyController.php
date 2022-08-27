@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\JobPost;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CompanyController extends Controller
 {
@@ -79,8 +80,11 @@ class CompanyController extends Controller
 
     public function postedJobs($id)
     {
-        $company = Company::withCount('jobPost')->where('id', $id)->first();
-        return view('admin.companies.posted-jobs', compact('company'));
+        $data['company'] = Company::findOrFail($id);
+        $data['jobPost'] = JobPost::whereHas('company', function ($query) use($id) {
+            return $query->where('company_id', $id);
+        })->where('status', 1)->get();
+        return view('admin.companies.posted-jobs', $data);
     }
 
     public function showJob($id)
