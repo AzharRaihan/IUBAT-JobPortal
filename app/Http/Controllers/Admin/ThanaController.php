@@ -27,7 +27,7 @@ class ThanaController extends Controller
      */
     public function create()
     {
-        $data['districts'] = District::orderBy('district_name')->get();
+        $data['districts'] = District::where('status',1)->orderBy('district_name')->get();
         return view('admin.site-basic-info.thana-create-edit', $data);
     }
 

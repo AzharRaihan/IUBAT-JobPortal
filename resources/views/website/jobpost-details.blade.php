@@ -82,7 +82,19 @@
           <div class="card-body">
             <p class="py-1"><b>Published On : </b>{{ date('F j, Y', strtotime($jobPost->published_on)) }}</p>
             <p class="py-1"><b>Vacancy : </b>{{ $jobPost->vacancy }}</p>
-            <p class="py-1"><b>Employment Status :</b>{{ $jobPost->employment_status == 'FT' ? 'Full Time' : '' || $jobPost->employment_status == 'PT' ? 'Part Time' : '' || $jobPost->employment_status == 'FLC' ? 'Freelancing' : '' || $jobPost->employment_status == 'TJ' ? 'Temporary Job' : ''}}</p>
+            <p class="py-1"><b>Employment Status :</b>
+                @if($jobPost->employment_status == 'FT')
+                {{ 'Full Time' }}
+                @elseif($jobPost->employment_status == 'PT')
+                {{ 'Part Time' }}
+                @elseif($jobPost->employment_status == 'FLC')
+                {{ 'Freelancing' }}
+                @elseif($jobPost->employment_status == 'TJ')
+                {{ 'Temporary Job' }}
+                @else
+                {{ 'Employee Status Not Selected' }}
+                @endif
+            </p>
             <p class="py-1"><b>Experience : </b>{{ $jobPost->experience }}</p>
             <p class="py-1"><b>Age : </b>{{ $jobPost->age }}</p>
             <p class="py-1"><b>Job Location : </b>{{ $jobPost->job_location }}</p>
@@ -150,7 +162,7 @@
   <script>
   var typed4 = new Typed('#typed4', {
     strings: [
-      'Search key word : Frontend Developer', 
+      'Search key word : Frontend Developer',
       'Search key word : Backend Developer',
       'Search key word : Graphics Designer',
       'Search key word : Accountent',
